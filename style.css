@@ -87,10 +87,10 @@
         }
 
         .hero h1 {
-            font-size: 4rem;
-            max-width: 900px;
+            font-size: clamp(2rem, 5.5vw, 6rem);
+            max-width: clamp(300px, 85vw, 1500px);
             line-height: 1.1;
-            margin-bottom: 3rem;
+            margin-bottom: clamp(3rem, 5vw, 6rem);
         }
 
         .hero h1 .line-wrapper {
@@ -149,8 +149,9 @@
         .giant-text-section {
             position: relative;
             width: 100%;
-            padding: 200px 0;
+            padding: 80px 0;
             text-align: center;
+            margin-top: 2rem;
             /* Degradê forte e profissional de azul escuro para o azul principal */
             background: linear-gradient(135deg, var(--dark-blue) 0%, var(--primary-blue) 100%);
             overflow: hidden;
