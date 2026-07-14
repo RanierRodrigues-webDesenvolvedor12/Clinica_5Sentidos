@@ -53,21 +53,29 @@
             </div>
         </section>
 
-        <!-- Seção Texto Gigante + Fundo Azul Degradê -->
+        <!-- Seção Texto Gigante - Marquee Automático -->
         <section class="giant-text-section">
-            <div class="giant-text">CLINICA 5 SENTIDOS</div>
+            <div class="giant-text-track">
+                <div class="giant-text">CLINICA 5 SENTIDOS&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+                <div class="giant-text">CLINICA 5 SENTIDOS&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+            </div>
         </section>
 
-        <!-- NOVO: Seção de Scroll Horizontal -->
+        <!-- Seção Estrutura da Clínica -->
         <section class="horizontal-scroll-wrapper">
             
             <div class="horizontal-track">
                 
-                <!-- Linha SVG que interliga os blocos -->
-                <svg class="horizontal-line-container" viewBox="0 0 4000 200" preserveAspectRatio="none">
-                    <!-- Path em onda esticado -->
+                <!-- Linha SVG horizontal (Desktop) -->
+                <svg class="horizontal-line-container desktop-line" viewBox="0 0 4000 200" preserveAspectRatio="none">
                     <path id="h-line" d="M 0 100 Q 500 0 1000 100 T 2000 100 T 3000 100 T 4000 100" 
                           fill="none" stroke="var(--primary-blue)" stroke-width="6" stroke-linecap="round"/>
+                </svg>
+
+                <!-- Linha SVG vertical (Mobile) -->
+                <svg class="vertical-line-container mobile-line" viewBox="0 0 200 3000" preserveAspectRatio="none">
+                    <path id="v-line" d="M 100 0 Q 0 300 100 600 T 100 1200 T 100 1800 T 100 2400 T 100 3000" 
+                          fill="none" stroke="var(--primary-blue)" stroke-width="5" stroke-linecap="round"/>
                 </svg>
 
                 <!-- ================= BLOCO 1 ================= -->
@@ -105,7 +113,7 @@
                         <p>A primeira impressão importa. Nossa recepção foi estruturada para ser um ponto de calma, com um design de interiores que reflete a seriedade e o carinho da Clínica 5 Sentidos.</p>
                     </div>
                     <div class="slide-image-wrapper">
-                        <img src="/Assets/clinica.png" alt="Recepção" class="main-img" style="transform: rotate(-2deg);">
+                        <img src="Assets/clinica.png" alt="Recepção" class="main-img" style="transform: rotate(-2deg);">
                         <img src="Assets/CenouraSVG.svg" class="decor decor-top-right" alt="Cenoura">
                     </div>
                 </div>
@@ -116,7 +124,7 @@
         </section>
         
         <!-- Espaço em branco temporário para permitir scroll após a rolagem horizontal -->
-        <section style="height: 100vh; background: var(--bg-color); display: flex; align-items: center; justify-content: center;">
+        <section class="footer-placeholder">
             <h2>Rodapé / Próxima Seção aqui</h2>
         </section>
 
