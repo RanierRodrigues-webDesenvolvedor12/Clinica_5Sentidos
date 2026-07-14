@@ -1,0 +1,258 @@
+/* ================= Variáveis e Reset ================= */
+        :root {
+            --primary-blue: #0A628A;
+            --dark-blue: #053b54;
+            --light-blue: #D6EAF8;
+            --dark-text: #111;
+            --bg-color: #FAFAFA;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--dark-text);
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* ================= Pré-loader ================= */
+        #preloader {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100vh;
+            background: var(--bg-color);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+        }
+
+        .preloader-title {
+            font-size: 3rem;
+            font-weight: 800;
+            overflow: hidden;
+            display: flex;
+        }
+
+        .preloader-title span {
+            display: inline-block;
+            transform: translateY(100%);
+            opacity: 0;
+        }
+
+        .preloader-subtitle {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            color: var(--primary-blue);
+            margin-top: 10px;
+            clip-path: polygon(0 0, 0 0, 0 100%, 0 100%);
+        }
+
+        /* ================= Cabeçalho ================= */
+        header {
+            display: flex;
+            justify-content: space-between;
+            padding: 2rem 5%;
+            font-weight: 600;
+            position: absolute;
+            top: 0; width: 100%;
+            z-index: 10;
+        }
+
+        /* ================= Seção Hero ================= */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding-top: 15vh;
+            text-align: center;
+            position: relative;
+        }
+
+        .pill {
+            background-color: var(--primary-blue);
+            color: white;
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            margin-bottom: 2rem;
+            opacity: 0;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            max-width: 900px;
+            line-height: 1.1;
+            margin-bottom: 3rem;
+        }
+
+        .hero h1 .line-wrapper {
+            overflow: hidden;
+            display: block;
+        }
+
+        .hero h1 .line {
+            display: block;
+            transform: translateY(100%);
+        }
+
+        .text-blue { color: var(--primary-blue); }
+
+        .hero-gallery {
+            position: relative;
+            width: 100%;
+            height: 350px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            perspective: 1000px;
+        }
+
+        .hero-img {
+            position: absolute;
+            width: 250px;
+            height: 320px;
+            object-fit: cover;
+            border-radius: 15px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+            opacity: 0;
+            transform-origin: bottom center;
+            border: 4px solid white;
+        }
+
+        .buttons-wrapper {
+            margin-top: 2rem;
+            display: flex;
+            gap: 15px;
+            z-index: 2;
+        }
+
+        .btn {
+            padding: 12px 25px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+
+        .btn-primary { background: var(--primary-blue); color: white; }
+        .btn-outline { border: 1px solid var(--dark-text); color: var(--dark-text); }
+
+        /* ================= Seção Texto Gigante + Fundo Azul ================= */
+        .giant-text-section {
+            position: relative;
+            width: 100%;
+            padding: 200px 0;
+            text-align: center;
+            /* Degradê forte e profissional de azul escuro para o azul principal */
+            background: linear-gradient(135deg, var(--dark-blue) 0%, var(--primary-blue) 100%);
+            overflow: hidden;
+        }
+
+        .giant-text {
+            font-size: 8vw;
+            font-weight: 800;
+            /* Texto semi-transparente para mesclar com o azul */
+            color: rgba(255, 255, 255, 0.2); 
+            text-transform: uppercase;
+            letter-spacing: -2px;
+        }
+
+        /* ================= Scroll Horizontal ================= */
+        .horizontal-scroll-wrapper {
+            width: 100vw;
+            height: 100vh; /* Ocupará exatamente a tela inteira enquanto trava */
+            overflow: hidden;
+            position: relative;
+            background-image: url('image 99.jpg'); /* Pattern do fundo */
+            background-size: cover;
+            background-attachment: fixed;
+            background-blend-mode: soft-light;
+            background-color: rgba(250, 250, 250, 0.95);
+        }
+
+        .horizontal-track {
+            display: flex;
+            width: max-content;
+            height: 100%;
+            align-items: center;
+            position: relative;
+            padding: 0 10vw; /* Margem inicial e final */
+        }
+
+        /* Linha SVG Horizontal */
+        .horizontal-line-container {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            width: 100%;
+            height: 200px;
+            transform: translateY(-50%);
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        /* ================= Estrutura dos Slides (Cards de Conteúdo) ================= */
+        .h-slide {
+            width: 80vw; /* Largura de cada bloco na tela */
+            max-width: 1000px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-right: 15vw; /* Distância entre os blocos */
+            position: relative;
+            z-index: 1;
+        }
+
+        .slide-text {
+            flex: 1;
+            padding-right: 60px;
+        }
+
+        .slide-text h2 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+            color: var(--primary-blue);
+        }
+
+        .slide-text p {
+            font-size: 1.1rem;
+            color: #555;
+            line-height: 1.6;
+        }
+
+        .slide-image-wrapper {
+            flex: 1;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .slide-image-wrapper .main-img {
+            width: 100%;
+            max-width: 450px;
+            border-radius: 20px;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.15);
+            /* Rotação alternada que o GSAP pode brincar */
+            transform: rotate(2deg); 
+        }
+
+        /* Assets / Vegetais nos cantos */
+        .decor {
+            position: absolute;
+            width: 90px;
+            z-index: 2;
+        }
+
+        .decor-top-left { top: -40px; left: -20px; transform: rotate(-15deg); }
+        .decor-bottom-right { bottom: -30px; right: -20px; transform: rotate(15deg); }
+        .decor-top-right { top: -20px; right: -30px; transform: rotate(20deg); }

@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clínica 5 Sentidos - Jessika Neres</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Playfair+Display:ital@1&display=swap" rel="stylesheet">
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Pré-loader -->
+    <div id="preloader">
+        <div class="preloader-title">
+            <span>C</span><span>L</span><span>Í</span><span>N</span><span>I</span><span>C</span><span>A</span>
+            <span style="margin-left: 15px;">5</span>
+            <span style="margin-left: 15px;">S</span><span>E</span><span>N</span><span>T</span><span>I</span><span>D</span><span>O</span><span>S</span>
+        </div>
+        <div class="preloader-subtitle">Jessika Neres</div>
+    </div>
+
+    <!-- Cabeçalho -->
+    <header>
+        <div>Clinica 5 sentidos</div>
+        <div>Jessika Neres</div>
+    </header>
+
+    <!-- Conteúdo Principal -->
+    <main>
+        <section class="hero">
+            <div class="pill">Clinica 5 sentidos</div>
+            
+            <h1>
+                <span class="line-wrapper"><span class="line">Cada detalhe foi pensado para</span></span>
+                <span class="line-wrapper"><span class="line">proporcionar uma <span class="text-blue">experiência única.</span></span></span>
+            </h1>
+
+            <div class="hero-gallery">
+                <img src="Assets/clinica.png" class="hero-img img-1" alt="Consultório 1">
+                <img src="Assets/clinica.png" class="hero-img img-2" alt="Recepção">
+                <img src="Assets/clinica.png" class="hero-img img-3" alt="Consultório 2">
+            </div>
+
+            <div class="buttons-wrapper">
+                <a href="#" class="btn btn-primary">Conheça a clínica</a>
+                <a href="#" class="btn btn-outline">Marcar um horário ➔</a>
+            </div>
+        </section>
+
+        <!-- Seção Texto Gigante + Fundo Azul Degradê -->
+        <section class="giant-text-section">
+            <div class="giant-text">CLINICA 5 SENTIDOS</div>
+        </section>
+
+        <!-- NOVO: Seção de Scroll Horizontal -->
+        <section class="horizontal-scroll-wrapper">
+            
+            <div class="horizontal-track">
+                
+                <!-- Linha SVG que interliga os blocos -->
+                <svg class="horizontal-line-container" viewBox="0 0 4000 200" preserveAspectRatio="none">
+                    <!-- Path em onda esticado -->
+                    <path id="h-line" d="M 0 100 Q 500 0 1000 100 T 2000 100 T 3000 100 T 4000 100" 
+                          fill="none" stroke="var(--primary-blue)" stroke-width="6" stroke-linecap="round"/>
+                </svg>
+
+                <!-- ================= BLOCO 1 ================= -->
+                <div class="h-slide">
+                    <div class="slide-text">
+                        <h2>Espaço Completo<br>para você</h2>
+                        <p>Ambientes modernos, aconchegantes e preparados para transformar cada consulta em um momento de confiança, cuidado e bem-estar. Criamos uma estrutura que abraça as necessidades dos profissionais e o conforto dos pacientes.</p>
+                    </div>
+                    <div class="slide-image-wrapper">
+                        <!-- Imagem do Bloco -->
+                        <img src="Assets/clinica.png" alt="Maca" class="main-img" style="transform: rotate(-3deg);">
+                        <!-- Assets/Vegetais -->
+                        <img src="Assets/CenouraSVG.svg" class="decor decor-bottom-right" alt="Cenoura">
+                        <img src="Assets/morangoSVG.svg" class="decor decor-top-left" alt="Morango">
+                    </div>
+                </div>
+
+                <!-- ================= BLOCO 2 ================= -->
+                <div class="h-slide">
+                    <div class="slide-text">
+                        <h2>Ambiente<br>Lúdico</h2>
+                        <p>Os consultórios foram desenhados com detalhes que encantam as crianças. Paredes ilustradas e cores pensadas para despertar a imaginação e facilitar o trabalho durante o atendimento infantil.</p>
+                    </div>
+                    <div class="slide-image-wrapper">
+                        <img src="Assets/clinica.png" alt="Consultório lúdico" class="main-img" style="transform: rotate(2deg);">
+                        <!-- Pode repetir ou adicionar outros assets aqui -->
+                        <img src="Assets/morangoSVG.svg" class="decor decor-bottom-right" alt="Morango">
+                    </div>
+                </div>
+
+                <!-- ================= BLOCO 3 ================= -->
+                <div class="h-slide">
+                    <div class="slide-text">
+                        <h2>Recepção<br>Acolhedora</h2>
+                        <p>A primeira impressão importa. Nossa recepção foi estruturada para ser um ponto de calma, com um design de interiores que reflete a seriedade e o carinho da Clínica 5 Sentidos.</p>
+                    </div>
+                    <div class="slide-image-wrapper">
+                        <img src="/Assets/clinica.png" alt="Recepção" class="main-img" style="transform: rotate(-2deg);">
+                        <img src="Assets/CenouraSVG.svg" class="decor decor-top-right" alt="Cenoura">
+                    </div>
+                </div>
+                
+                <!-- Você pode adicionar mais blocos <div class="h-slide">...</div> aqui -->
+
+            </div>
+        </section>
+        
+        <!-- Espaço em branco temporário para permitir scroll após a rolagem horizontal -->
+        <section style="height: 100vh; background: var(--bg-color); display: flex; align-items: center; justify-content: center;">
+            <h2>Rodapé / Próxima Seção aqui</h2>
+        </section>
+
+    </main>
+    <script src="script.js"></script>
+</body>
+</html>
