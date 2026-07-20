@@ -1,4 +1,13 @@
-gsap.registerPlugin(ScrollTrigger);
+gsap.registerPlugin(ScrollTrigger, SplitText);
+
+/* ================= 0. Estado Inicial (Evita o Flash/Delay) ================= */
+/* 1. Preparamos o SplitText imediatamente ao carregar a página */
+const heroSplit = new SplitText('.hero h1', { type: 'lines, words, chars' });
+
+/* 2. Escondemos os elementos ANTES do preloader começar */
+gsap.set(heroSplit.words, { opacity: 0, y: 40, mask: "lines" });
+gsap.set('.pill', { opacity: 0, y: 40 });
+gsap.set('.buttons-wrapper', { opacity: 0, y: 40 });
 
 /* ================= Helpers ================= */
 const isMobile = window.matchMedia("(max-width: 768px)").matches;
@@ -16,64 +25,32 @@ tlPreloader.to(".preloader-title span", {
 .to("#preloader", {
     yPercent: -100, duration: 1, ease: "power4.inOut", delay: 0.5,
     onComplete: () => {
-        /* After preloader, set up all scroll-driven animations */
+        /* Chama as animações apenas após o preloader sumir */
         setupScrollAnimations();
+        animateHero(); // Executa a entrada suave dos elementos
     }
 });
 
-/* ================= 2. Todas as animações scroll-driven ================= */
+/* ================= 2. Hero: Animação de Entrada ================= */
+function animateHero() {
+    const tl = gsap.timeline();
+
+    tl.to('.pill', {
+        opacity: 1, y: 0,
+        duration: 0.6, ease: 'power3.out'
+    })
+    .to(heroSplit.words, {
+        opacity: 1, y: 0,
+        duration: 0.8, stagger: 0.15, ease: "back.out(1.7)",
+    }, '-=0.3')
+    .to('.buttons-wrapper', {
+        opacity: 1, y: 0,
+        duration: 0.6, ease: 'power3.out'
+    }, '-=0.4');
+}
+
+/* ================= 3. Todas as animações scroll-driven ================= */
 function setupScrollAnimations() {
-
-    /* --- Hero: pill, titulo, imagens, botoes --- */
-    const heroTl = gsap.timeline({
-        scrollTrigger: {
-            trigger: ".hero",
-            start: "top 80%",
-            end: "center center",
-            scrub: 1
-        }
-    });
-
-    heroTl.to(".pill", { y: 0, opacity: 1, duration: 1 })
-    .to(".hero h1 .line", {
-        y: 0, duration: 1.5, stagger: 0.3
-    }, 0)
-    .to(".hero-img", {
-        y: isMobile ? -40 : -50, opacity: 1, duration: 1.5, stagger: 0.15
-    }, 0.3)
-    .to(".buttons-wrapper", { y: 0, opacity: 1, duration: 1 }, 0.8);
-
-    /* Imagens se espalham apos surgirem */
-    const spreadTl = gsap.timeline({
-        scrollTrigger: {
-            trigger: ".hero-gallery",
-            start: "top 70%",
-            end: "bottom 40%",
-            scrub: 1
-        }
-    });
-
-    if (isSmallMobile) {
-        spreadTl.to(".img-1", { x: -30, rotate: -6, duration: 1 }, 0)
-        .to(".img-3", { x: 30, rotate: 6, duration: 1 }, 0)
-        .to(".img-2", { zIndex: 3, scale: 1.05, duration: 1 }, 0);
-    } else if (isMobile) {
-        spreadTl.to(".img-1", { x: -45, rotate: -8, duration: 1 }, 0)
-        .to(".img-3", { x: 45, rotate: 8, duration: 1 }, 0)
-        .to(".img-2", { zIndex: 3, scale: 1.05, duration: 1 }, 0);
-    } else {
-        spreadTl.to(".img-1", { x: -180, rotate: -12, duration: 1 }, 0)
-        .to(".img-3", { x: 180, rotate: 12, duration: 1 }, 0)
-        .to(".img-2", { zIndex: 3, scale: 1.05, duration: 1 }, 0);
-    }
-
-    /* --- Parallax: hero gallery desaparece ao rolar --- */
-    gsap.to(".hero-gallery", {
-        scrollTrigger: {
-            trigger: ".hero", start: "center top", end: "bottom top", scrub: true
-        },
-        y: isMobile ? -60 : -150, opacity: 0, scale: 0.9
-    });
 
     /* --- Giant Text: marquee automático infinito --- */
     const giantTrack = document.querySelector(".giant-text-track");

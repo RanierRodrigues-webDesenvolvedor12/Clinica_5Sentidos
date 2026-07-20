@@ -53,7 +53,7 @@ body {
 
 .preloader-subtitle {
     font-family: 'Playfair Display', serif;
-    font-size: clamp(1rem, 2.5vw, 1.5rem);
+    font-size: clamp(1.9rem, 3vw, 2.1rem);
     color: var(--primary-blue);
     margin-top: 10px;
     clip-path: polygon(0 0, 0 0, 0 100%, 0 100%);
@@ -102,16 +102,6 @@ header {
     padding: 0 1rem;
 }
 
-.hero h1 .line-wrapper {
-    overflow: hidden;
-    display: block;
-}
-
-.hero h1 .line {
-    display: block;
-    transform: translateY(110%);
-}
-
 .text-blue { color: var(--primary-blue); }
 
 .hero-gallery {
@@ -131,7 +121,6 @@ header {
     object-fit: cover;
     border-radius: 15px;
     box-shadow: 0 20px 40px rgba(0,0,0,0.15);
-    opacity: 0;
     transform-origin: bottom center;
     border: 4px solid white;
 }
