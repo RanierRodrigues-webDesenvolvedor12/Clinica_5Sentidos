@@ -35,7 +35,7 @@ body {
 }
 
 .preloader-title {
-    font-size: clamp(1.5rem, 5vw, 3rem);
+    font-size: clamp(1.5rem, 6vw, 5rem);
     font-weight: 800;
     overflow: hidden;
     display: flex;
@@ -53,7 +53,7 @@ body {
 
 .preloader-subtitle {
     font-family: 'Playfair Display', serif;
-    font-size: clamp(1.9rem, 3vw, 2.1rem);
+    font-size: clamp(1.5rem, 4vw, 2.5rem);
     color: var(--primary-blue);
     margin-top: 10px;
     clip-path: polygon(0 0, 0 0, 0 100%, 0 100%);
@@ -86,12 +86,13 @@ header {
 .pill {
     background-color: var(--primary-blue);
     color: white;
-    padding: 8px 20px;
+    padding: clamp(8px, 1.5vw, 24px) clamp(20px, 5vw, 32px);
     border-radius: 50px;
-    font-size: clamp(0.7rem, 1.5vw, 0.9rem);
+   font-size: clamp(0.85rem, 2vw, 1.1rem);
     margin-bottom: clamp(1rem, 3vw, 2rem);
     opacity: 0;
     transform: translateY(30px);
+    font-weight: 600;
 }
 
 .hero h1 {
@@ -267,7 +268,7 @@ header {
 
 .slide-image-wrapper .main-img {
     width: 100%;
-    max-width: clamp(250px, 35vw, 450px);
+    max-width: clamp(250px, 25vw, 450px);
     border-radius: 20px;
     box-shadow: 0 30px 60px rgba(0,0,0,0.15);
 }
@@ -280,7 +281,7 @@ header {
 }
 
 .decor-top-left { top: -40px; left: -20px; transform: rotate(-15deg); }
-.decor-bottom-right { bottom: -30px; right: -20px; transform: rotate(15deg); }
+.decor-bottom-right { bottom: 0px; right: -30px; transform: rotate(15deg); }
 .decor-top-right { top: -20px; right: -30px; transform: rotate(20deg); }
 
 /* ================= Footer ================= */
@@ -378,8 +379,6 @@ header {
     .slide-text h2 { font-size: clamp(1.5rem, 6vw, 2.2rem); }
     .slide-text p { font-size: clamp(0.85rem, 3vw, 1rem); }
 
-    .slide-image-wrapper .main-img { max-width: 85%; width: 100%; }
-
     .decor { width: clamp(40px, 12vw, 70px); }
 
     .footer-placeholder h2 {
@@ -391,7 +390,6 @@ header {
 
 /* ================= MOBILE PEQUENO (480px) ================= */
 @media (max-width: 480px) {
-    .preloader-title { font-size: clamp(1.2rem, 7vw, 2rem); letter-spacing: 1px; }
     .preloader-title span:nth-child(8),
     .preloader-title span:nth-child(9) { margin-left: 8px !important; }
 
@@ -410,9 +408,9 @@ header {
     .slide-text h2 { font-size: clamp(1.3rem, 6vw, 1.8rem); }
     .slide-text p { font-size: 0.85rem; line-height: 1.5; }
 
-    .decor { width: 40px; }
+    .decor { width: 25%;}
     .decor-top-left { top: -20px; left: -10px; }
-    .decor-bottom-right { bottom: -15px; right: -10px; }
+    .decor-bottom-right { bottom: 0px; right: -20px; }
     .decor-top-right { top: -10px; right: -15px; }
 }
 
