@@ -233,3 +233,117 @@ function setupMobileStructure() {
         }
     });
 }
+
+/* ================= 4. Hero: Hover profissional nas imagens ================= */
+/* Tilt 3D que acompanha o mouse + efeito de profundidade de campo (foco).
+   Os valores originais são capturados no primeiro hover (depois da animação
+   de entrada terminar), evitando qualquer conflito com as tweens do GSAP. */
+function setupHeroHover() {
+    const gallery = document.querySelector(".hero-gallery");
+    const imgs = gsap.utils.toArray(".hero-img");
+    if (!gallery || imgs.length === 0) return;
+
+    const origin = new Map();
+    const rotX = new Map();
+    const rotY = new Map();
+    let active = null;
+    let resetTimer = null;
+
+    const capture = (img) => {
+        if (origin.has(img)) return;
+        origin.set(img, {
+            zIndex: parseInt(getComputedStyle(img).zIndex) || 1,
+            scale: gsap.getProperty(img, "scale"),
+            rotation: gsap.getProperty(img, "rotation"),
+            y: gsap.getProperty(img, "y"),
+            opacity: gsap.getProperty(img, "opacity"),
+            filter: "none",
+            boxShadow: "0 20px 40px rgba(0,0,0,0.15)"
+        });
+    };
+
+    const restore = (img) => {
+        if (!origin.has(img)) return;
+        const o = origin.get(img);
+        gsap.to(img, {
+            scale: o.scale,
+            rotation: o.rotation,
+            y: o.y,
+            rotationX: 0,
+            rotationY: 0,
+            zIndex: o.zIndex,
+            opacity: o.opacity,
+            filter: "none",
+            transformOrigin: "bottom center",
+            boxShadow: o.boxShadow,
+            duration: 0.5,
+            ease: "power3.out",
+            overwrite: true
+        });
+    };
+
+    const resetAll = () => {
+        active = null;
+        imgs.forEach(restore);
+    };
+
+    imgs.forEach((img) => {
+        img.style.cursor = "pointer";
+        rotX.set(img, gsap.quickTo(img, "rotationX", { duration: 0.7, ease: "power3.out" }));
+        rotY.set(img, gsap.quickTo(img, "rotationY", { duration: 0.7, ease: "power3.out" }));
+
+        img.addEventListener("mouseenter", () => {
+            if (resetTimer) clearTimeout(resetTimer);
+            if (active && active !== img) restore(active);
+            active = img;
+            imgs.forEach(capture);
+
+            const o = origin.get(img);
+            const others = imgs.filter((im) => im !== img);
+
+            gsap.to(img, {
+                scale: o.scale * 1.12,
+                y: o.y - 25,
+                rotation: 0,
+                opacity: o.opacity,
+                zIndex: 10,
+                filter: "brightness(1.04) saturate(1.05)",
+                transformOrigin: "center center",
+                boxShadow: "0 35px 60px rgba(10,98,138,0.4)",
+                duration: 0.55,
+                ease: "power3.out",
+                overwrite: true
+            });
+
+            gsap.to(others, {
+                scale: (i) => origin.get(others[i]).scale * 0.9,
+                y: (i) => origin.get(others[i]).y + 30,
+                opacity: 0.55,
+                filter: "blur(3px)",
+                duration: 0.5,
+                ease: "power2.out",
+                overwrite: true
+            });
+        });
+
+        img.addEventListener("mouseleave", () => {
+            if (active !== img) return;
+            resetTimer = setTimeout(() => {
+                if (active === null) resetAll();
+            }, 120);
+        });
+    });
+
+    gallery.addEventListener("mousemove", (e) => {
+        if (!active) return;
+        const rect = active.getBoundingClientRect();
+        const px = (e.clientX - rect.left) / rect.width - 0.5;
+        const py = (e.clientY - rect.top) / rect.height - 0.5;
+        rotY.get(active)(px * 16);
+        rotX.get(active)(py * -12);
+    });
+
+    gallery.addEventListener("mouseleave", resetAll);
+}
+
+setupHeroHover();
