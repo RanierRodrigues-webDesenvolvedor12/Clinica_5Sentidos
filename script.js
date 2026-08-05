@@ -9,6 +9,9 @@ gsap.set(heroSplit.words, { opacity: 0, y: 40, mask: "lines" });
 gsap.set('.pill', { opacity: 0, y: 40 });
 gsap.set('.buttons-wrapper', { opacity: 0, y: 40 });
 
+// NOVO: Prepara as imagens para surgirem de baixo, transparentes e um pouco menores
+gsap.set('.hero-img', { y: 150, opacity: 0, scale: 0.8 }); 
+
 /* ================= Helpers ================= */
 const isMobile = window.matchMedia("(max-width: 768px)").matches;
 const isSmallMobile = window.matchMedia("(max-width: 480px)").matches;
@@ -43,10 +46,42 @@ function animateHero() {
         opacity: 1, y: 0,
         duration: 0.8, stagger: 0.15, ease: "back.out(1.7)",
     }, '-=0.3')
+    
+    // PASSO 1: As imagens sobem empilhadas (uma logo atrás da outra)
+    .to('.hero-img', {
+        y: 0,
+        opacity: 1,
+        scale: 0.9, // Sobem um pouco menores para dar profundidade
+        duration: 0.7,
+        stagger: 0.1, // Delay sutil entre elas
+        ease: "back.out(1.2)"
+    }, '-=0.4')
+    
+    // PASSO 2: Elas se abrem (Spread) - Usamos uma "Label" para que aconteçam ao mesmo tempo
+    .addLabel('spread') 
+    .to('.img-1', {
+        xPercent: -80, // Move para a esquerda (baseado no próprio tamanho)
+        rotation: -6,  // Inclina levemente
+        duration: 1.2,
+        ease: "power4.inOut"
+    }, 'spread')
+    .to('.img-3', {
+        xPercent: 80,  // Move para a direita
+        rotation: 6,    // Inclina levemente
+        duration: 1.2,
+        ease: "power4.inOut"
+    }, 'spread')
+    .to('.img-2', {
+        scale: 1.05,    // A do meio vem um pouco para frente (cresce)
+        duration: 1.2,
+        ease: "power4.inOut"
+    }, 'spread')
+    
+    // PASSO 3: Os botões aparecem logo após as imagens começarem a se abrir
     .to('.buttons-wrapper', {
         opacity: 1, y: 0,
         duration: 0.6, ease: 'power3.out'
-    }, '-=0.4');
+    }, '-=0.8');
 }
 
 /* ================= 3. Todas as animações scroll-driven ================= */

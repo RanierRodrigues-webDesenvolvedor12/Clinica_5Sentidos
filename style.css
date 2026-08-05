@@ -126,6 +126,10 @@ header {
     border: 4px solid white;
 }
 
+.img-1 { z-index: 1; }
+.img-2 { z-index: 3; } /* Imagem central fica sempre na frente */
+.img-3 { z-index: 2; }
+
 .buttons-wrapper {
     margin-top: clamp(1rem, 2vw, 2rem);
     display: flex;
@@ -139,7 +143,7 @@ header {
 }
 
 .btn {
-    padding: clamp(10px, 1.5vw, 12px) clamp(18px, 3vw, 25px);
+    padding: clamp(16px, 1.5vw, 24px) clamp(18px, 10vw, 90px);
     border-radius: 50px;
     text-decoration: none;
     font-weight: 600;
@@ -321,7 +325,7 @@ header {
         align-items: center;
         gap: 10px;
     }
-    .btn { width: 80%; max-width: 280px; text-align: center; }
+    .btn { width: 100%; max-width: 280px; text-align: center; }
 
     /* Giant Text */
     .giant-text-section { height: 35vh; }
@@ -396,8 +400,6 @@ header {
     header { font-size: 0.7rem; padding: 0.8rem 3%; }
     .hero { padding-top: 10vh; }
     .hero h1 { font-size: clamp(1.3rem, 8vw, 2rem); }
-
-    .hero-img { width: 100px; height: 135px; border-width: 3px; }
 
     .giant-text-section { height: 30vh; }
     .giant-text { font-size: clamp(2rem, 9vw, 3.5rem); }
