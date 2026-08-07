@@ -9,7 +9,7 @@ gsap.set(heroSplit.words, { opacity: 0, y: 40, mask: "lines" });
 gsap.set('.pill', { opacity: 0, y: 40 });
 gsap.set('.buttons-wrapper', { opacity: 0, y: 40 });
 
-// NOVO: Prepara as imagens para surgirem de baixo, transparentes e um pouco menores
+// Prepara as imagens para surgirem de baixo, transparentes e um pouco menores
 gsap.set('.hero-img', { y: 150, opacity: 0, scale: 0.8 }); 
 
 /* ================= Helpers ================= */
@@ -93,8 +93,7 @@ function setupScrollAnimations() {
     if (giantTrack && giantTexts.length === 2) {
         const textWidth = giantTexts[0].offsetWidth;
 
-        /* Com 2 cópias idênticas, mover de 0 até -textWidth cria loop perfeito:
-           quando o 1º texto sai pela esquerda, o 2º já está no lugar dele */
+        /* Com 2 cópias idênticas, mover de 0 até -textWidth cria loop perfeito */
         const marquee = gsap.to(giantTrack, {
             x: -textWidth,
             duration: textWidth / (isMobile ? 40 : 55),
@@ -142,6 +141,12 @@ function setupScrollAnimations() {
         ease: "sine.inOut",
         stagger: 0.5
     });
+
+    /* --- Chamada da nova animação do vídeo --- */
+    setupVideoScaleAnimation();
+    
+    /* --- CORREÇÃO DO BUG: Força o recalculo de todas as posições da página --- */
+    ScrollTrigger.refresh();
 }
 
 /* ================= Desktop: scroll horizontal + SVG ================= */
@@ -235,9 +240,6 @@ function setupMobileStructure() {
 }
 
 /* ================= 4. Hero: Hover profissional nas imagens ================= */
-/* Tilt 3D que acompanha o mouse + efeito de profundidade de campo (foco).
-   Os valores originais são capturados no primeiro hover (depois da animação
-   de entrada terminar), evitando qualquer conflito com as tweens do GSAP. */
 function setupHeroHover() {
     const gallery = document.querySelector(".hero-gallery");
     const imgs = gsap.utils.toArray(".hero-img");
@@ -347,3 +349,50 @@ function setupHeroHover() {
 }
 
 setupHeroHover();
+
+/* ================= 5. Animação de Expansão do Vídeo ================= */
+function setupVideoScaleAnimation() {
+    const videoSection = document.querySelector('.video-scale-section');
+    const videoWrapper = document.querySelector('.video-wrapper');
+    const videoHeader = document.querySelector('.video-header');
+
+    if (!videoSection || !videoWrapper) return;
+
+    // Criamos a timeline atrelada ao scroll
+    const tl = gsap.timeline({
+        scrollTrigger: {
+            trigger: videoSection,
+            start: "center center", // Animação começa quando o centro da seção chega no centro da tela
+            end: "+=100%",          // O usuário precisará rolar 100% da altura da tela para completar
+            scrub: true,            // A animação vai e volta acompanhando a barra de rolagem
+            pin: true,              // Prende a seção na tela até a animação acabar
+            anticipatePin: 1
+        }
+    });
+
+    // Animação 1: O título some lentamente subindo
+    if (videoHeader) {
+        tl.to(videoHeader, {
+            opacity: 0,
+            y: -50,
+            duration: 0.3,
+            ease: "power1.inOut"
+        }, 0);
+    }
+
+    // Animação 2: O vídeo cresce até preencher a tela e perde o arredondamento
+    tl.to(videoWrapper, {
+        width: "100vw",
+        height: "100vh",
+        maxWidth: "none",
+        borderRadius: 0,
+        duration: 1,
+        ease: "none"
+    }, 0); 
+}
+
+/* --- Garantia extra contra bugs de altura de tela --- */
+window.addEventListener("load", () => {
+    // Quando todas as imagens carregarem totalmente, atualizamos os marcadores do ScrollTrigger
+    ScrollTrigger.refresh();
+});

@@ -121,10 +121,46 @@
             </div>
         </section>
         
-        <!-- Espaço em branco temporário para permitir scroll após a rolagem horizontal -->
-        <section class="footer-placeholder">
-            <h2>Rodapé / Próxima Seção aqui</h2>
-        </section>
+        <!-- ================= Seção Vídeo Expansível ================= -->
+<section class="video-scale-section">
+    <div class="video-scale-container">
+        
+        <!-- Título da Página (conforme os blocos cinzas do seu layout) -->
+        <div class="video-header">
+            <h2>Nossa Essência</h2>
+            <p>Descubra o que torna a Clínica 5 Sentidos única.</p>
+        </div>
+        
+        <!-- Container do Vídeo que irá expandir -->
+        <div class="video-wrapper">
+            
+            <!-- Overlay com gradiente escuro para garantir a leitura do texto -->
+            <div class="video-overlay"></div>
+            
+            <!-- Vídeo de Fundo (ou imagem) -->
+            <!-- Substitua o src pelo seu vídeo real -->
+            <video autoplay muted loop playsinline class="video-bg">
+                <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
+            </video>
+
+            <!-- Conteúdo sobre o vídeo (Texto na esquerda e Logo na direita) -->
+            <div class="video-content">
+                <div class="video-text-left">
+                    <span class="video-small-text">Ambiente pensado para criar:</span>
+                    <span class="video-large-text">
+                        Conforto <span class="ampersand">&</span> <br>Profissionalismo
+                    </span>
+                </div>
+                
+                <div class="video-logo-right">
+                    <!-- Substitua pelo caminho da sua logo (preferencialmente branca/SVG) -->
+                    <img src="Assets/logo.png" alt="Logo Clínica" class="video-logo-img">
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</section>
 
     </main>
     <script src="script.js"></script>
