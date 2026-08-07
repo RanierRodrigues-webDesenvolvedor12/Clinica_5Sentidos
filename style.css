@@ -417,12 +417,6 @@ header {
 }
 
 /* ================= DESKTOP GRANDE ================= */
-@media (min-width: 1400px) {
-    .hero h1 { font-size: 5.5rem; }
-    .hero-img { width: 280px; height: 360px; }
-    .slide-text h2 { font-size: 3.5rem; }
-}
-
 /* ================= Seção Vídeo Expansível ================= */
 .video-scale-section {
     width: 100vw;
@@ -445,11 +439,16 @@ header {
     position: relative;
 }
 
+/* CORREÇÃO: Posição absoluta tira o título do fluxo, evitando a faixa branca */
 .video-header {
+    position: absolute;
+    top: 12vh; /* Posiciona no topo da seção */
+    left: 0;
+    width: 100%;
     text-align: center;
-    margin-bottom: 2rem;
     z-index: 1;
     padding: 0 1rem;
+    pointer-events: none;
 }
 
 .video-header h2 {
@@ -464,16 +463,16 @@ header {
     color: #555;
 }
 
-/* Estado inicial do container do vídeo */
+/* CORREÇÃO: Aumentado o tamanho inicial do vídeo (width, height e max-width) */
 .video-wrapper {
     position: relative;
-    width: 70vw; /* Começa com 70% da tela */
-    height: 60vh;
-    max-width: 1200px;
+    width: 85vw; /* Era 70vw */
+    height: 70vh; /* Era 60vh */
+    max-width: 1400px; /* Era 1200px */
     border-radius: 24px;
     overflow: hidden;
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
-    will-change: width, height, border-radius; /* Otimiza a animação no navegador */
+    will-change: width, height, border-radius;
 }
 
 .video-bg {
@@ -482,7 +481,7 @@ header {
     left: 0;
     width: 100%;
     height: 100%;
-    object-fit: cover; /* Garante que o vídeo preencha sem distorcer */
+    object-fit: cover;
     z-index: 0;
 }
 
@@ -507,7 +506,7 @@ header {
     align-items: flex-end;
     padding: clamp(20px, 4vw, 50px);
     z-index: 2;
-    pointer-events: none; /* Impede que o texto bloqueie interações com o vídeo */
+    pointer-events: none;
 }
 
 .video-text-left {
@@ -539,22 +538,24 @@ header {
 .video-logo-img {
     width: clamp(60px, 10vw, 100px);
     height: auto;
-    border: 2px solid rgba(255, 255, 255, 0.5); /* Bordinha simulando a sua imagem */
+    border: 2px solid rgba(255, 255, 255, 0.5);
     border-radius: 50%;
     padding: 10px;
 }
 
 /* ================= Responsividade (Mobile) ================= */
 @media (max-width: 768px) {
+    .video-header {
+        top: 8vh; /* No celular fica um pouco mais para cima */
+    }
+    
     .video-wrapper {
         width: 90vw;
-        height: 50vh;
+        height: 60vh; /* Aumentado no celular também */
         border-radius: 16px;
     }
     
     .video-content {
         padding: 20px;
     }
-    
-    .video-header { margin-bottom: 1rem; }
 }
