@@ -77,6 +77,45 @@ document.querySelectorAll('a[href^="#"]').forEach((link) => {
     });
 });
 
+/* ================= 0.7 Conector dos passos: alinhamento dinâmico ================= */
+function positionStepsConnector() {
+    const wrap = document.querySelector('.leasing-steps-wrap');
+    const connector = document.querySelector('.steps-connector');
+    const fill = document.querySelector('.connector-fill');
+    const icons = document.querySelectorAll('.leasing-step .step-icon');
+    if (!wrap || !connector || icons.length < 2) return;
+
+    const wr = wrap.getBoundingClientRect();
+    const first = icons[0].getBoundingClientRect();
+    const last = icons[icons.length - 1].getBoundingClientRect();
+    const c1x = first.left + first.width / 2 - wr.left;
+    const c1y = first.top + first.height / 2 - wr.top;
+    const c2x = last.left + last.width / 2 - wr.left;
+    const c2y = last.top + last.height / 2 - wr.top;
+
+    if (window.innerWidth <= 768) {
+        connector.style.left = Math.round(c1x - 2) + 'px';
+        connector.style.right = 'auto';
+        connector.style.width = '4px';
+        connector.style.top = Math.round(c1y) + 'px';
+        connector.style.bottom = 'auto';
+        connector.style.height = Math.max(Math.round(c2y - c1y), 0) + 'px';
+        if (fill) fill.style.transformOrigin = 'top center';
+    } else {
+        connector.style.left = Math.round(c1x) + 'px';
+        connector.style.right = 'auto';
+        connector.style.width = Math.max(Math.round(c2x - c1x), 0) + 'px';
+        connector.style.top = Math.round(c1y - 2) + 'px';
+        connector.style.bottom = 'auto';
+        connector.style.height = '4px';
+        if (fill) fill.style.transformOrigin = 'left center';
+    }
+}
+
+positionStepsConnector();
+window.addEventListener('load', positionStepsConnector);
+window.addEventListener('resize', positionStepsConnector);
+
 /* ================= 1. Pré-loader ================= */
 const tlPreloader = gsap.timeline();
 
@@ -547,27 +586,31 @@ function setupLeasingAnimations() {
         ease: 'none'
     });
 
-    /* --- Conector dos passos (preenche ao rolar) --- */
+    /* --- Conector dos passos (desenha progressivamente ao rolar) --- */
     const fill = document.querySelector('.connector-fill');
     if (fill) {
         gsap.fromTo(fill, { scaleX: 0, scaleY: 0 }, {
             scrollTrigger: {
                 trigger: '.leasing-steps',
-                start: 'top 75%',
-                toggleActions: 'play none none reverse'
+                start: 'top 85%',
+                end: 'bottom 50%',
+                scrub: 1
             },
-            scaleX: 1, scaleY: 1, duration: 1.3, ease: 'power2.inOut'
+            scaleX: 1, scaleY: 1, ease: 'none'
         });
     }
 
-    /* --- Passos --- */
-    gsap.from('.leasing-step', {
-        scrollTrigger: {
-            trigger: '.leasing-steps',
-            start: 'top 75%',
-            toggleActions: 'play none none none'
-        },
-        opacity: 0, y: 54, scale: 0.92, duration: 0.8, stagger: 0.16, ease: 'back.out(1.4)'
+    /* --- Passos: aparecem e somem de acordo com o scroll --- */
+    document.querySelectorAll('.leasing-step').forEach((step) => {
+        gsap.from(step, {
+            scrollTrigger: {
+                trigger: step,
+                start: 'top 88%',
+                end: 'bottom 30%',
+                scrub: 1
+            },
+            opacity: 0, y: 70, ease: 'power2.out'
+        });
     });
 
     /* --- Exemplo (ticket) --- */
