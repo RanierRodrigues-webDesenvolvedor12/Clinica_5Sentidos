@@ -28,14 +28,37 @@
     </div>
 
     <!-- Cabeçalho -->
-    <header>
-        <div>Clinica 5 sentidos</div>
-        <div>Jessika Neres</div>
+    <header class="site-header" id="siteHeader">
+        <div class="header-container">
+            <a href="#inicio" class="header-brand">
+                <img src="Assets/Logo_sem_fundo.png" alt="Logo Clínica 5 Sentidos" class="brand-logo">
+                <span class="brand-text">
+                    <span class="brand-name">Clínica 5 Sentidos</span>
+                    <span class="brand-tagline">Jessika Neres</span>
+                </span>
+            </a>
+
+            <nav class="site-nav" id="siteNav" aria-label="Navegação principal">
+                <a href="#inicio" class="nav-link">Início</a>
+                <a href="#clinica" class="nav-link">A clínica</a>
+                <a href="#locacao" class="nav-link">Locação</a>
+                <a href="#" class="header-cta nav-cta">Marcar horário</a>
+            </nav>
+
+            <div class="header-actions">
+                <a href="#" class="header-cta">Marcar horário</a>
+                <button class="menu-toggle" id="menuToggle" aria-label="Abrir menu" aria-expanded="false" aria-controls="siteNav">
+                    <span class="menu-toggle-bar"></span>
+                    <span class="menu-toggle-bar"></span>
+                    <span class="menu-toggle-bar"></span>
+                </button>
+            </div>
+        </div>
     </header>
 
     <!-- Conteúdo Principal -->
     <main>
-        <section class="hero">
+        <section class="hero" id="inicio">
             <div class="pill">Clinica 5 sentidos</div>
             
             <h1>Cada detalhe foi pensado para proporcionar uma <span class="text-blue">experiência única.</span></h1>
@@ -123,7 +146,7 @@
         </section>
         
         <!-- ================= Seção Vídeo Expansível ================= -->
-<section class="video-scale-section">
+<section class="video-scale-section" id="clinica">
     <div class="video-scale-container">
         
         <!-- Título da Página (conforme os blocos cinzas do seu layout) -->

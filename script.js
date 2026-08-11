@@ -16,6 +16,39 @@ gsap.set('.hero-img', { y: 150, opacity: 0, scale: 0.8 });
 const isMobile = window.matchMedia("(max-width: 768px)").matches;
 const isSmallMobile = window.matchMedia("(max-width: 480px)").matches;
 
+/* ================= 0.5 Cabeçalho fixo + menu mobile ================= */
+const siteHeader = document.querySelector('.site-header');
+const menuToggle = document.querySelector('#menuToggle');
+const siteNav = document.querySelector('#siteNav');
+
+function onHeaderScroll() {
+    siteHeader.classList.toggle('scrolled', window.scrollY > 40);
+}
+window.addEventListener('scroll', onHeaderScroll, { passive: true });
+onHeaderScroll();
+
+function closeMenu() {
+    siteNav.classList.remove('is-open');
+    menuToggle.classList.remove('is-open');
+    menuToggle.setAttribute('aria-expanded', 'false');
+    document.body.classList.remove('menu-open');
+}
+
+menuToggle.addEventListener('click', () => {
+    const isOpen = siteNav.classList.toggle('is-open');
+    menuToggle.classList.toggle('is-open', isOpen);
+    menuToggle.setAttribute('aria-expanded', String(isOpen));
+    document.body.classList.toggle('menu-open', isOpen);
+});
+
+siteNav.querySelectorAll('a').forEach((link) => {
+    link.addEventListener('click', closeMenu);
+});
+
+window.addEventListener('resize', () => {
+    if (window.innerWidth > 900) closeMenu();
+});
+
 /* ================= 1. Pré-loader ================= */
 const tlPreloader = gsap.timeline();
 
