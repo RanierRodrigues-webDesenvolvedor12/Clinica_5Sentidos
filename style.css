@@ -97,8 +97,10 @@ body {
 .header-brand {
     display: flex;
     align-items: center;
+    gap: 0.85rem;
     text-decoration: none;
     min-width: 0;
+    transition: opacity 0.3s ease;
 }
 
 .brand-logo {
@@ -129,6 +131,15 @@ body {
 }
 
 .site-nav {
+    display: flex;
+    align-items: center;
+}
+
+.site-nav-head {
+    display: none;
+}
+
+.site-nav-links {
     display: flex;
     align-items: center;
     gap: clamp(1.2rem, 2.5vw, 2.2rem);
@@ -220,6 +231,12 @@ body {
 
 body.menu-open { overflow: hidden; }
 
+body.menu-open .header-brand,
+body.menu-open .header-actions .header-cta {
+    opacity: 0;
+    pointer-events: none;
+}
+
 /* ================= Cabeçalho: Tablet / Mobile ================= */
 @media (max-width: 900px) {
     .header-container { padding: 0.75rem 16px; }
@@ -243,7 +260,7 @@ body.menu-open { overflow: hidden; }
         -webkit-backdrop-filter: blur(14px);
         backdrop-filter: blur(14px);
         box-shadow: -8px 0 30px rgba(5, 59, 84, 0.12);
-        padding: 5.4rem 2rem 2.2rem;
+        padding: 2rem 1rem 2.2rem;
         overflow-y: auto;
         transform: translateX(100%);
         transition: transform 0.45s cubic-bezier(0.65, 0, 0.35, 1);
@@ -251,6 +268,77 @@ body.menu-open { overflow: hidden; }
     }
 
     .site-nav.is-open { transform: translateX(0); }
+
+    .site-nav-head {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 1.2rem;
+        padding-bottom: 1.2rem;
+        border-bottom: 1px solid rgba(5, 59, 84, 0.1);
+    }
+
+    .site-nav-brand {
+        display: flex;
+        align-items: center;
+        text-decoration: none;
+    }
+
+    .nav-brand-logo {
+        width: clamp(76px, 12vw, 52px);
+        height: auto;
+        flex-shrink: 0;
+    }
+
+    .site-nav-title {
+        display: flex;
+        flex-direction: column;
+        line-height: 1.2;
+    }
+
+    .site-nav-name {
+        font-weight: 800;
+        font-size: 0.95rem;
+        color: var(--dark-text);
+    }
+
+    .site-nav-tagline {
+        font-family: 'Playfair Display', serif;
+        font-size: 0.72rem;
+        color: var(--primary-blue);
+    }
+
+    .menu-close {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 44px;
+        height: 44px;
+        padding: 0;
+        background: transparent;
+        border: 1px solid rgba(5, 59, 84, 0.18);
+        border-radius: 10px;
+        color: var(--dark-text);
+        cursor: pointer;
+        transition: border-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
+    }
+
+    .menu-close:hover {
+        border-color: var(--primary-blue);
+        color: var(--primary-blue);
+        transform: rotate(90deg);
+    }
+
+    .menu-close svg {
+        width: 20px;
+        height: 20px;
+    }
+
+    .site-nav-links {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+    }
 
     .nav-link {
         width: 100%;
@@ -269,8 +357,8 @@ body.menu-open { overflow: hidden; }
 }
 
 @media (max-width: 480px) {
-    .brand-name { font-size: 0.9rem; }
-    .brand-tagline { font-size: 0.8rem; }
+    .brand-name { font-size: 1rem; }
+    .brand-tagline { font-size: 1rem; }
 }
 
 /* ================= Seção Hero ================= */

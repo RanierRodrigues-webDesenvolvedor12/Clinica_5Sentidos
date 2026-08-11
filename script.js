@@ -19,6 +19,7 @@ const isSmallMobile = window.matchMedia("(max-width: 480px)").matches;
 /* ================= 0.5 Cabeçalho fixo + menu mobile ================= */
 const siteHeader = document.querySelector('.site-header');
 const menuToggle = document.querySelector('#menuToggle');
+const menuClose = document.querySelector('#menuClose');
 const siteNav = document.querySelector('#siteNav');
 
 function onHeaderScroll() {
@@ -34,12 +35,20 @@ function closeMenu() {
     document.body.classList.remove('menu-open');
 }
 
+function toggleMenu(open) {
+    siteNav.classList.toggle('is-open', open);
+    menuToggle.classList.toggle('is-open', open);
+    menuToggle.setAttribute('aria-expanded', String(open));
+    document.body.classList.toggle('menu-open', open);
+}
+
 menuToggle.addEventListener('click', () => {
-    const isOpen = siteNav.classList.toggle('is-open');
-    menuToggle.classList.toggle('is-open', isOpen);
-    menuToggle.setAttribute('aria-expanded', String(isOpen));
-    document.body.classList.toggle('menu-open', isOpen);
+    toggleMenu(!siteNav.classList.contains('is-open'));
 });
+
+if (menuClose) {
+    menuClose.addEventListener('click', () => toggleMenu(false));
+}
 
 siteNav.querySelectorAll('a').forEach((link) => {
     link.addEventListener('click', closeMenu);
@@ -47,6 +56,25 @@ siteNav.querySelectorAll('a').forEach((link) => {
 
 window.addEventListener('resize', () => {
     if (window.innerWidth > 900) closeMenu();
+});
+
+/* ================= 0.6 Scroll suave nas âncoras ================= */
+const headerOffset = () => (siteHeader ? siteHeader.offsetHeight : 0);
+
+document.querySelectorAll('a[href^="#"]').forEach((link) => {
+    link.addEventListener('click', (e) => {
+        const hash = link.getAttribute('href');
+        if (hash === '#') {
+            e.preventDefault();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            return;
+        }
+        const target = document.querySelector(hash);
+        if (!target) return;
+        e.preventDefault();
+        const y = target.getBoundingClientRect().top + window.scrollY - headerOffset();
+        window.scrollTo({ top: Math.max(y, 0), behavior: 'smooth' });
+    });
 });
 
 /* ================= 1. Pré-loader ================= */
