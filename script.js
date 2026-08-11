@@ -434,6 +434,43 @@ function setupLeasingAnimations() {
         opacity: 0, y: 34, duration: 0.7, stagger: 0.12, ease: 'power3.out'
     });
 
+    /* --- Card com imagem do cabeçalho --- */
+    gsap.from('.leasing-header-card', {
+        scrollTrigger: {
+            trigger: '.leasing-header',
+            start: 'top 80%',
+            toggleActions: 'play none none none'
+        },
+        opacity: 0, y: 70, rotate: 4, scale: 0.92, duration: 0.9, ease: 'back.out(1.4)'
+    });
+
+    gsap.from('.header-card-img', {
+        scrollTrigger: {
+            trigger: '.leasing-header',
+            start: 'top 80%',
+            toggleActions: 'play none none none'
+        },
+        scale: 1.15, rotate: 2, duration: 1.7, ease: 'power2.out'
+    });
+
+    gsap.from('.header-card-tag', {
+        scrollTrigger: {
+            trigger: '.leasing-header',
+            start: 'top 80%',
+            toggleActions: 'play none none none'
+        },
+        opacity: 0, y: 26, scale: 0.7, duration: 0.6, delay: 0.4, ease: 'back.out(2.2)'
+    });
+
+    gsap.from('.header-card-decor', {
+        scrollTrigger: {
+            trigger: '.leasing-header',
+            start: 'top 80%',
+            toggleActions: 'play none none none'
+        },
+        scale: 0, opacity: 0, duration: 0.6, stagger: 0.15, ease: 'back.out(1.8)'
+    });
+
     /* --- Texto gigante de fundo: parallax leve --- */
     gsap.to('.leasing-bg-text', {
         scrollTrigger: {
