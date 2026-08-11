@@ -562,16 +562,6 @@ function setupLeasingAnimations() {
                 priceNum.textContent = Math.round(obj.val);
             }
         });
-
-        /* Flutuação contínua e sutil do número */
-        gsap.to(priceNum, {
-            y: -8,
-            duration: 2.2,
-            yoyo: true,
-            repeat: -1,
-            ease: 'sine.inOut',
-            delay: 2.4
-        });
     }
 
     /* --- Cabeçalho dos benefícios --- */
