@@ -391,6 +391,205 @@ function setupVideoScaleAnimation() {
     }, 0); 
 }
 
+/* ================= 6. Seção Locação de Consultório ================= */
+function setupLeasingAnimations() {
+    const section = document.querySelector('.leasing-section');
+    if (!section) return;
+
+    /* --- Título: linha 1 animada com SplitText --- */
+    const lineOne = document.querySelector('#leasing-title-line');
+    if (lineOne && SplitText) {
+        const split = new SplitText(lineOne, { type: 'words' });
+        gsap.set(split.words, { opacity: 0, yPercent: 130, rotate: 4 });
+        gsap.to(split.words, {
+            scrollTrigger: {
+                trigger: '.leasing-header',
+                start: 'top 80%',
+                toggleActions: 'play none none reverse'
+            },
+            opacity: 1, yPercent: 0, rotate: 0,
+            duration: 0.85, stagger: 0.06, ease: 'power4.out'
+        });
+    }
+
+    /* --- Linha de destaque (Playfair) revelada via classe --- */
+    const titleEl = document.querySelector('.leasing-title');
+    if (titleEl) {
+        ScrollTrigger.create({
+            trigger: '.leasing-header',
+            start: 'top 80%',
+            toggleActions: 'play none none reverse',
+            onEnter: () => titleEl.classList.add('is-inview'),
+            onLeaveBack: () => titleEl.classList.remove('is-inview')
+        });
+    }
+
+    /* --- Eyebrow + subtítulo --- */
+    gsap.from('.leasing-eyebrow, .leasing-subtitle', {
+        scrollTrigger: {
+            trigger: '.leasing-header',
+            start: 'top 80%',
+            toggleActions: 'play none none none'
+        },
+        opacity: 0, y: 34, duration: 0.7, stagger: 0.12, ease: 'power3.out'
+    });
+
+    /* --- Texto gigante de fundo: parallax leve --- */
+    gsap.to('.leasing-bg-text', {
+        scrollTrigger: {
+            trigger: section,
+            start: 'top bottom',
+            end: 'bottom top',
+            scrub: 1
+        },
+        yPercent: 22,
+        ease: 'none'
+    });
+
+    /* --- Conector dos passos (preenche ao rolar) --- */
+    const fill = document.querySelector('.connector-fill');
+    if (fill) {
+        gsap.fromTo(fill, { scaleX: 0, scaleY: 0 }, {
+            scrollTrigger: {
+                trigger: '.leasing-steps',
+                start: 'top 75%',
+                toggleActions: 'play none none reverse'
+            },
+            scaleX: 1, scaleY: 1, duration: 1.3, ease: 'power2.inOut'
+        });
+    }
+
+    /* --- Passos --- */
+    gsap.from('.leasing-step', {
+        scrollTrigger: {
+            trigger: '.leasing-steps',
+            start: 'top 75%',
+            toggleActions: 'play none none none'
+        },
+        opacity: 0, y: 54, scale: 0.92, duration: 0.8, stagger: 0.16, ease: 'back.out(1.4)'
+    });
+
+    /* --- Exemplo (ticket) --- */
+    gsap.from('.leasing-example', {
+        scrollTrigger: {
+            trigger: '.leasing-example',
+            start: 'top 88%',
+            toggleActions: 'play none none none'
+        },
+        opacity: 0, y: 30, scale: 0.98, duration: 0.7, ease: 'power3.out'
+    });
+
+    /* --- Turnos --- */
+    gsap.from('.shift-card', {
+        scrollTrigger: {
+            trigger: '.leasing-shifts',
+            start: 'top 80%',
+            toggleActions: 'play none none none'
+        },
+        opacity: 0, y: 70, rotateX: -10, duration: 0.9, stagger: 0.14, ease: 'back.out(1.4)'
+    });
+
+    /* --- Preço: cartão + badge + contador --- */
+    gsap.from('.leasing-price', {
+        scrollTrigger: {
+            trigger: '.leasing-price',
+            start: 'top 82%',
+            toggleActions: 'play none none none'
+        },
+        opacity: 0, y: 70, scale: 0.95, duration: 1, ease: 'power3.out'
+    });
+
+    gsap.from('.price-badge', {
+        scrollTrigger: {
+            trigger: '.leasing-price',
+            start: 'top 82%',
+            toggleActions: 'play none none none'
+        },
+        opacity: 0, y: -22, scale: 0.7, duration: 0.6, delay: 0.35, ease: 'back.out(2.2)'
+    });
+
+    const priceNum = document.querySelector('.price-number');
+    if (priceNum) {
+        const target = parseInt(priceNum.dataset.count, 10) || 300;
+        const obj = { val: 0 };
+        gsap.to(obj, {
+            val: target,
+            duration: 1.8,
+            ease: 'power2.out',
+            scrollTrigger: {
+                trigger: '.leasing-price',
+                start: 'top 82%',
+                toggleActions: 'play none none none'
+            },
+            onUpdate: () => {
+                priceNum.textContent = Math.round(obj.val);
+            }
+        });
+
+        /* Flutuação contínua e sutil do número */
+        gsap.to(priceNum, {
+            y: -8,
+            duration: 2.2,
+            yoyo: true,
+            repeat: -1,
+            ease: 'sine.inOut',
+            delay: 2.4
+        });
+    }
+
+    /* --- Cabeçalho dos benefícios --- */
+    gsap.from('.benefits-kicker, .benefits-title, .benefits-sub', {
+        scrollTrigger: {
+            trigger: '.benefits-head',
+            start: 'top 85%',
+            toggleActions: 'play none none none'
+        },
+        opacity: 0, y: 36, duration: 0.7, stagger: 0.1, ease: 'power3.out'
+    });
+
+    /* --- Cards de benefícios --- */
+    gsap.from('.benefit-card', {
+        scrollTrigger: {
+            trigger: '.benefits-grid',
+            start: 'top 82%',
+            toggleActions: 'play none none none'
+        },
+        opacity: 0, y: 54, scale: 0.95, duration: 0.7, stagger: 0.09, ease: 'back.out(1.4)'
+    });
+
+    /* --- Extras --- */
+    gsap.from('.extra-card', {
+        scrollTrigger: {
+            trigger: '.leasing-extras',
+            start: 'top 85%',
+            toggleActions: 'play none none none'
+        },
+        opacity: 0, y: 46, duration: 0.7, stagger: 0.14, ease: 'power3.out'
+    });
+}
+
+/* ================= 7. Efeito 3D Tilt (hover) ================= */
+function setupLeasingTilt() {
+    gsap.utils.toArray('[data-tilt]').forEach((card) => {
+        const rotX = gsap.quickTo(card, 'rotationX', { duration: 0.5, ease: 'power3.out' });
+        const rotY = gsap.quickTo(card, 'rotationY', { duration: 0.5, ease: 'power3.out' });
+        card.addEventListener('mousemove', (e) => {
+            const r = card.getBoundingClientRect();
+            const px = (e.clientX - r.left) / r.width - 0.5;
+            const py = (e.clientY - r.top) / r.height - 0.5;
+            rotY(px * 10);
+            rotX(py * -10);
+        });
+        card.addEventListener('mouseleave', () => {
+            rotX(0);
+            rotY(0);
+        });
+    });
+}
+
+setupLeasingAnimations();
+setupLeasingTilt();
+
 /* --- Garantia extra contra bugs de altura de tela --- */
 window.addEventListener("load", () => {
     // Quando todas as imagens carregarem totalmente, atualizamos os marcadores do ScrollTrigger
