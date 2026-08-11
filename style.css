@@ -59,6 +59,14 @@ body {
     clip-path: polygon(0 0, 0 0, 0 100%, 0 100%);
 }
 
+.preloader-logo {
+    width: clamp(110px, 20vw, 220px);
+    height: auto;
+    margin-top: clamp(1.4rem, 3vw, 2rem);
+    opacity: 0;
+    transform: translateY(80px) scale(0.9);
+}
+
 /* ================= Cabeçalho ================= */
 header {
     display: flex;
@@ -398,7 +406,7 @@ header {
     .preloader-title span:nth-child(9) { margin-left: 8px !important; }
 
     header { font-size: 0.7rem; padding: 0.8rem 3%; }
-    .hero { padding-top: 20vh; }
+    .hero { padding-top: 15vh; }
     .hero h1 { font-size: clamp(1.3rem, 8vw, 2rem); }
 
     .giant-text-section { height: 30vh; }

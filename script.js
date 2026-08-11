@@ -25,6 +25,9 @@ tlPreloader.to(".preloader-title span", {
 .to(".preloader-subtitle", {
     clipPath: "polygon(0 0, 100% 0, 100% 100%, 0 100%)", duration: 1, ease: "power2.inOut"
 })
+.to(".preloader-logo", {
+    y: 0, scale: 1, opacity: 1, duration: 1.2, ease: "power3.out"
+})
 .to("#preloader", {
     yPercent: -100, duration: 1, ease: "power4.inOut", delay: 0.5,
     onComplete: () => {
