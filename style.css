@@ -370,6 +370,7 @@ body.menu-open .header-actions .header-cta {
     align-items: center;
     padding-top: clamp(104px, 13vh, 136px);
     padding-bottom: clamp(1.25rem, 3vh, 2.5rem);
+    margin-bottom: 150px;
     text-align: center;
     position: relative;
     overflow: hidden;
