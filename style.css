@@ -97,14 +97,13 @@ body {
 .header-brand {
     display: flex;
     align-items: center;
-    gap: 0.85rem;
     text-decoration: none;
     min-width: 0;
     transition: opacity 0.3s ease;
 }
 
 .brand-logo {
-    width: clamp(44px, 5vw, 58px);
+    width: clamp(44px, 12vw, 120px);
     height: auto;
     flex-shrink: 0;
 }
@@ -118,7 +117,7 @@ body {
 
 .brand-name {
     font-weight: 800;
-    font-size: clamp(0.95rem, 1.6vw, 1.15rem);
+    font-size: clamp(0.95rem, 1.6vw, 1.8rem);
     color: var(--dark-text);
     letter-spacing: -0.01em;
     white-space: nowrap;
@@ -126,7 +125,7 @@ body {
 
 .brand-tagline {
     font-family: 'Playfair Display', serif;
-    font-size: clamp(0.68rem, 1.1vw, 0.8rem);
+    font-size: clamp(0.68rem, 1.3vw, 1.3rem);
     color: var(--primary-blue);
 }
 
@@ -444,45 +443,7 @@ body.menu-open .header-actions .header-cta {
 .btn-primary { background: var(--primary-blue); color: white; }
 .btn-outline { border: 1px solid var(--dark-text); color: var(--dark-text); }
 
-/* ================= Seção Texto Gigante ================= */
-.giant-text-section {
-    position: relative;
-    width: 100vw;
-    height: 30vh;
-    display: flex;
-    align-items: center;
-    overflow: hidden;
-    background: black;
-    background: rgb(10, 97, 138);
-}
-.giant-text-section::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: rgb(10, 97, 138);
-    filter: blur(30px);
-    transform: scale(1.2); /* evita cortar o blur nas bordas */
-    z-index: 1;
-}
 
-.giant-text-track {
-    display: flex;
-    width: max-content;
-    will-change: transform;
-    position: relative;
-    z-index: 3;
-}
-
-.giant-text {
-    font-size: clamp(4rem, 12vw, 10rem);
-    font-weight: 800;
-    color: rgba(255, 255, 255, 0.15);
-    text-transform: uppercase;
-    letter-spacing: -2px;
-    line-height: 1;
-    white-space: nowrap;
-    flex-shrink: 0;
-}
 
 /* ================= Estrutura da Clínica ================= */
 .horizontal-scroll-wrapper {
