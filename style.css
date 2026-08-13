@@ -91,7 +91,7 @@ body {
     align-items: center;
     justify-content: space-between;
     gap: 1rem;
-    padding: 0.9rem 2rem;
+    padding: 0.4rem 2rem;
 }
 
 .header-brand {
@@ -382,7 +382,8 @@ body.menu-open .header-actions .header-cta {
     padding: clamp(8px, 1.5vw, 16px) clamp(20px, 5vw, 16px);
     border-radius: 50px;
    font-size: clamp(0.85rem, 2vw, 0.98rem);
-    margin-bottom: clamp(1rem, 3vw, 2rem);
+   margin-top: 1rem;
+    /*margin-bottom: clamp(1rem, 3vw, 2rem); retirando a margin bottom do pill, para ficar mais colado */
     opacity: 0;
     transform: translateY(30px);
     font-weight: 600;
@@ -634,7 +635,10 @@ body.menu-open .header-actions .header-cta {
 }
 
 .slide-image-wrapper {
-    flex: 1;
+    flex: 0 0 auto;
+    width: fit-content;
+    max-width: 100%;
+    margin-inline: auto;
     position: relative;
     display: flex;
     justify-content: center;
@@ -643,8 +647,10 @@ body.menu-open .header-actions .header-cta {
 }
 
 .slide-image-wrapper .main-img {
-    width: 100%;
-    max-width: clamp(250px, 25vw, 450px);
+    width: auto;
+    height: auto;
+    max-width: clamp(180px, 22vw, 340px);
+    max-height: clamp(150px, 65vh, 700px);
     border-radius: 20px;
     box-shadow: 0 30px 60px rgba(0,0,0,0.15);
 }
@@ -652,7 +658,7 @@ body.menu-open .header-actions .header-cta {
 /* Vegetais */
 .decor {
     position: absolute;
-    width: clamp(50px, 10vw, 90px);
+    width: clamp(50px, 6vw, 90px);
     z-index: 2;
 }
 
@@ -752,6 +758,11 @@ body.menu-open .header-actions .header-cta {
     .slide-text { padding-right: 0; text-align: center; }
     .slide-text h2 { font-size: clamp(1.5rem, 6vw, 2.2rem); }
     .slide-text p { font-size: clamp(0.85rem, 3vw, 1rem); }
+
+    .slide-image-wrapper .main-img {
+        max-width: clamp(130px, 52vw, 230px);
+        max-height: clamp(120px, 34vh, 250px);
+    }
 
     .decor { width: clamp(40px, 12vw, 70px); }
 

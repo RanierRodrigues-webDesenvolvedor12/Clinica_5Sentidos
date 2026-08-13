@@ -223,26 +223,20 @@ function setupScrollAnimations() {
         setupDesktopStructure();
     }
 
-    /* --- Vegetais flutuantes (aparecem no scroll) --- */
+    /* --- Vegetais: surgem conforme o scroll (sem movimento contínuo) --- */
     gsap.utils.toArray(".decor").forEach((el) => {
-        gsap.from(el, {
-            scrollTrigger: {
-                trigger: el,
-                start: "top 90%",
-                toggleActions: "play none none none"
-            },
-            scale: 0, opacity: 0, duration: 0.6, ease: "back.out(1.7)"
-        });
-    });
-
-    gsap.to(".decor", {
-        y: isMobile ? 6 : 15,
-        rotation: isMobile ? 3 : 5,
-        duration: 2,
-        yoyo: true,
-        repeat: -1,
-        ease: "sine.inOut",
-        stagger: 0.5
+        gsap.fromTo(el,
+            { scale: 0, opacity: 0 },
+            {
+                scrollTrigger: {
+                    trigger: el,
+                    start: "top 100%",
+                    end: "top 60%",
+                    scrub: 1
+                },
+                scale: 1, opacity: 1, ease: "power2.out"
+            }
+        );
     });
 
     /* --- Chamada da nova animação do vídeo --- */
@@ -271,7 +265,8 @@ function setupDesktopStructure() {
             pin: true,
             scrub: 1,
             start: "top top",
-            end: () => "+=" + track.scrollWidth
+            end: () => "+=" + (track.scrollWidth - window.innerWidth),
+            invalidateOnRefresh: true
         }
     });
 
@@ -728,4 +723,16 @@ setupLeasingTilt();
 window.addEventListener("load", () => {
     // Quando todas as imagens carregarem totalmente, atualizamos os marcadores do ScrollTrigger
     ScrollTrigger.refresh();
+});
+
+/* --- Corrige bugs de scroll: redimensionamento da tela --- */
+let resizeRefreshTimer;
+window.addEventListener("resize", () => {
+    clearTimeout(resizeRefreshTimer);
+    resizeRefreshTimer = setTimeout(() => ScrollTrigger.refresh(), 200);
+});
+
+/* --- Corrige bugs de scroll quando a página volta da cache do navegador (bfcache) --- */
+window.addEventListener("pageshow", (e) => {
+    if (e.persisted) ScrollTrigger.refresh();
 });
