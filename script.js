@@ -219,25 +219,25 @@ function setupScrollAnimations() {
     /* ================= Estrutura da Clínica ================= */
     if (isMobile) {
         setupMobileStructure();
+
+        /* --- Vegetais: surgem conforme o scroll vertical (mobile) --- */
+        gsap.utils.toArray(".decor").forEach((el) => {
+            gsap.fromTo(el,
+                { scale: 0, opacity: 0 },
+                {
+                    scrollTrigger: {
+                        trigger: el,
+                        start: "top 100%",
+                        end: "top 60%",
+                        scrub: 1
+                    },
+                    scale: 1, opacity: 1, ease: "power2.out"
+                }
+            );
+        });
     } else {
         setupDesktopStructure();
     }
-
-    /* --- Vegetais: surgem conforme o scroll (sem movimento contínuo) --- */
-    gsap.utils.toArray(".decor").forEach((el) => {
-        gsap.fromTo(el,
-            { scale: 0, opacity: 0 },
-            {
-                scrollTrigger: {
-                    trigger: el,
-                    start: "top 100%",
-                    end: "top 60%",
-                    scrub: 1
-                },
-                scale: 1, opacity: 1, ease: "power2.out"
-            }
-        );
-    });
 
     /* --- Chamada da nova animação do vídeo --- */
     setupVideoScaleAnimation();
@@ -272,13 +272,46 @@ function setupDesktopStructure() {
 
     tl.to(track, {
         x: () => -(track.scrollWidth - window.innerWidth),
+        duration: 1,
         ease: "none"
     }, 0);
 
     tl.to(svgPath, {
         strokeDashoffset: 0,
+        duration: 1,
         ease: "none"
     }, 0);
+
+    /* --- Vegetais: surgem conforme o scroll horizontal (desktop) --- */
+    const totalDistance = Math.max(track.scrollWidth - window.innerWidth, 1);
+    const decorJobs = gsap.utils.toArray(".h-slide").map((slide) => ({
+        decors: slide.querySelectorAll(".decor"),
+        progress: slide.offsetLeft / totalDistance
+    })).filter((job) => job.decors.length > 0);
+
+    if (decorJobs.length) {
+        /* Normaliza para que o último tween termine exatamente no fim do scroll,
+           sem estender a duração da timeline (o que gerava zona morta e posições erradas) */
+        const maxStart = Math.max(...decorJobs.map((job) => job.progress));
+        const scale = maxStart > 0.8 ? 0.8 / maxStart : 1;
+
+        decorJobs.forEach((job) => {
+            const pos = Math.min(job.progress * scale, 0.8);
+            job.decors.forEach((decor) => {
+                tl.fromTo(decor,
+                    { scale: 0, opacity: 0 },
+                    {
+                        scale: 1,
+                        opacity: 1,
+                        duration: 0.2,
+                        ease: "power2.out",
+                        immediateRender: true
+                    },
+                    pos
+                );
+            });
+        });
+    }
 }
 
 /* ================= Mobile: SVG vertical + cards scroll-driven ================= */
