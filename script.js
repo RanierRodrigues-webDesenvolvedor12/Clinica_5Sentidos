@@ -85,13 +85,31 @@ function positionStepsConnector() {
     const icons = document.querySelectorAll('.leasing-step .step-icon');
     if (!wrap || !connector || icons.length < 2) return;
 
-    const wr = wrap.getBoundingClientRect();
-    const first = icons[0].getBoundingClientRect();
-    const last = icons[icons.length - 1].getBoundingClientRect();
-    const c1x = first.left + first.width / 2 - wr.left;
-    const c1y = first.top + first.height / 2 - wr.top;
-    const c2x = last.left + last.width / 2 - wr.left;
-    const c2y = last.top + last.height / 2 - wr.top;
+    /* Mede a posição real de cada ícone em relação ao wrap usando o layout
+       (offsetLeft/offsetTop), ignorando transformações do GSAP (translateY
+       da animação dos passos) e o scroll da página. Assim o conector sempre
+       aponta para o centro final dos ícones, em qualquer tela. */
+    const layoutPos = (el) => {
+        let x = 0, y = 0, node = el;
+        while (node && node !== wrap && node !== document.body) {
+            x += node.offsetLeft;
+            y += node.offsetTop;
+            node = node.offsetParent;
+        }
+        if (node !== wrap) {
+            const r = el.getBoundingClientRect();
+            const w = wrap.getBoundingClientRect();
+            return { x: r.left - w.left, y: r.top - w.top, w: el.offsetWidth, h: el.offsetHeight };
+        }
+        return { x, y, w: el.offsetWidth, h: el.offsetHeight };
+    };
+
+    const first = layoutPos(icons[0]);
+    const last = layoutPos(icons[icons.length - 1]);
+    const c1x = first.x + first.w / 2;
+    const c1y = first.y + first.h / 2;
+    const c2x = last.x + last.w / 2;
+    const c2y = last.y + last.h / 2;
 
     if (window.innerWidth <= 768) {
         connector.style.left = Math.round(c1x - 2) + 'px';
@@ -115,6 +133,9 @@ function positionStepsConnector() {
 positionStepsConnector();
 window.addEventListener('load', positionStepsConnector);
 window.addEventListener('resize', positionStepsConnector);
+if (document.fonts && document.fonts.ready) {
+    document.fonts.ready.then(positionStepsConnector);
+}
 
 /* ================= 1. Pré-loader ================= */
 const tlPreloader = gsap.timeline();
