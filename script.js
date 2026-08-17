@@ -326,7 +326,7 @@ function setupDesktopStructure() {
                         opacity: 1,
                         duration: 0.2,
                         ease: "power2.out",
-                        immediateRender: true
+                       
                     },
                     pos
                 );

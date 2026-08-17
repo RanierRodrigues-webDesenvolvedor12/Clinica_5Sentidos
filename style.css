@@ -658,7 +658,7 @@ body.menu-open .header-actions .header-cta {
 /* Vegetais */
 .decor {
     position: absolute;
-    width: clamp(50px, 6vw, 90px);
+    width: clamp(50px, 6vw, 75px);
     z-index: 2;
 }
 
