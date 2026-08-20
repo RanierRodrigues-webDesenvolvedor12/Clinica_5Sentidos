@@ -188,6 +188,7 @@ body {
     white-space: nowrap;
     transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
     box-shadow: 0 4px 14px rgba(10, 98, 138, 0.25);
+    margin-right: 1rem;
 }
 
 .header-cta:hover {
@@ -745,7 +746,6 @@ body.menu-open .header-actions .header-cta {
 .footer-brand-head {
     display: flex;
     align-items: center;
-    gap: .8rem;
     margin-bottom: 1.2rem;
 }
 .footer-logo {
@@ -765,6 +765,7 @@ body.menu-open .header-actions .header-cta {
     line-height: 1.6;
     margin-bottom: 1.6rem;
     max-width: 320px;
+    margin-left: 2.4rem;
 }
 
 /* -- Social -- */
