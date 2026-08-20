@@ -1183,6 +1183,8 @@ body.menu-open .header-actions .header-cta {
     overflow: hidden;
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
     will-change: width, height, border-radius;
+
+    margin: 0 auto;
 }
 
 .video-bg {
@@ -1192,6 +1194,7 @@ body.menu-open .header-actions .header-cta {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    object-position: center center;
     z-index: 0;
 }
 

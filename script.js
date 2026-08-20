@@ -679,7 +679,8 @@ function setupLeasingAnimations() {
             start: 'top 80%',
             toggleActions: 'play none none none'
         },
-        opacity: 0, y: 70, rotateX: -10, duration: 0.9, stagger: 0.14, ease: 'back.out(1.4)'
+        opacity: 0, y: 70, rotateX: -10, duration: 0.9, stagger: 0.14, ease: 'back.out(1.4)',
+        clearProps: 'all'
     });
 
     /* --- Preço: cartão + badge + contador --- */
