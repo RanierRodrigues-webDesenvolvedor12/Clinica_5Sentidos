@@ -791,3 +791,38 @@ window.addEventListener("resize", () => {
 window.addEventListener("pageshow", (e) => {
     if (e.persisted) ScrollTrigger.refresh();
 });
+
+/* ================= 8. Modal de Vídeo (Play com Som) ================= */
+(function setupVideoModal() {
+    const playBtn = document.getElementById('videoPlayBtn');
+    const modal = document.getElementById('videoModal');
+    const backdrop = document.getElementById('videoModalBackdrop');
+    const closeBtn = document.getElementById('videoModalClose');
+    const player = document.getElementById('videoModalPlayer');
+
+    if (!playBtn || !modal || !player) return;
+
+    function openModal() {
+        modal.classList.add('is-open');
+        document.body.style.overflow = 'hidden';
+        player.currentTime = 0;
+        player.play();
+    }
+
+    function closeModal() {
+        modal.classList.remove('is-open');
+        document.body.style.overflow = '';
+        player.pause();
+        player.currentTime = 0;
+    }
+
+    playBtn.addEventListener('click', openModal);
+    backdrop.addEventListener('click', closeModal);
+    closeBtn.addEventListener('click', closeModal);
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && modal.classList.contains('is-open')) {
+            closeModal();
+        }
+    });
+})();

@@ -169,7 +169,7 @@
         </div>
         
         <!-- Container do Vídeo que irá expandir -->
-        <div class="video-wrapper">
+        <div class="video-wrapper" id="videoWrapper">
             
             <!-- Overlay com gradiente escuro para garantir a leitura do texto -->
             <div class="video-overlay"></div>
@@ -177,7 +177,7 @@
             <!-- Vídeo de Fundo (ou imagem) -->
             <!-- Substitua o src pelo seu vídeo real -->
             <video autoplay muted loop playsinline class="video-bg">
-                <source src="Assets/video_clinica_narrado.mp4" type="video/mp4">
+                <source src="Assets/video_tamanho_menor.mp4" type="video/mp4">
             </video>
 
             <!-- Conteúdo sobre o vídeo (Texto na esquerda e Logo na direita) -->
@@ -194,6 +194,12 @@
                     <img src="Assets/Logo_sem_fundo.png" alt="Logo Clínica" class="video-logo-img">
                 </div>
             </div>
+
+            <!-- Botão de Play para expandir -->
+            <button class="video-play-btn" id="videoPlayBtn" aria-label="Assistir vídeo com som">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+                <span>Assistir com áudio</span>
+            </button>
             
         </div>
     </div>
@@ -562,6 +568,19 @@
             </div>
         </div>
     </footer>
+
+    <!-- Modal de Vídeo -->
+    <div class="video-modal" id="videoModal">
+        <div class="video-modal-backdrop" id="videoModalBackdrop"></div>
+        <div class="video-modal-content">
+            <button class="video-modal-close" id="videoModalClose" aria-label="Fechar vídeo">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
+            </button>
+            <video class="video-modal-player" id="videoModalPlayer" controls playsinline>
+                <source src="Assets/video_tamanho_menor.mp4" type="video/mp4">
+            </video>
+        </div>
+    </div>
 
     <script src="script.js"></script>
 </body>
