@@ -124,7 +124,7 @@ body {
 
 .brand-name {
     font-weight: 800;
-    font-size: clamp(0.95rem, 1.6vw, 1.8rem);
+    font-size: clamp(1.3rem, 1.6vw, 1.8rem);
     color: var(--dark-text);
     letter-spacing: -0.01em;
     white-space: nowrap;
@@ -132,7 +132,7 @@ body {
 
 .brand-tagline {
     font-family: 'Playfair Display', serif;
-    font-size: clamp(0.68rem, 1.3vw, 1.3rem);
+    font-size: clamp(1rem, 1.3vw, 1.3rem);
     color: var(--primary-blue);
 }
 
@@ -185,23 +185,67 @@ body {
 }
 
 .header-cta {
-    background: var(--primary-blue);
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    background: linear-gradient(135deg, var(--primary-blue) 0%, #0d7ab5 50%, var(--primary-blue) 100%);
+    background-size: 200% 200%;
     color: #fff;
     text-decoration: none;
     font-weight: 600;
     font-size: 0.85rem;
-    padding: 0.65rem 1.4rem;
+    padding: 1rem 3rem;
     border-radius: 50px;
     white-space: nowrap;
-    transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
-    box-shadow: 0 4px 14px rgba(10, 98, 138, 0.25);
+    overflow: hidden;
+    transition: transform 0.35s cubic-bezier(.4,0,.2,1), box-shadow 0.35s cubic-bezier(.4,0,.2,1);
+    box-shadow: 0 4px 14px rgba(10, 98, 138, 0.25), inset 0 1px 0 rgba(255,255,255,0.15);
     margin-right: 1rem;
+    isolation: isolate;
+}
+
+.header-cta::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -75%;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.25), transparent);
+    transform: skewX(-20deg);
+    transition: left 0.6s cubic-bezier(.4,0,.2,1);
+    z-index: 1;
+    pointer-events: none;
 }
 
 .header-cta:hover {
-    background: var(--dark-blue);
-    transform: translateY(-2px);
-    box-shadow: 0 8px 20px rgba(10, 98, 138, 0.35);
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 8px 25px rgba(10, 98, 138, 0.4), 0 0 0 1px rgba(255,255,255,0.1) inset;
+    background: linear-gradient(135deg, var(--dark-blue) 0%, var(--primary-blue) 50%, var(--dark-blue) 100%);
+    background-size: 200% 200%;
+}
+
+.header-cta:hover::before {
+    left: 125%;
+}
+
+.header-cta:active {
+    transform: translateY(-1px) scale(0.98);
+    box-shadow: 0 2px 8px rgba(10, 98, 138, 0.3);
+    transition-duration: 0.1s;
+}
+
+.header-cta-icon {
+    width: 16px;
+    height: 16px;
+    margin-right: 8px;
+    vertical-align: -2px;
+    transition: transform 0.3s cubic-bezier(.4,0,.2,1);
+    flex-shrink: 0;
+}
+
+.header-cta:hover .header-cta-icon {
+    transform: scale(1.15) rotate(-8deg);
 }
 
 .nav-cta { display: none; }
@@ -1223,7 +1267,7 @@ body.menu-open .header-actions .header-cta {
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
-    padding: clamp(20px, 4vw, 50px);
+    padding: clamp(20px, 1vw, 50px);
     z-index: 2;
     pointer-events: none;
 }
@@ -1255,7 +1299,7 @@ body.menu-open .header-actions .header-cta {
 }
 
 .video-logo-img {
-    width: clamp(60px, 10vw, 320px);
+    width: clamp(7rem, 30vw, 10rem);
     height: auto;
 }
 
@@ -1302,7 +1346,7 @@ body.menu-open .header-actions .header-cta {
     }
 
     .video-logo-img {
-        width: clamp(40px, 12vw, 80px);
+        width: clamp(98px, 20vw, 120px);
     }
 }
 
