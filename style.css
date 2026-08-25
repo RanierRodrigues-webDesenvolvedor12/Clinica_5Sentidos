@@ -5,6 +5,13 @@
     --light-blue: #D6EAF8;
     --dark-text: #111;
     --bg-color: #FAFAFA;
+
+    /* ========== TAMANHO DO VÍDEO — EDITE AQUI ========== */
+    /* Desktop (telas > 768px) */
+    --video-width: 80vw;
+    --video-height: 75vh;
+    --video-max-width: 1600px;
+    --video-radius: 24px;
 }
 
 * {
@@ -968,6 +975,7 @@ body.menu-open .header-actions .header-cta {
     font-style: italic;
 }
 
+
 /* ================= TABLETS ================= */
 
 /* ================= TABLETS ================= */
@@ -1152,7 +1160,7 @@ body.menu-open .header-actions .header-cta {
 /* CORREÇÃO: Posição absoluta tira o título do fluxo, evitando a faixa branca */
 .video-header {
     position: absolute;
-    top: 12vh; /* Posiciona no topo da seção */
+    top: 0vh;
     left: 0;
     width: 100%;
     text-align: center;
@@ -1173,17 +1181,15 @@ body.menu-open .header-actions .header-cta {
     color: #555;
 }
 
-/* CORREÇÃO: Aumentado o tamanho inicial do vídeo (width, height e max-width) */
+/* ================= Seção Vídeo Expansível ================= */
 .video-wrapper {
     position: relative;
-    width: 85vw; /* Era 70vw */
-    height: 70vh; /* Era 60vh */
-    max-width: 1400px; /* Era 1200px */
-    border-radius: 24px;
+    width: var(--video-width);
+    height: var(--video-height);
+    max-width: var(--video-max-width);
+    border-radius: var(--video-radius);
     overflow: hidden;
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
-    will-change: width, height, border-radius;
-
     margin: 0 auto;
 }
 
@@ -1192,8 +1198,8 @@ body.menu-open .header-actions .header-cta {
     top: 0;
     left: 0;
     width: 100%;
-    height:auto;
-    object-fit: contain;
+    height: 100%;
+    object-fit: cover;
     object-position: center 30%;
     z-index: 0;
 }
@@ -1254,19 +1260,66 @@ body.menu-open .header-actions .header-cta {
 }
 
 /* ================= Responsividade (Mobile) ================= */
+
+/* TABLET: Até 768px — altere aqui para ajustar o tablet */
 @media (max-width: 768px) {
+    :root {
+        --video-width: 90vw;
+        --video-height: 60vh;
+        --video-max-width: none;
+        --video-radius: 16px;
+    }
+
     .video-header {
-        top: 8vh; /* No celular fica um pouco mais para cima */
+        position: relative;
+        top: auto;
+        left: auto;
+        margin-bottom: 2rem;
     }
     
     .video-wrapper {
-        width: 90vw;
-        height: 60vh; /* Aumentado no celular também */
-        border-radius: 16px;
+        width: var(--video-width);
+        height: var(--video-height);
+        max-width: var(--video-max-width);
+        border-radius: var(--video-radius);
     }
     
     .video-content {
-        padding: 20px;
+        padding: 16px;
+    }
+
+    .video-text-left {
+        flex-direction: column;
+        gap: 3px;
+    }
+
+    .video-small-text {
+        font-size: 0.65rem;
+    }
+
+    .video-large-text {
+        font-size: clamp(1rem, 5vw, 1.5rem);
+    }
+
+    .video-logo-img {
+        width: clamp(40px, 12vw, 80px);
+    }
+}
+
+/* MOBILE PEQUENO: Até 400px — altere aqui para ajustar celulares pequenos */
+@media (max-width: 400px) {
+    :root {
+        --video-width: 95vw;
+        --video-height: 55vh;
+        --video-max-width: none;
+        --video-radius: 12px;
+    }
+
+    .video-wrapper {
+        width: var(--video-width);
+        height: var(--video-height);
+        max-width: var(--video-max-width);
+        border-radius: var(--video-radius);
     }
 }
 
@@ -2145,7 +2198,8 @@ body.menu-open .header-actions .header-cta {
 .video-play-btn {
     position: absolute;
     bottom: clamp(20px, 4vw, 50px);
-    left: 50%;
+    left: 55%;
+    bottom: 15%;
     transform: translateX(-50%);
     z-index: 5;
     display: flex;
@@ -2258,14 +2312,24 @@ body.menu-open .header-actions .header-cta {
 
 @media (max-width: 768px) {
     .video-play-btn {
-        padding: 12px 22px;
-        gap: 8px;
-        font-size: 0.8rem;
+        bottom: auto;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        padding: 10px 20px;
+        gap: 6px;
+        font-size: 0.75rem;
     }
+
     .video-play-btn svg {
-        width: 16px;
-        height: 16px;
+        width: 14px;
+        height: 14px;
     }
+
+    .video-play-btn:hover {
+        transform: translate(-50%, -50%) scale(1.05);
+    }
+
     .video-modal-content {
         width: 95vw;
         border-radius: 12px;

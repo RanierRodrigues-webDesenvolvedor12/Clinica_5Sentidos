@@ -1,5 +1,19 @@
 gsap.registerPlugin(ScrollTrigger, SplitText);
 
+/* ================= 0.1 Lenis Smooth Scroll ================= */
+const lenis = new Lenis({
+    duration: 1.2,
+    easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+    touchMultiplier: 2,
+});
+
+lenis.on('scroll', ScrollTrigger.update);
+
+gsap.ticker.add((time) => {
+    lenis.raf(time * 1000);
+});
+gsap.ticker.lagSmoothing(0);
+
 /* ================= 0. Estado Inicial (Evita o Flash/Delay) ================= */
 /* 1. Preparamos o SplitText imediatamente ao carregar a página */
 const heroSplit = new SplitText('.hero h1', { type: 'lines, words, chars' });
@@ -265,6 +279,8 @@ function setupScrollAnimations() {
     
     /* --- CORREÇÃO DO BUG: Força o recalculo de todas as posições da página --- */
     ScrollTrigger.refresh();
+
+    ScrollTrigger.saveStyles(videoWrapper);
 }
 
 /* ================= Desktop: scroll horizontal + SVG ================= */
@@ -510,37 +526,99 @@ function setupVideoScaleAnimation() {
 
     if (!videoSection || !videoWrapper) return;
 
-    // Criamos a timeline atrelada ao scroll
-    const tl = gsap.timeline({
-        scrollTrigger: {
-            trigger: videoSection,
-            start: "center center", // Animação começa quando o centro da seção chega no centro da tela
-            end: "+=100%",          // O usuário precisará rolar 100% da altura da tela para completar
-            scrub: true,            // A animação vai e volta acompanhando a barra de rolagem
-            pin: true,              // Prende a seção na tela até a animação acabar
-            anticipatePin: 1
-        }
-    });
-
-    // Animação 1: O título some lentamente subindo
-    if (videoHeader) {
-        tl.to(videoHeader, {
-            opacity: 0,
-            y: -50,
-            duration: 0.3,
-            ease: "power1.inOut"
-        }, 0);
+    function getVideoVars() {
+        const s = getComputedStyle(document.documentElement);
+        return {
+            width: s.getPropertyValue('--video-width').trim(),
+            height: s.getPropertyValue('--video-height').trim(),
+            maxWidth: s.getPropertyValue('--video-max-width').trim(),
+            borderRadius: parseInt(s.getPropertyValue('--video-radius')) || 0
+        };
     }
 
-    // Animação 2: O vídeo cresce até preencher a tela e perde o arredondamento
-    tl.to(videoWrapper, {
-        width: "100vw",
-        height: "100vh",
-        maxWidth: "none",
-        borderRadius: 0,
-        duration: 1,
-        ease: "none"
-    }, 0); 
+    const mm = gsap.matchMedia();
+
+    mm.add("(min-width: 769px)", () => {
+        const v = getVideoVars();
+
+        const tl = gsap.timeline({
+            scrollTrigger: {
+                trigger: videoSection,
+                start: "center center",
+                end: "+=100%",
+                scrub: true,
+                pin: true,
+                anticipatePin: 1,
+                invalidateOnRefresh: true
+            }
+        });
+
+        if (videoHeader) {
+            tl.to(videoHeader, {
+                opacity: 0,
+                y: -50,
+                duration: 0.3,
+                ease: "power1.inOut",
+                immediateRender: false
+            }, 0);
+        }
+
+        tl.fromTo(videoWrapper, {
+            width: v.width,
+            height: v.height,
+            maxWidth: v.maxWidth,
+            borderRadius: v.borderRadius
+        }, {
+            width: "100vw",
+            height: "100vh",
+            maxWidth: "none",
+            borderRadius: 0,
+            duration: 1,
+            ease: "none",
+            immediateRender: false
+        }, 0);
+    });
+
+    mm.add("(max-width: 768px)", () => {
+        const v = getVideoVars();
+
+        const tl = gsap.timeline({
+            scrollTrigger: {
+                trigger: videoSection,
+                start: "top top",
+                end: "+=100%",
+                scrub: true,
+                pin: true,
+                anticipatePin: 1,
+                invalidateOnRefresh: true
+            }
+        });
+
+        if (videoHeader) {
+            tl.to(videoHeader, {
+                opacity: 0,
+                y: -50,
+                duration: 0.3,
+                ease: "power1.inOut",
+                immediateRender: false
+            }, 0);
+        }
+
+        tl.fromTo(videoWrapper, {
+            width: v.width,
+            height: v.height,
+            maxWidth: v.maxWidth,
+            borderRadius: v.borderRadius
+        }, {
+            width: "100vw",
+            height: "100vh",
+            maxWidth: "none",
+            borderRadius: 0,
+            duration: 1,
+            ease: "none",
+            immediateRender: false
+        }, 0);
+    });
 }
 
 /* ================= 6. Seção Locação de Consultório ================= */
