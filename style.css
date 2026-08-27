@@ -5,6 +5,7 @@
     --light-blue: #D6EAF8;
     --dark-text: #111;
     --bg-color: #FAFAFA;
+    --color-svg: rgb(151, 224, 248);
 
     /* ========== TAMANHO DO VÍDEO — EDITE AQUI ========== */
     /* Desktop (telas > 768px) */
@@ -2378,4 +2379,10 @@ body.menu-open .header-actions .header-cta {
         width: 95vw;
         border-radius: 12px;
     }
+}
+
+.horizontal-line-container path,
+.vertical-line-container path {
+    opacity: 1; 
+    stroke: var(--color-svg);
 }
