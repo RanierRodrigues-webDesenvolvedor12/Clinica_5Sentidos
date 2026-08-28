@@ -602,9 +602,7 @@ body.menu-open .header-actions .header-cta {
 /* ================= Hero: telas intermediárias (1000px - 1440px) ================= */
 @media (min-width: 1000px) and (max-width: 1440px) {
     .hero { padding-top: clamp(104px, 12vh, 116px); }
-
-    .hero h1 { font-size: clamp(1.9rem, 3.2vw, 2.85rem); }
-
+    
     .hero-gallery {
         height: clamp(210px, 30vh, 260px);
         margin-top: clamp(0.75rem, 1.5vh, 1.25rem);
@@ -2243,7 +2241,7 @@ body.menu-open .header-actions .header-cta {
 .video-play-btn {
     position: absolute;
     bottom: clamp(20px, 4vw, 50px);
-    left: 55%;
+    left: 50%;
     bottom: 15%;
     transform: translateX(-50%);
     z-index: 5;
