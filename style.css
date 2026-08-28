@@ -927,6 +927,7 @@ body.menu-open .header-actions .header-cta {
     display: block;
     width: 100%;
     height: 100%;
+    pointer-events: none;
     filter: grayscale(.15) brightness(.88);
     transition: filter .4s ease;
 }
@@ -947,7 +948,7 @@ body.menu-open .header-actions .header-cta {
     opacity: 0;
     transition: opacity .35s ease;
     backdrop-filter: blur(2px);
-    pointer-events: none;
+    pointer-events: auto;
 }
 .footer-map-overlay svg { width: 18px; height: 18px; }
 .footer-map-link:hover .footer-map-overlay {
