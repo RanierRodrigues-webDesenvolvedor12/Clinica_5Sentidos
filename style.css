@@ -444,7 +444,7 @@ body.menu-open .header-actions .header-cta {
 
 .hero h1 {
     font-size: clamp(1.8rem, 6vw, 4rem);
-    max-width: clamp(300px, 100vw, 1500px);
+    max-width: min(100%, 1500px);
     line-height: 1.1;
     padding: 0 1rem;
 }
@@ -1043,7 +1043,8 @@ body.menu-open .header-actions .header-cta {
     .hero { padding-top: 12vh; }
     .hero h1 { font-size: clamp(1.5rem, 7vw, 2.5rem); }
 
-    .hero-gallery { height: clamp(160px, 30vh, 250px); }
+    .hero-gallery { height: clamp(160px, 30vh, 250px); 
+    margin: 0;}
     .hero-img {
         width: clamp(110px, 30vw, 160px);
         height: clamp(150px, 28vh, 220px);
@@ -1054,7 +1055,7 @@ body.menu-open .header-actions .header-cta {
         align-items: center;
         gap: 10px;
     }
-    .btn { width: 100vw; max-width: 320px; text-align: center; }
+    .btn { width: 100%; max-width: 320px; text-align: center; }
 
     /* Giant Text */
     .giant-text-section { height: 35vh; }
@@ -1181,7 +1182,7 @@ body.menu-open .header-actions .header-cta {
 /* ================= DESKTOP GRANDE ================= */
 /* ================= Seção Vídeo Expansível ================= */
 .video-scale-section {
-    width: 100vw;
+    width: 100%;
     height: 100vh; /* Ocupa toda a tela para o efeito de pin funcionar perfeitamente */
     display: flex;
     justify-content: center;
@@ -2235,6 +2236,19 @@ body.menu-open .header-actions .header-cta {
     .price-perks { align-items: flex-start; }
     .extra-card { flex-wrap: wrap; }
 }
+
+@media (max-width: 400px){
+    .hero-img{
+        width: clamp(100px, 35vw, 200px);
+        height: clamp(150px, 20vh, 200px);
+    }
+
+    .hero h1{
+        font-size: clamp(1.3rem, 15vw, 2rem);
+    }
+}
+
+
 
 /* ============================================================
    Botão de Play + Modal de Vídeo
