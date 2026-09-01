@@ -828,6 +828,34 @@ function setupLeasingAnimations() {
         },
         opacity: 0, y: 46, duration: 0.7, stagger: 0.14, ease: 'power3.out'
     });
+
+    /* --- Saiba se a clínica é para você --- */
+    gsap.from('.fit-card', {
+        scrollTrigger: {
+            trigger: '.leasing-fit',
+            start: 'top 82%',
+            toggleActions: 'play none none none'
+        },
+        opacity: 0, y: 60, scale: 0.97, duration: 0.9, ease: 'power3.out'
+    });
+
+    gsap.from('.fit-head, .fit-intro', {
+        scrollTrigger: {
+            trigger: '.leasing-fit',
+            start: 'top 80%',
+            toggleActions: 'play none none none'
+        },
+        opacity: 0, y: 30, duration: 0.7, stagger: 0.12, ease: 'power3.out'
+    });
+
+    gsap.from('.fit-item', {
+        scrollTrigger: {
+            trigger: '.fit-list',
+            start: 'top 85%',
+            toggleActions: 'play none none none'
+        },
+        opacity: 0, y: 34, scale: 0.94, duration: 0.6, stagger: 0.08, ease: 'back.out(1.6)'
+    });
 }
 
 /* ================= 7. Efeito 3D Tilt (hover) ================= */

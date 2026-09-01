@@ -716,6 +716,7 @@ body.menu-open .header-actions .header-cta {
 .decor-top-left { top: -20px; left: -20px; transform: rotate(-15deg); }
 .decor-bottom-right { bottom: 0px; right: -30px; transform: rotate(15deg); }
 .decor-top-right { top: -20px; right: -30px; transform: rotate(20deg); }
+.decor-bottom-left { bottom: 0px; left: -30px; transform: rotate(-20deg); }
 
 /* ================= Footer ================= */
 .site-footer {
@@ -2071,6 +2072,160 @@ body.menu-open .header-actions .header-cta {
     line-height: 1.6;
 }
 
+/* ---------- Saiba se a clínica é para você ---------- */
+.leasing-fit {
+    position: relative;
+    z-index: 1;
+    max-width: 1200px;
+    margin: 0 auto clamp(2.8rem, 5.5vw, 4rem);
+}
+
+.fit-card {
+    position: relative;
+    background: linear-gradient(160deg, #0A628A 0%, #1282b3 62%, #1b97cc 100%);
+    border-radius: 34px;
+    padding: clamp(2rem, 4.5vw, 3.2rem);
+    color: #fff;
+    overflow: hidden;
+    box-shadow: 0 30px 70px rgba(10, 98, 138, 0.30);
+    transform-style: preserve-3d;
+    will-change: transform;
+}
+.fit-card::before {
+    content: "";
+    position: absolute;
+    width: 340px;
+    height: 340px;
+    top: -140px;
+    right: -120px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.14);
+    filter: blur(60px);
+    pointer-events: none;
+}
+.fit-card::after {
+    content: "";
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    bottom: -160px;
+    left: -120px;
+    border-radius: 50%;
+    background: rgba(143, 217, 255, 0.16);
+    filter: blur(60px);
+    pointer-events: none;
+}
+
+.fit-head {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    gap: 1.2rem;
+    margin-bottom: clamp(1.2rem, 2.5vw, 1.8rem);
+}
+.fit-icon {
+    flex-shrink: 0;
+    width: 62px;
+    height: 62px;
+    border-radius: 20px;
+    background: #fff;
+    color: var(--primary-blue);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 14px 30px rgba(0, 0, 0, 0.22);
+}
+.fit-icon svg { width: 30px; height: 30px; }
+
+.fit-eyebrow {
+    display: block;
+    font-size: 0.68rem;
+    font-weight: 800;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: #9FE0FF;
+    margin-bottom: 0.35rem;
+}
+.fit-title {
+    font-size: clamp(1.4rem, 3vw, 2.15rem);
+    line-height: 1.15;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+}
+.fit-title em {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-weight: 400;
+    color: #ffffff;
+}
+
+.fit-intro {
+    position: relative;
+    z-index: 1;
+    max-width: 560px;
+    margin-bottom: clamp(1.4rem, 2.5vw, 2rem);
+}
+.fit-intro p {
+    font-size: clamp(0.9rem, 1.3vw, 1.05rem);
+    line-height: 1.65;
+    color: rgba(255, 255, 255, 0.92);
+}
+
+.fit-list {
+    list-style: none;
+    position: relative;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: clamp(0.8rem, 1.8vw, 1.2rem);
+}
+.fit-item {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    background: rgba(255, 255, 255, 0.12);
+    border: 1px solid rgba(255, 255, 255, 0.22);
+    border-radius: 18px;
+    padding: 1rem 1.1rem;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    transition: background 0.35s ease, transform 0.35s ease, border-color 0.35s ease;
+}
+.fit-item:hover {
+    background: rgba(255, 255, 255, 0.2);
+    border-color: rgba(255, 255, 255, 0.4);
+    transform: translateY(-3px);
+}
+.fit-check {
+    flex-shrink: 0;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: #fff;
+    color: var(--primary-blue);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.fit-check svg { width: 15px; height: 15px; }
+.fit-item-text { min-width: 0; }
+.fit-name {
+    display: block;
+    font-size: clamp(0.92rem, 1.3vw, 1.05rem);
+    font-weight: 700;
+    color: #fff;
+}
+.fit-tag {
+    display: block;
+    font-size: clamp(0.7rem, 1vw, 0.8rem);
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.75);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
 /* ---------- Extras ---------- */
 .leasing-extras {
     position: relative;
@@ -2228,6 +2383,11 @@ body.menu-open .header-actions .header-cta {
 
     .benefits-grid { grid-template-columns: 1fr 1fr; }
     .leasing-extras { grid-template-columns: 1fr; }
+
+    /* Fit: 2 colunas no tablet, texto centralizado não aplica aqui */
+    .fit-card { padding: 2rem 1.6rem 2.2rem; }
+    .fit-list { grid-template-columns: 1fr 1fr; }
+    .fit-head { align-items: flex-start; }
 }
 
 @media (max-width: 480px) {
@@ -2235,6 +2395,10 @@ body.menu-open .header-actions .header-cta {
     .price-number { font-size: 3.6rem; }
     .price-perks { align-items: flex-start; }
     .extra-card { flex-wrap: wrap; }
+
+    /* Fit: 1 coluna no mobile */
+    .fit-list { grid-template-columns: 1fr; }
+    .fit-head { flex-direction: column; align-items: flex-start; }
 }
 
 @media (max-width: 400px){
