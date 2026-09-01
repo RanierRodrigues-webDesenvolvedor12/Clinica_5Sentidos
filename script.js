@@ -856,6 +856,15 @@ function setupLeasingAnimations() {
         },
         opacity: 0, y: 34, scale: 0.94, duration: 0.6, stagger: 0.08, ease: 'back.out(1.6)'
     });
+
+    gsap.from('.fit-cta', {
+        scrollTrigger: {
+            trigger: '.fit-cta',
+            start: 'top 90%',
+            toggleActions: 'play none none none'
+        },
+        opacity: 0, y: 26, duration: 0.6, ease: 'power3.out'
+    });
 }
 
 /* ================= 7. Efeito 3D Tilt (hover) ================= */

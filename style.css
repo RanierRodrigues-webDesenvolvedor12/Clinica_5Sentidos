@@ -2121,22 +2121,15 @@ body.menu-open .header-actions .header-cta {
     z-index: 1;
     display: flex;
     align-items: center;
-    gap: 1.2rem;
-    margin-bottom: clamp(1.2rem, 2.5vw, 1.8rem);
+    position: relative;
+    right: 32px;
 }
-.fit-icon {
+.fit-logo {
     flex-shrink: 0;
-    width: 62px;
-    height: 62px;
-    border-radius: 20px;
-    background: #fff;
-    color: var(--primary-blue);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 0 14px 30px rgba(0, 0, 0, 0.22);
+    width: clamp(96px, 20vw, 156px);
+    height: clamp(96px, 13vw, 124px);
+    object-fit: contain;
 }
-.fit-icon svg { width: 30px; height: 30px; }
 
 .fit-eyebrow {
     display: block;
@@ -2183,32 +2176,40 @@ body.menu-open .header-actions .header-cta {
 .fit-item {
     display: flex;
     align-items: center;
-    gap: 0.8rem;
+    gap: 0.85rem;
     background: rgba(255, 255, 255, 0.12);
     border: 1px solid rgba(255, 255, 255, 0.22);
     border-radius: 18px;
-    padding: 1rem 1.1rem;
+    padding: 1rem 1.05rem;
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
-    transition: background 0.35s ease, transform 0.35s ease, border-color 0.35s ease;
+    transition: background 0.35s ease, transform 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease;
 }
 .fit-item:hover {
     background: rgba(255, 255, 255, 0.2);
-    border-color: rgba(255, 255, 255, 0.4);
+    border-color: rgba(255, 255, 255, 0.45);
     transform: translateY(-3px);
+    box-shadow: 0 14px 34px rgba(0, 0, 0, 0.18);
 }
-.fit-check {
+.fit-icon-prof {
     flex-shrink: 0;
-    width: 30px;
-    height: 30px;
-    border-radius: 50%;
-    background: #fff;
-    color: var(--primary-blue);
+    width: 44px;
+    height: 44px;
+    border-radius: 13px;
+    background: rgba(255, 255, 255, 0.18);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: #fff;
     display: flex;
     align-items: center;
     justify-content: center;
+    transition: background 0.35s ease, transform 0.35s ease;
 }
-.fit-check svg { width: 15px; height: 15px; }
+.fit-item:hover .fit-icon-prof {
+    background: #fff;
+    color: var(--primary-blue);
+    transform: rotate(-6deg) scale(1.05);
+}
+.fit-icon-prof svg { width: 22px; height: 22px; }
 .fit-item-text { min-width: 0; }
 .fit-name {
     display: block;
@@ -2224,6 +2225,73 @@ body.menu-open .header-actions .header-cta {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+}
+
+/* ---------- CTA do cartão fit ---------- */
+.fit-cta {
+    position: relative;
+    z-index: 1;
+    margin-top: clamp(3rem, 3vw, 2.8rem);
+    padding-top: clamp(1.4rem, 2.5vw, 1.9rem);
+    border-top: 1px dashed rgba(255, 255, 255, 0.28);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.2rem;
+    flex-wrap: wrap;
+}
+.btn-fit-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.85rem;
+    background: #fff;
+    color: var(--primary-blue);
+    font-weight: 800;
+    font-size: clamp(0.95rem, 1.4vw, 1.1rem);
+    padding: 0.95rem 1.9rem;
+    border-radius: 60px;
+    text-decoration: none;
+    box-shadow: 0 18px 44px rgba(0, 0, 0, 0.28);
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.35s ease, box-shadow 0.35s ease;
+    white-space: nowrap;
+}
+.btn-fit-cta::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -80%;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(100deg, transparent, rgba(10, 98, 138, 0.14), transparent);
+    transform: skewX(-20deg);
+    transition: left 0.6s ease;
+}
+.btn-fit-cta:hover { transform: translateY(-4px); box-shadow: 0 26px 60px rgba(0, 0, 0, 0.34); }
+.btn-fit-cta:hover::before { left: 130%; }
+.fit-cta-icon {
+    flex-shrink: 0;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: var(--primary-blue);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.fit-cta-icon svg { width: 18px; height: 18px; }
+.fit-cta-arrow {
+    flex-shrink: 0;
+    width: 20px;
+    height: 20px;
+    transition: transform 0.35s ease;
+}
+.btn-fit-cta:hover .fit-cta-arrow { transform: translateX(6px); }
+.fit-cta-sub {
+    font-size: clamp(0.75rem, 1.1vw, 0.85rem);
+    color: rgba(255, 255, 255, 0.8);
 }
 
 /* ---------- Extras ---------- */
@@ -2387,7 +2455,7 @@ body.menu-open .header-actions .header-cta {
     /* Fit: 2 colunas no tablet, texto centralizado não aplica aqui */
     .fit-card { padding: 2rem 1.6rem 2.2rem; }
     .fit-list { grid-template-columns: 1fr 1fr; }
-    .fit-head { align-items: flex-start; }
+    .fit-cta { flex-direction: column; text-align: center; gap: 0.6rem; }
 }
 
 @media (max-width: 480px) {
@@ -2399,6 +2467,7 @@ body.menu-open .header-actions .header-cta {
     /* Fit: 1 coluna no mobile */
     .fit-list { grid-template-columns: 1fr; }
     .fit-head { flex-direction: column; align-items: flex-start; }
+    .fit-item { padding: 0.95rem 0.95rem; }
 }
 
 @media (max-width: 400px){
