@@ -1,0 +1,858 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Clínica 5 Sentidos - Clínica de Cuidado Integral no Setor Aeroporto, em Goiânia. Consultórios adulto e pediátrico, cozinha equipada e estacionamento incluso para profissionais da saúde e pacientes. Agende sua consulta pelo WhatsApp.">
+    <meta name="author" content="Clínica 5 Sentidos">
+    <meta name="robots" content="index, follow">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Clínica 5 Sentidos - Clínica de Cuidado Integral em Goiânia">
+    <meta property="og:description" content="Estrutura completa e acolhedora para profissionais da saúde e pacientes no Setor Aeroporto, Goiânia. Consultórios adulto e pediátrico, cozinha equipada e estacionamento incluso.">
+    <meta property="og:locale" content="pt_BR">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Clínica 5 Sentidos - Clínica de Cuidado Integral em Goiânia">
+    <meta name="twitter:description" content="Estrutura completa e acolhedora para profissionais da saúde e pacientes no Setor Aeroporto, Goiânia.">
+    <link rel="icon" type="image/png" sizes="16x16" href="Assets/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="Assets/favicon-32x32.png">
+    <link rel="apple-touch-icon" href="Assets/apple-touch-icon.png">
+    <title>Clínica 5 Sentidos - Clínica de Cuidado Integral em Goiânia | Agende sua consulta</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Playfair+Display:ital@1&display=swap" rel="stylesheet">
+    
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/SplitText.min.js"></script>
+    <script src="https://unpkg.com/lenis@1.1.18/dist/lenis.min.js"></script>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Pré-loader -->
+    <div id="preloader">
+        <div class="preloader-title">
+            <span style="margin-left: 15px;">C</span> <span>I</span><span>N</span><span>C</span><span>O</span>
+            <span style="margin-left: 15px;">S</span><span>E</span><span>N</span><span>T</span><span>I</span><span>D</span><span>O</span><span>S</span>
+        </div>
+        <div class="preloader-subtitle">Clinica de cuidado integral</div>
+        <img class="preloader-logo" src="Assets/Logo_sem_fundo.png" alt="Logo Clínica 5 Sentidos">
+    </div>
+
+    <!-- Cabeçalho -->
+    <header class="site-header" id="siteHeader">
+        <div class="header-container">
+            <a href="#inicio" class="header-brand">
+                <img src="Assets/Logo_sem_fundo.png" alt="Logo Clínica 5 Sentidos" class="brand-logo">
+                <span class="brand-text">
+                    <span class="brand-name">5 Sentidos</span>
+                    <span class="brand-tagline"> Clinica de cuidado integral</span>
+                </span>
+            </a>
+
+            <nav class="site-nav" id="siteNav" aria-label="Navegação principal">
+                <div class="site-nav-head">
+                    <a href="#inicio" class="site-nav-brand">
+                        <img src="Assets/Logo_sem_fundo.png" alt="Logo Clínica 5 Sentidos" class="nav-brand-logo">
+                        <span class="site-nav-title">
+                            <span class="site-nav-name">5 Sentidos</span>
+                            <span class="site-nav-tagline">Clinica de cuidado integral</span>
+                        </span>
+                    </a>
+                    <button class="menu-close" id="menuClose" aria-label="Fechar menu" aria-controls="siteNav">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
+                    </button>
+                </div>
+                <div class="site-nav-links">
+                    <a href="#clinica" class="nav-link">A clínica</a>
+                    <a href="#locacao" class="nav-link">Conheça a cinco sentidos</a>
+                    <a href="#ambiente" class="nav-link">Conheça o ambiente</a>
+                    <a href="https://wa.me/556291688842?text=Ol%C3%A1%21%20vim%20pelo%20site%20da%20Cl%C3%ADnica%205%20Sentidos%20e%20gostaria%20de%20agendar%20um%20hor%C3%A1rio%20na%20cl%C3%ADnica." target="_blank" rel="noopener" class="header-cta nav-cta">Agendar uma visita</a>
+                </div>
+            </nav>
+
+            <div class="header-actions">
+                <a href="https://wa.me/556291688842?text=Ol%C3%A1%21%20vim%20pelo%20site%20da%20Cl%C3%ADnica%205%20Sentidos%20e%20gostaria%20de%20agendar%20um%20hor%C3%A1rio%20na%20cl%C3%ADnica." target="_blank" rel="noopener" class="header-cta">
+                    <svg class="header-cta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/><circle cx="12" cy="15" r="1.5" fill="currentColor" stroke="none"/></svg>
+                    Agendar uma visita
+                </a>
+                <button class="menu-toggle" id="menuToggle" aria-label="Abrir menu" aria-expanded="false" aria-controls="siteNav">
+                    <span class="menu-toggle-bar"></span>
+                    <span class="menu-toggle-bar"></span>
+                    <span class="menu-toggle-bar"></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Conteúdo Principal -->
+    <main>
+        <section class="hero" id="inicio">
+            <div class="pill">Cinco sentidos</div>
+            
+            <h1>Cada detalhe foi pensado para proporcionar uma <span class="text-blue">experiência única.</span></h1>
+
+            <div class="hero-gallery">
+                <img src="Assets/sala_01.jpeg" class="hero-img img-1" alt="Consultório 1">
+                <img src="Assets/clinica.png" class="hero-img img-2" alt="Recepção">
+                <img src="Assets/clinica_atendimento.jpeg" class="hero-img img-3" alt="Consultório 2">
+            </div>
+
+            <div class="buttons-wrapper">
+                <a href="#clinica" class="btn btn-primary">
+                    <span class="btn-label">Conheça a clínica</span>
+                    <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                </a>
+                <a href="https://wa.me/556291688842?text=Ol%C3%A1%21%20vim%20pelo%20site%20da%20Cl%C3%ADnica%205%20Sentidos%20e%20gostaria%20de%20agendar%20um%20hor%C3%A1rio%20na%20cl%C3%ADnica." target="_blank" rel="noopener" class="btn btn-outline">
+                    <svg class="btn-icon btn-icon-left" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                    <span class="btn-label">Agendar uma visita</span>
+                    <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                </a>
+            </div>
+        </section>
+
+        <!-- Seção Estrutura da Clínica -->
+        <section class="horizontal-scroll-wrapper">
+            
+            <div class="horizontal-track">
+                
+                <!-- Linha SVG horizontal (Desktop) -->
+                <svg class="horizontal-line-container desktop-line" viewBox="0 0 4000 200" preserveAspectRatio="none">
+                    <path id="h-line" d="M 0 100 Q 500 0 1000 100 T 2000 100 T 3000 100 T 4000 100" 
+                          fill="none" stroke="var(--primary-blue)" stroke-width="6" stroke-linecap="round"/>
+                </svg>
+
+                <!-- Linha SVG vertical (Mobile) -->
+                <svg class="vertical-line-container mobile-line" viewBox="0 0 200 3000" preserveAspectRatio="none">
+                    <path id="v-line" d="M 100 0 Q 0 300 100 600 T 100 1200 T 100 1800 T 100 2400 T 100 3000" 
+                          fill="none" stroke="var(--primary-blue)" stroke-width="5" stroke-linecap="round"/>
+                </svg>
+
+                <!-- ================= BLOCO 1 ================= -->
+                <div class="h-slide">
+                    <div class="slide-text">
+                        <h2>Espaço Completo<br>para você</h2>
+                        <p>Ambientes modernos, aconchegantes e preparados para transformar cada consulta em um momento de confiança, cuidado e bem-estar. Criamos uma estrutura que abraça as necessidades dos profissionais e o conforto dos pacientes.</p>
+                    </div>
+                    <div class="slide-image-wrapper">
+                        <!-- Imagem do Bloco -->
+                        <img src="Assets/sala_Tratamento.jpeg" alt="Maca" class="main-img" style="transform: rotate(-3deg);">
+                        <!-- Assets/Vegetais -->
+                        <img src="Assets/CenouraSVG.svg" class="decor decor-bottom-right" alt="Cenoura">
+                        <img src="Assets/morangoSVG.svg" class="decor decor-top-left" alt="Morango">
+                    </div>
+                </div>
+
+                <!-- ================= BLOCO 2 ================= -->
+                <div class="h-slide">
+                    <div class="slide-text">
+                        <h2>Ambiente<br>Lúdico</h2>
+                        <p>O consultório pediátrico foi desenhado com detalhes que encantam as crianças. Paredes ilustradas e cores pensadas para despertar a imaginação e facilitar o trabalho durante o atendimento infantil.</p>
+                    </div>
+                    <div class="slide-image-wrapper">
+                        <img src="Assets/clinica_atendimento.jpeg" alt="Consultório lúdico" class="main-img" style="transform: rotate(2deg);">
+                        <!-- Pode repetir ou adicionar outros assets aqui -->
+                        <img src="Assets/morangoSVG.svg" class="decor decor-bottom-right" alt="Morango">
+                    </div>
+                </div>
+
+                <!-- ================= BLOCO 3 ================= -->
+                <div class="h-slide">
+                    <div class="slide-text">
+                        <h2>Recepção<br>Acolhedora</h2>
+                        <p>A primeira impressão importa. Nossa recepção foi estruturada para ser um ponto de calma, com um design de interiores que reflete a seriedade e o carinho da Clínica 5 Sentidos.</p>
+                    </div>
+                    <div class="slide-image-wrapper">
+                        <img src="Assets/recepcao.jpeg" alt="Recepção" class="main-img" style="transform: rotate(-2deg);">
+                        <img src="Assets/CenouraSVG.svg" class="decor decor-top-right" alt="Cenoura">
+                    </div>
+                </div>
+
+                <!-- ================= BLOCO 4 ================= -->
+                <div class="h-slide">
+                    <div class="slide-text">
+                        <h2>Sala 01<br>Para o seu cuidado</h2>
+                        <p>Uma sala versátil e acolhedora, ideal para profissionais de psicologia, terapia e fonoaudiologia. Espaço pensado para proporcionar calma, privacidade e um atendimento de excelência ao seu paciente.</p>
+                    </div>
+                    <div class="slide-image-wrapper">
+                        <img src="Assets/sala_01.jpeg" alt="Sala 01" class="main-img" style="transform: rotate(3deg);">
+                        <img src="Assets/CenouraSVG.svg" class="decor decor-bottom-left" alt="Cenoura">
+                        <img src="Assets/morangoSVG.svg" class="decor decor-top-right" alt="Morango">
+                    </div>
+                </div>
+
+                <!-- Você pode adicionar mais blocos <div class="h-slide">...</div> aqui -->
+
+            </div>
+        </section>
+        
+        <!-- ================= Seção Vídeo Expansível ================= -->
+<section class="video-scale-section" id="clinica">
+    <div class="video-scale-container">
+        
+        <!-- Título da Página (conforme os blocos cinzas do seu layout) -->
+        <div class="video-header">
+            <h2>Nossa Essência</h2>
+            <p>Descubra o que torna a Clínica 5 Sentidos única.</p>
+        </div>
+        
+        <!-- Container do Vídeo que irá expandir -->
+        <div class="video-wrapper" id="videoWrapper">
+            
+            <!-- Overlay com gradiente escuro para garantir a leitura do texto -->
+            <div class="video-overlay"></div>
+            
+            <!-- Vídeo de Fundo (ou imagem) -->
+            <!-- Substitua o src pelo seu vídeo real -->
+            <video autoplay muted loop playsinline class="video-bg">
+                <source src="Assets/video_tamanho_menor.mp4" type="video/mp4">
+            </video>
+
+            <!-- Conteúdo sobre o vídeo (Texto na esquerda e Logo na direita) -->
+            <div class="video-content">
+                <div class="video-text-left">
+                    <span class="video-small-text">Ambiente pensado para criar:</span>
+                    <span class="video-large-text">
+                        Conforto <span class="ampersand">&</span> <br>Profissionalismo
+                    </span>
+                </div>
+                
+                <div class="video-logo-right">
+                    <!-- Substitua pelo caminho da sua logo (preferencialmente branca/SVG) -->
+                    <img src="Assets/Logo_sem_fundo.png" alt="Logo Clínica" class="video-logo-img">
+                </div>
+            </div>
+
+            <!-- Botão de Play para expandir -->
+            <button class="video-play-btn" id="videoPlayBtn" aria-label="Assistir vídeo com som">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+                <span>Assistir com áudio</span>
+            </button>
+            
+        </div>
+    </div>
+</section>
+
+        <!-- ================= Seção Locação de Consultório ================= -->
+        <section class="leasing-section" id="locacao">
+
+            <!-- Texto gigante decorativo de fundo -->
+            <div class="leasing-bg-text" aria-hidden="true">Locação</div>
+
+            <!-- Blobs decorativos -->
+            <div class="leasing-blob blob-1" aria-hidden="true"></div>
+            <div class="leasing-blob blob-2" aria-hidden="true"></div>
+
+            <!-- Cabeçalho da seção -->
+            <header class="leasing-header">
+                <div class="leasing-header-text">
+                    <span class="leasing-eyebrow">Para profissionais da área da saúde.</span>
+                    <h2 class="leasing-title">
+                        <span class="title-line" id="leasing-title-line">Seu espaço de atendimento,</span>
+                        <span class="title-line title-accent"><em>tudo pensado para você.</em></span>
+                    </h2>
+                    <p class="leasing-subtitle">Alugue seu consultório por período fixo semanal com estrutura completa, recepção e equipamentos. É só chegar e atender.</p>
+                </div>
+
+                <div class="leasing-header-card" data-tilt>
+                    <img src="Assets/cafeteira_xicaras.jpeg" alt="Consultório da Clínica 5 Sentidos" class="header-card-img" loading="lazy">
+                    <img src="Assets/CenouraSVG.svg" alt="" class="header-card-decor decor-c" aria-hidden="true">
+                    <img src="Assets/morangoSVG.svg" alt="" class="header-card-decor decor-m" aria-hidden="true">
+                    <div class="header-card-tag">
+                        <span class="tag-check">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+                        </span>
+                        <span class="tag-text">Tudo incluso<br>na locação</span>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Como funciona -->
+            <div class="leasing-steps-wrap">
+                <div class="steps-connector" aria-hidden="true"><span class="connector-fill"></span></div>
+
+                <div class="leasing-steps">
+                    <article class="leasing-step">
+                        <div class="step-top">
+                            <span class="step-ghost">01</span>
+                            <div class="step-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                            </div>
+                        </div>
+                        <h3>Escolha seu período</h3>
+                        <p>Você define o dia da semana e o turno ideal para os seus atendimentos.</p>
+                    </article>
+
+                    <article class="leasing-step">
+                        <div class="step-top">
+                            <span class="step-ghost">02</span>
+                            <div class="step-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m17 2 4 4-4 4"/><path d="M3 11v-1a4 4 0 0 1 4-4h14"/><path d="m7 22-4-4 4-4"/><path d="M21 13v1a4 4 0 0 1-4 4H3"/></svg>
+                            </div>
+                        </div>
+                        <h3>Reserva recorrente</h3>
+                        <p>O período fica reservado para você todos os dias iguais, ao longo de 30 dias.</p>
+                    </article>
+
+                    <article class="leasing-step">
+                        <div class="step-top">
+                            <span class="step-ghost">03</span>
+                            <div class="step-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.9 5.8L20 10l-6.1 1.2L12 17l-1.9-5.8L4 10l6.1-1.2z"/><path d="M19 15l.9 2.6L22 18.5l-2.1.9L19 22l-.9-2.6-2.1-.9 2.1-.9z"/></svg>
+                            </div>
+                        </div>
+                        <h3>Atenda com tudo pronto</h3>
+                        <p>Estrutura, recepção e equipamentos inclusos. É só chegar e atender.</p>
+                    </article>
+                </div>
+
+                <div class="leasing-example">
+                    <span class="example-tag">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 11l-5-5-5 5"/><path d="M17 18l-5-5-5 5"/></svg>
+                        Exemplo
+                    </span>
+                    <p>Escolhendo <strong>segunda-feira</strong> no período da <strong>manhã</strong>, todas as segundas de manhã estarão disponíveis para seus atendimentos.</p>
+                    <span class="example-arrow" aria-hidden="true">→</span>
+                </div>
+            </div>
+
+            <!-- Turnos disponíveis -->
+            <div class="leasing-shifts">
+                <article class="shift-card shift-morning" data-tilt>
+                    <span class="shift-tag">Turno da manhã</span>
+                    <div class="shift-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M17 18a5 5 0 0 0-10 0"/><line x1="12" y1="2" x2="12" y2="9"/><line x1="4.22" y1="10.22" x2="5.64" y2="11.64"/><line x1="1" y1="18" x2="3" y2="18"/><line x1="21" y1="18" x2="23" y2="18"/><line x1="18.36" y1="11.64" x2="19.78" y2="10.22"/><line x1="23" y1="22" x2="1" y2="22"/><polyline points="8 6 12 2 16 6"/></svg>
+                    </div>
+                    <strong class="shift-time">8h <span>às</span> 12h</strong>
+                    <span class="shift-duration">4 horas de atendimento</span>
+                </article>
+
+                <article class="shift-card shift-afternoon" data-tilt>
+                    <span class="shift-tag">Turno da tarde</span>
+                    <div class="shift-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
+                    </div>
+                    <strong class="shift-time">13h <span>às</span> 17h</strong>
+                    <span class="shift-duration">4 horas de atendimento</span>
+                </article>
+
+                <article class="shift-card shift-night" data-tilt>
+                    <span class="shift-tag">Turno da noite</span>
+                    <div class="shift-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
+                    </div>
+                    <strong class="shift-time">18h <span>às</span> 22h</strong>
+                    <span class="shift-duration">4 horas de atendimento</span>
+                </article>
+            </div>
+
+            <!-- Investimento / Conversão -->
+            <div class="leasing-price">
+                <div class="price-blob price-blob-a" aria-hidden="true"></div>
+                <div class="price-blob price-blob-b" aria-hidden="true"></div>
+                <span class="price-badge">Período fixo semanal</span>
+
+                <div class="price-content">
+                    <span class="price-label">Investimento mensal · pré-pago</span>
+                    <div class="price-value">
+                        <span class="price-currency">R$</span>
+                        <span class="price-number" data-count="300">300</span>
+                        <span class="price-period">/mês</span>
+                    </div>
+                    <ul class="price-perks">
+                        <li>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+                            Escolha o dia e o turno que quiser
+                        </li>
+                        <li>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+                            Estacionamento incluso para você
+                        </li>
+                        <li>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+                            Tudo incluso, sem mensalidades extras
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="price-cta">
+                    <a href="https://wa.me/556291688842?text=Ol%C3%A1%21%20vim%20pelo%20site%20da%20Cl%C3%ADnica%205%20Sentidos%20e%20gostaria%20de%20agendar%20um%20hor%C3%A1rio%20na%20cl%C3%ADnica." target="_blank" rel="noopener" class="btn-cta">
+                        <span>Garantir meu período</span>
+                        <svg class="cta-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><path d="m12 5 7 7-7 7"/></svg>
+                    </a>
+                    <p class="cta-sub">Vagas limitadas por período · responda rápido</p>
+                </div>
+            </div>
+
+            <!-- Incluso na locação -->
+            <div class="leasing-benefits">
+                <div class="benefits-head">
+                    <span class="benefits-kicker">Incluso na locação</span>
+                    <h3 class="benefits-title">Sem custo extra, <em>sem preocupação.</em></h3>
+                    <p class="benefits-sub">Toda a estrutura da clínica fica à disposição do seu atendimento.</p>
+                </div>
+                <div class="benefits-grid">
+                    <article class="benefit-card" data-tilt>
+                        <div class="benefit-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V21h14V9.5"/><path d="M9 21v-6h6v6"/></svg>
+                        </div>
+                        <h4>Contas inclusas</h4>
+                        <p>Água, luz, internet e condomínio sem custo extra.</p>
+                    </article>
+
+                    <article class="benefit-card" data-tilt>
+                        <div class="benefit-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
+                        </div>
+                        <h4>Consultório adulto</h4>
+                        <p>Bioimpedância, adipômetro e estadiômetro prontos para uso.</p>
+                    </article>
+
+                    <article class="benefit-card" data-tilt>
+                        <div class="benefit-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12h.01"/><path d="M15 12h.01"/><path d="M10 16c.5.3 1.2.5 2 .5s1.5-.2 2-.5"/><path d="M19 6.3a9 9 0 0 1 1.8 3.9 2 2 0 0 1 0 3.6 9 9 0 0 1-17.6 0 2 2 0 0 1 0-3.6A9 9 0 0 1 12 3c2 0 3.5 1.1 3.5 2.5s-.9 2.5-2 2.5c-.8 0-1.5-.4-1.5-1"/></svg>
+                        </div>
+                        <h4>Consultório pediátrico</h4>
+                        <p>Balança pediátrica, infantômetro, balança de peso e maca.</p>
+                    </article>
+
+                    <article class="benefit-card" data-tilt>
+                        <div class="benefit-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17 8h1a4 4 0 1 1 0 8h-1"/><path d="M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4Z"/><line x1="6" y1="2" x2="6" y2="4"/><line x1="10" y1="2" x2="10" y2="4"/><line x1="14" y1="2" x2="14" y2="4"/></svg>
+                        </div>
+                        <h4>Recepção acolhedora</h4>
+                        <p>Café, chá e snack para receber você e seus pacientes.</p>
+                    </article>
+
+                    <article class="benefit-card" data-tilt>
+                        <div class="benefit-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2"/><path d="M7 2v20"/><path d="M21 15V2a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3Zm0 0v7"/></svg>
+                        </div>
+                        <h4>Cozinha equipada</h4>
+                        <p>Air fryer, forno e utensílios completos para atendimento infantil.</p>
+                    </article>
+
+                    <article class="benefit-card" data-tilt>
+                        <div class="benefit-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="2"/><path d="M9 22v-4h6v4"/><line x1="8" y1="6" x2="10" y2="6"/><line x1="14" y1="6" x2="16" y2="6"/><line x1="8" y1="10" x2="10" y2="10"/><line x1="14" y1="10" x2="16" y2="10"/><line x1="8" y1="14" x2="10" y2="14"/><line x1="14" y1="14" x2="16" y2="14"/></svg>
+                        </div>
+                        <h4>Estrutura completa</h4>
+                        <p>Ambientes prontos para atender até 2 crianças ao mesmo tempo.</p>
+                    </article>
+                </div>
+            </div>
+
+            <!-- Saiba se a clínica é para você -->
+            <div class="leasing-fit">
+                <div class="fit-card" data-tilt>
+                    <div class="fit-head">
+                        <img src="Assets/Logo_sem_fundo.png" alt="" class="fit-logo">
+                        <div>
+                            <span class="fit-eyebrow">Perfeito para a sua especialidade</span>
+                            <h3 class="fit-title">Saiba se a clínica <em>é para você</em></h3>
+                        </div>
+                    </div>
+
+                    <div class="fit-intro">
+                        <p>Independente da sua área, a Clínica 5 Sentidos foi pensada para receber profissionais da saúde que buscam um ambiente pronto, acolhedor e completo para atender.</p>
+                    </div>
+
+                    <ul class="fit-list">
+                        <li class="fit-item">
+                            <span class="fit-icon-prof">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21a9 9 0 1 0-9-9"/><path d="M12 12 15 9"/><circle cx="12" cy="12" r="9"/></svg>
+                            </span>
+                            <span class="fit-item-text"><span class="fit-name">Psicologia</span>
+                            <span class="fit-tag">Terapia individual</span></span>
+                        </li>
+                        <li class="fit-item">
+                            <span class="fit-icon-prof">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+                            </span>
+                            <span class="fit-item-text"><span class="fit-name">Nutricionista</span>
+                            <span class="fit-tag">Consultas e avaliação</span></span>
+                        </li>
+                        <li class="fit-item">
+                            <span class="fit-icon-prof">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18Z"/><path d="m8 12 3 3 5-5"/></svg>
+                            </span>
+                            <span class="fit-item-text"><span class="fit-name">Terapeuta</span>
+                            <span class="fit-tag">Atendimento acolhedor</span></span>
+                        </li>
+                        <li class="fit-item">
+                            <span class="fit-icon-prof">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v3"/><path d="M5.6 5.6l2.1 2.1"/><path d="M3 12h3"/><path d="M5.6 18.4l2.1-2.1"/><path d="M12 18v3"/><path d="M18.4 18.4l-2.1-2.1"/><path d="M21 12h-3"/><path d="M18.4 5.6l-2.1 2.1"/><circle cx="12" cy="12" r="2.5"/></svg>
+                            </span>
+                            <span class="fit-item-text"><span class="fit-name">Pediatras em geral</span>
+                            <span class="fit-tag">Consultório infantil</span></span>
+                        </li>
+                        <li class="fit-item">
+                            <span class="fit-icon-prof">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21a9 9 0 1 1 9-9"/><path d="M3 20l7-1 1-1-5-4-1 2H3z"/><path d="M16 3v7"/><path d="M12 5v3"/><path d="M20 4v7"/></svg>
+                            </span>
+                            <span class="fit-item-text"><span class="fit-name">Fonoaudiólogo</span>
+                            <span class="fit-tag">Fala e linguagem</span></span>
+                        </li>
+                    </ul>
+
+                    <div class="fit-cta">
+                        <a href="https://wa.me/556291688842?text=Ol%C3%A1%21%20vim%20pelo%20site%20da%20Cl%C3%ADnica%205%20Sentidos%20e%20gostaria%20de%20agendar%20uma%20visita%20para%20conhecer%20a%20cl%C3%ADnica." target="_blank" rel="noopener" class="btn-fit-cta">
+                            <span class="fit-cta-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/><circle cx="12" cy="15" r="1.5" fill="currentColor" stroke="none"/></svg>
+                            </span>
+                            <span class="fit-cta-text">Marque sua visita</span>
+                            <svg class="fit-cta-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><path d="m12 5 7 7-7 7"/></svg>
+                        </a>
+                        <p class="fit-cta-sub">Encontre o espaço ideal para seus atendimentos.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Extras: Estacionamento -->
+            <div class="leasing-extras">
+                <div class="extra-card" data-tilt>
+                    <div class="extra-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-.6 0-1.1.4-1.4.9l-1.4 2.9A3.7 3.7 0 0 0 2 12v4c0 .6.4 1 1 1h2"/><circle cx="7" cy="17" r="2"/><path d="M9 17h6"/><circle cx="17" cy="17" r="2"/></svg>
+                    </div>
+                    <div class="extra-body">
+                        <h4>Estacionamento incluso</h4>
+                        <p>Vaga exclusiva para a profissional durante todos os seus atendimentos.</p>
+                    </div>
+                    <span class="extra-check">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+                    </span>
+                </div>
+                <div class="extra-card" data-tilt>
+                    <div class="extra-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-.6 0-1.1.4-1.4.9l-1.4 2.9A3.7 3.7 0 0 0 2 12v4c0 .6.4 1 1 1h2"/><circle cx="7" cy="17" r="2"/><path d="M9 17h6"/><circle cx="17" cy="17" r="2"/></svg>
+                    </div>
+                    <div class="extra-body">
+                        <h4>Rotativo para pacientes</h4>
+                        <p>Estacionamento rotativo ao lado da clínica para a comodidade dos seus pacientes.</p>
+                    </div>
+                    <span class="extra-check">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+                    </span>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- ================= Seção Galeria / Conheça o Ambiente ================= -->
+        <section class="gallery-section" id="ambiente">
+
+            <!-- Texto gigante decorativo de fundo -->
+            <div class="gallery-bg-text" aria-hidden="true">Ambiente</div>
+
+            <!-- Blobs decorativos -->
+            <div class="gallery-blob gallery-blob-a" aria-hidden="true"></div>
+            <div class="gallery-blob gallery-blob-b" aria-hidden="true"></div>
+
+            <!-- Cabeçalho da seção -->
+            <header class="gallery-header">
+                <span class="gallery-eyebrow">Conheça por dentro</span>
+                <h2 class="gallery-title">
+                    Sinta a clínica com os <em>cinco sentidos</em>
+                </h2>
+                <p class="gallery-subtitle">Dê um passeio pelos nossos ambientes e descubra um espaço pronto, acolhedor e pensado em cada detalhe — para os seus atendimentos e para o conforto dos seus pacientes.</p>
+            </header>
+
+            <!-- Slider -->
+            <div class="gallery-slider" id="gallerySlider">
+
+                <div class="gallery-viewport" id="galleryViewport">
+                    <div class="gallery-track" id="galleryTrack">
+
+                        <!-- Slide 1 -->
+                        <figure class="gallery-slide">
+                            <img class="gallery-img" src="Assets/recepcao.jpeg" alt="Recepção da Clínica 5 Sentidos" loading="lazy">
+                            <img class="gallery-logo" src="Assets/Logo_sem_fundo.png" alt="Clínica 5 Sentidos" loading="lazy">
+                            <figcaption class="gallery-caption">
+                                <span class="gallery-index">01</span>
+                                <span class="gallery-caption-body">
+                                    <span class="gallery-name">Recepção</span>
+                                    <span class="gallery-tag">Um primeiro olhar que acolhe</span>
+                                    <span class="gallery-desc">Chegada com calma, café e conforto para receber você e os seus pacientes.</span>
+                                </span>
+                            </figcaption>
+                        </figure>
+
+                        <!-- Slide 2 -->
+                        <figure class="gallery-slide">
+                            <img class="gallery-img" src="Assets/sala_01.jpeg" alt="Sala 01 da Clínica 5 Sentidos" loading="lazy">
+                            <img class="gallery-logo" src="Assets/Logo_sem_fundo.png" alt="Clínica 5 Sentidos" loading="lazy">
+                            <figcaption class="gallery-caption">
+                                <span class="gallery-index">02</span>
+                                <span class="gallery-caption-body">
+                                    <span class="gallery-name">Sala 01</span>
+                                    <span class="gallery-tag">Versátil e silenciosa</span>
+                                    <span class="gallery-desc">Ideal para psicologia, terapia e fonoaudiologia. Privacidade e acolhimento em cada atendimento.</span>
+                                </span>
+                            </figcaption>
+                        </figure>
+
+                        <!-- Slide 3 -->
+                        <figure class="gallery-slide">
+                            <img class="gallery-img" src="Assets/clinica_atendimento.jpeg" alt="Consultório pediátrico da Clínica 5 Sentidos" loading="lazy">
+                            <img class="gallery-logo" src="Assets/Logo_sem_fundo.png" alt="Clínica 5 Sentidos" loading="lazy">
+                            <figcaption class="gallery-caption">
+                                <span class="gallery-index">03</span>
+                                <span class="gallery-caption-body">
+                                    <span class="gallery-name">Consultório Pediátrico</span>
+                                    <span class="gallery-tag">Um mundo lúdico</span>
+                                    <span class="gallery-desc">Paredes ilustradas e cores pensadas para encantar as crianças durante o atendimento.</span>
+                                </span>
+                            </figcaption>
+                        </figure>
+
+                        <!-- Slide 4 -->
+                        <figure class="gallery-slide">
+                            <img class="gallery-img" src="Assets/sala_Tratamento.jpeg" alt="Sala de tratamento da Clínica 5 Sentidos" loading="lazy">
+                            <img class="gallery-logo" src="Assets/Logo_sem_fundo.png" alt="Clínica 5 Sentidos" loading="lazy">
+                            <figcaption class="gallery-caption">
+                                <span class="gallery-index">04</span>
+                                <span class="gallery-caption-body">
+                                    <span class="gallery-name">Sala de Tratamento</span>
+                                    <span class="gallery-tag">Estrutura completa</span>
+                                    <span class="gallery-desc">Maca e equipamentos prontos para avaliações, procedimentos e acompanhamento.</span>
+                                </span>
+                            </figcaption>
+                        </figure>
+
+                        <!-- Slide 5 -->
+                        <figure class="gallery-slide">
+                            <img class="gallery-img" src="Assets/sala_de_espera.jpeg" alt="Sala de espera da Clínica 5 Sentidos" loading="lazy">
+                            <img class="gallery-logo" src="Assets/Logo_sem_fundo.png" alt="Clínica 5 Sentidos" loading="lazy">
+                            <figcaption class="gallery-caption">
+                                <span class="gallery-index">05</span>
+                                <span class="gallery-caption-body">
+                                    <span class="gallery-name">Sala de Espera</span>
+                                    <span class="gallery-tag">Conforto em cada detalhe</span>
+                                    <span class="gallery-desc">Um ambiente calmo para o paciente aguardar com tranquilidade.</span>
+                                </span>
+                            </figcaption>
+                        </figure>
+
+                        <!-- Slide 6 -->
+                        <figure class="gallery-slide">
+                            <img class="gallery-img" src="Assets/Sala_de_refei%C3%A7%C3%B5es.jpeg" alt="Sala de refeições da Clínica 5 Sentidos" loading="lazy">
+                            <img class="gallery-logo" src="Assets/Logo_sem_fundo.png" alt="Clínica 5 Sentidos" loading="lazy">
+                            <figcaption class="gallery-caption">
+                                <span class="gallery-index">06</span>
+                                <span class="gallery-caption-body">
+                                    <span class="gallery-name">Sala de Refeições</span>
+                                    <span class="gallery-tag">Cuidado que passa pela mesa</span>
+                                    <span class="gallery-desc">Cozinha equipada e um espaço preparado para receber bem.</span>
+                                </span>
+                            </figcaption>
+                        </figure>
+
+                        <!-- Slide 7 -->
+                        <figure class="gallery-slide">
+                            <img class="gallery-img" src="Assets/cafeteira_xicaras.jpeg" alt="Área do café da Clínica 5 Sentidos" loading="lazy">
+                            <img class="gallery-logo" src="Assets/Logo_sem_fundo.png" alt="Clínica 5 Sentidos" loading="lazy">
+                            <figcaption class="gallery-caption">
+                                <span class="gallery-index">07</span>
+                                <span class="gallery-caption-body">
+                                    <span class="gallery-name">Área do Café</span>
+                                    <span class="gallery-tag">Pausa que acolhe</span>
+                                    <span class="gallery-desc">Café e chá para aquecer a conversa e recepcionar o paciente como deve ser.</span>
+                                </span>
+                            </figcaption>
+                        </figure>
+
+                        <!-- Slide 8 -->
+                        <figure class="gallery-slide">
+                            <img class="gallery-img" src="Assets/WhatsApp%20Image%202026-08-28%20at%2007.28.36.jpeg" alt="Sala de atendimento a 2 da Clínica 5 Sentidos" loading="lazy">
+                            <img class="gallery-logo" src="Assets/Logo_sem_fundo.png" alt="Clínica 5 Sentidos" loading="lazy">
+                            <figcaption class="gallery-caption">
+                                <span class="gallery-index">08</span>
+                                <span class="gallery-caption-body">
+                                    <span class="gallery-name">Sala de Atendimento a 2</span>
+                                    <span class="gallery-tag">Dois pacientes, ao mesmo tempo</span>
+                                    <span class="gallery-desc">Ambiente preparado para atender até duas crianças simultaneamente, com estrutura e conforto.</span>
+                                </span>
+                            </figcaption>
+                        </figure>
+
+                    </div>
+                </div>
+
+                <!-- Setas -->
+                <button class="gallery-arrow gallery-arrow-prev" id="galleryPrev" aria-label="Slide anterior">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><path d="m12 19-7-7 7-7"/></svg>
+                </button>
+                <button class="gallery-arrow gallery-arrow-next" id="galleryNext" aria-label="Próximo slide">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><path d="m12 5 7 7-7 7"/></svg>
+                </button>
+
+                <!-- Contador editorial -->
+                <div class="gallery-counter" aria-hidden="true">
+                    <span class="now" id="galleryCounterNow">01</span>
+                    <span class="sep">/ 08</span>
+                </div>
+
+                <!-- Indicadores + progresso -->
+                <div class="gallery-controls">
+                    <div class="gallery-dots" id="galleryDots"></div>
+                    <div class="gallery-progress" aria-hidden="true"><span id="galleryProgress"></span></div>
+                </div>
+            </div>
+
+            <!-- CTA de conversão -->
+            <div class="gallery-cta">
+                <p class="gallery-cta-text">Curioso para sentir tudo isso de perto? Agende uma visita e descubra o próximo espaço da sua agenda.</p>
+                <a href="https://wa.me/556291688842?text=Ol%C3%A1%21%20vim%20pelo%20site%20da%20Cl%C3%ADnica%205%20Sentidos%20e%20gostaria%20de%20agendar%20uma%20visita%20para%20conhecer%20a%20cl%C3%ADnica." target="_blank" rel="noopener" class="btn-gallery-cta">
+                    <span class="btn-gallery-label">Agendar uma visita</span>
+                    <svg class="btn-gallery-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><path d="m12 5 7 7-7 7"/></svg>
+                </a>
+            </div>
+
+        </section>
+
+    </main>
+
+    <!-- ================= FOOTER ================= -->
+    <footer class="site-footer">
+        <!-- CTA Strip -->
+        <div class="footer-cta">
+            <div class="footer-cta-inner">
+                <div class="footer-cta-text">
+                    <h3>Pronto para transformar seu atendimento?</h3>
+                    <p>Entre em contato e descubra como a Clínica 5 Sentidos pode ser o espaço ideal para você.</p>
+                </div>
+                <a href="https://wa.me/556291688842?text=Ol%C3%A1%21%20vim%20pelo%20site%20da%20Cl%C3%ADnica%205%20Sentidos%20e%20gostaria%20de%20agendar%20um%20hor%C3%A1rio%20na%20cl%C3%ADnica." target="_blank" rel="noopener" class="footer-cta-btn">
+                    <span>Agendar uma visita</span>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><path d="m12 5 7 7-7 7"/></svg>
+                </a>
+            </div>
+        </div>
+
+        <!-- Corpo principal do footer -->
+        <div class="footer-body">
+            <div class="footer-main">
+                <!-- Linha superior: Brand + Links lado a lado -->
+                <div class="footer-top-row">
+                    <!-- Brand -->
+                    <div class="footer-brand-col">
+                        <a href="#inicio" class="footer-brand">
+                            <div class="footer-brand-head">
+                                <img src="Assets/Logo_sem_fundo.png" alt="Logo Clínica 5 Sentidos" class="footer-logo">
+                                <span class="footer-brand-name">Cinco Sentidos</span>
+                            </div>
+                        </a>
+                        <p class="footer-brand-desc">Clínica de cuidado integral. Ambiente estruturado para profissionais da saúde que desejam atender com excelência, estrutura e acolhimento.</p>
+                        <div class="footer-social">
+                            <a href="https://www.instagram.com/cincosentidos.clinica/" target="_blank" rel="noopener" aria-label="Instagram" class="social-link">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/></svg>
+                            </a>
+                            <a href="https://wa.me/556291688842" target="_blank" rel="noopener" aria-label="WhatsApp" class="social-link">
+                                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51l-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+                            </a>
+                            <a href="mailto:clinica5sentidos@gmail.com" aria-label="E-mail" class="social-link">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Links lado a lado -->
+                    <div class="footer-links-duo">
+                        <div class="footer-links-col">
+                            <h4 class="footer-col-title">Navegação</h4>
+                            <ul class="footer-links">
+                                <li><a href="#inicio">Início</a></li>
+                                <li><a href="#clinica">A clínica</a></li>
+                                <li><a href="#locacao">Locação</a></li>
+                                <li><a href="#ambiente">Conheça o ambiente</a></li>
+                                <li><a href="https://wa.me/556291688842?text=Ol%C3%A1%21%20vim%20pelo%20site%20da%20Cl%C3%ADnica%205%20Sentidos%20e%20gostaria%20de%20agendar%20um%20hor%C3%A1rio%20na%20cl%C3%ADnica." target="_blank" rel="noopener">Marcar horário</a></li>
+                            </ul>
+                        </div>
+                        <div class="footer-links-col">
+                            <h4 class="footer-col-title">Estrutura</h4>
+                            <ul class="footer-links">
+                                <li>Consultório adulto</li>
+                                <li>Consultório pediátrico</li>
+                                <li>Cozinha equipada</li>
+                                <li>Estacionamento incluso</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Linha inferior: Endereço + Mapa + Contato -->
+                <div class="footer-bottom-row">
+                    <div class="footer-map-area">
+                        <!-- Endereço acima do mapa -->
+                        <div class="footer-address">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+                            <span>
+                                Cinco Sentidos - Clínica de Cuidado Integral<br>
+                                Edifício Olympus Plaza - R. 7-A, Sl 301 - St. Aeroporto, Goiânia - GO
+                            </span>
+                        </div>
+                        <a href="https://www.google.com/maps/dir/?api=1&destination=Cinco%20Sentidos%20Clinica%20de%20Cuidado%20Integral%2C%20Goi%C3%A2nia%20-%20GO&destination_place_id=ChIJdyddpTTzXpMRH99os-ikouw" target="_blank" rel="noopener" class="footer-map-link" aria-label="Ver trajeto até a Clínica 5 Sentidos no Google Maps">
+                            <div class="footer-map-embed">
+                                <iframe
+                                    src="https://maps.google.com/maps?q=Cinco%20Sentidos%20Clinica%20de%20Cuidado%20Integral%2C%20Goi%C3%A2nia&z=17&output=embed"
+                                    width="100%"
+                                    height="100%"
+                                    style="border:0;"
+                                    allowfullscreen=""
+                                    loading="lazy"
+                                    referrerpolicy="no-referrer-when-downgrade"
+                                    tabindex="-1">
+                                </iframe>
+                                <div class="footer-map-overlay">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></svg>
+                                    <span>Como chegar</span>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="footer-contact-card">
+                        <h4 class="footer-col-title">Contato</h4>
+                        <ul class="footer-contact-list">
+                            <li>
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                                <a href="https://wa.me/556291688842" target="_blank" rel="noopener">(62) 9168-8842</a>
+                            </li>
+                            <li>
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+                                <a href="mailto:clinica5sentidos@gmail.com">clinica5sentidos@gmail.com</a>
+                            </li>
+                            <li>
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/></svg>
+                                <a href="https://www.instagram.com/cincosentidos.clinica/" target="_blank" rel="noopener">@cincosentidos.clinica</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Barra inferior -->
+        <div class="footer-bottom">
+            <div class="footer-bottom-inner">
+                <p>&copy; 2026 Clínica 5 Sentidos. Todos os direitos reservados.</p>
+                <p class="footer-credit">Cuidado integral desde a infância</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modal de Vídeo -->
+    <div class="video-modal" id="videoModal">
+        <div class="video-modal-backdrop" id="videoModalBackdrop"></div>
+        <div class="video-modal-content">
+            <button class="video-modal-close" id="videoModalClose" aria-label="Fechar vídeo">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
+            </button>
+            <video class="video-modal-player" id="videoModalPlayer" controls playsinline>
+                <source src="Assets/video_tamanho_menor.mp4" type="video/mp4">
+            </video>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
