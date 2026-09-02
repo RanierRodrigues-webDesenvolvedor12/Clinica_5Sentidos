@@ -2898,7 +2898,6 @@ body.menu-open .header-actions .header-cta {
     .gallery-caption {
         left: 14px;
         right: 14px;
-        bottom: 68px;
         gap: 0.8rem;
         padding: 0.95rem 1rem;
         border-radius: 18px;
@@ -2917,7 +2916,7 @@ body.menu-open .header-actions .header-cta {
     .gallery-arrow-prev { left: 14px; }
     .gallery-arrow-next { right: 14px; }
 
-    .gallery-controls { flex-direction: row; justify-content: center; gap: 1rem; }
+    .gallery-controls { justify-content: center; gap: 1rem; margin-top: 2.3rem; }
     .gallery-dots { order: 2; }
     .gallery-progress { max-width: 200px; height: 3px; order: 3; }
 }
