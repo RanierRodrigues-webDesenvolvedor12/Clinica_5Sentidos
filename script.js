@@ -24,7 +24,15 @@ gsap.set('.pill', { opacity: 0, y: 40 });
 gsap.set('.buttons-wrapper', { opacity: 0, y: 40 });
 
 // Prepara as imagens para surgirem de baixo, transparentes e um pouco menores
-gsap.set('.hero-img', { y: 150, opacity: 0, scale: 0.8 }); 
+gsap.set('.hero-img', { y: 150, opacity: 0, scale: 0.8 });
+
+/* Oculta imediatamente os elementos da seção "Estrutura" durante o pré-loader
+   (apenas no mobile, onde o layout é vertical e a linha SVG/títulos vazavam
+   por baixo do pré-loader enquanto ele animava) */
+if (window.matchMedia("(max-width: 768px)").matches) {
+    gsap.set('.h-slide .slide-text, .h-slide .slide-image-wrapper', { opacity: 0 });
+    gsap.set('.vertical-line-container', { opacity: 0 });
+}
 
 /* ================= Helpers ================= */
 const isMobile = window.matchMedia("(max-width: 768px)").matches;
@@ -154,6 +162,7 @@ if (document.fonts && document.fonts.ready) {
 /* ================= 1. Pré-loader ================= */
 document.body.classList.add('preloader-active');
 lenis.stop();
+if (window.scrollY !== 0) window.scrollTo(0, 0);
 const tlPreloader = gsap.timeline();
 
 tlPreloader.to(".preloader-title span", {
