@@ -377,7 +377,8 @@ function setupMobileStructure() {
         const vPathLength = vLine.getTotalLength();
         gsap.set(vLine, {
             strokeDasharray: vPathLength,
-            strokeDashoffset: vPathLength
+            strokeDashoffset: vPathLength,
+            opacity: 1
         });
 
         gsap.to(vLine, {
@@ -388,7 +389,6 @@ function setupMobileStructure() {
                 scrub: 1
             },
             strokeDashoffset: 0,
-            opacity: 1,
             ease: "none"
         });
     }
