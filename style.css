@@ -29,6 +29,10 @@ body {
     -webkit-font-smoothing: antialiased;
 }
 
+body.preloader-active {
+    overflow: hidden;
+}
+
 /* ================= Pré-loader ================= */
 #preloader {
     position: fixed;
@@ -43,7 +47,7 @@ body {
 }
 
 .preloader-title {
-    font-size: clamp(1.5rem, 6vw, 5rem);
+    font-size: clamp(2rem, 6vw, 5rem);
     font-weight: 800;
     overflow: hidden;
     display: flex;

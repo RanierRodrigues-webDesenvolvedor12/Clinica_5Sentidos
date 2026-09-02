@@ -152,6 +152,8 @@ if (document.fonts && document.fonts.ready) {
 }
 
 /* ================= 1. Pré-loader ================= */
+document.body.classList.add('preloader-active');
+lenis.stop();
 const tlPreloader = gsap.timeline();
 
 tlPreloader.to(".preloader-title span", {
@@ -167,6 +169,8 @@ tlPreloader.to(".preloader-title span", {
     yPercent: -100, duration: 1, ease: "power4.inOut", delay: 0.5,
     onComplete: () => {
         /* Chama as animações apenas após o preloader sumir */
+        document.body.classList.remove('preloader-active');
+        lenis.start();
         setupScrollAnimations();
         animateHero(); // Executa a entrada suave dos elementos
     }
