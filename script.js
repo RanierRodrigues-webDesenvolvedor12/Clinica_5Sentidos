@@ -31,7 +31,7 @@ gsap.set('.hero-img', { y: 150, opacity: 0, scale: 0.8 });
    por baixo do pré-loader enquanto ele animava) */
 if (window.matchMedia("(max-width: 768px)").matches) {
     gsap.set('.h-slide .slide-text, .h-slide .slide-image-wrapper', { opacity: 0 });
-    gsap.set('.vertical-line-container', { opacity: 0 });
+    gsap.set('#v-line', { opacity: 0 });
 }
 
 /* ================= Helpers ================= */
@@ -388,6 +388,7 @@ function setupMobileStructure() {
                 scrub: 1
             },
             strokeDashoffset: 0,
+            opacity: 1,
             ease: "none"
         });
     }
@@ -408,13 +409,17 @@ function setupMobileStructure() {
         const imgEl = slide.querySelector(".slide-image-wrapper");
 
         if (textEl) {
-            tl.from(textEl, {
-                y: 60, opacity: 0, duration: 1
+            tl.fromTo(textEl, {
+                y: 60, opacity: 0
+            }, {
+                y: 0, opacity: 1, duration: 1
             }, 0);
         }
         if (imgEl) {
-            tl.from(imgEl, {
-                y: 80, opacity: 0, scale: 0.9, duration: 1
+            tl.fromTo(imgEl, {
+                y: 80, opacity: 0, scale: 0.9
+            }, {
+                y: 0, opacity: 1, scale: 1, duration: 1
             }, 0.15);
         }
     });
