@@ -2742,7 +2742,7 @@ body.menu-open .header-actions .header-cta {
 .gallery-counter {
     position: absolute;
     right: clamp(20px, 4vw, 54px);
-    bottom: clamp(24px, 4vw, 52px);
+    bottom: clamp(24px, 20vw, 52px);
     z-index: 2;
     display: flex;
     align-items: baseline;
