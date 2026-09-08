@@ -881,23 +881,30 @@ function setupLeasingTilt() {
 
 /* Inicializa as animações do leasing apenas quando a seção se aproxima
    da viewport (reduz trabalho no load, preservando o comportamento ao rolar) */
-(function lazyLeasing() {
-    const section = document.querySelector('.leasing-section');
-    if (!section) { setupLeasingAnimations(); if (!isMobile) setupLeasingTilt(); return; }
-    var done = false;
-    function init() {
-        if (done) return;
-        done = true;
-        setupLeasingAnimations();
-        if (!isMobile) setupLeasingTilt();
-    }
-    if ('IntersectionObserver' in window) {
-        var obs = new IntersectionObserver(function(entries) {
-            entries.forEach(function(e) { if (e.isIntersecting) { init(); obs.disconnect(); } });
-        }, { rootMargin: '200px 0px' });
-        obs.observe(section);
-    } else { init(); }
-})();
+if (isMobile) {
+    /* Mobile: inicializa as animações do leasing apenas quando a seção se aproxima
+       da viewport (reduz TBT no load). */
+    (function lazyLeasing() {
+        const section = document.querySelector('.leasing-section');
+        if (!section) { setupLeasingAnimations(); return; }
+        var done = false;
+        function init() {
+            if (done) return;
+            done = true;
+            setupLeasingAnimations();
+        }
+        if ('IntersectionObserver' in window) {
+            var obs = new IntersectionObserver(function(entries) {
+                entries.forEach(function(e) { if (e.isIntersecting) { init(); obs.disconnect(); } });
+            }, { rootMargin: '200px 0px' });
+            obs.observe(section);
+        } else { init(); }
+    })();
+} else {
+    /* Desktop: inicializa tudo imediatamente (comportamento original) */
+    setupLeasingAnimations();
+    setupLeasingTilt();
+}
 
 /* ================= Galeria — Conheça o Ambiente ================= */
 function setupGallerySlider() {
@@ -1133,23 +1140,31 @@ function setupGalleryAnimations() {
 
 /* Inicializa o slider e as animações da galeria apenas quando a seção
    se aproxima da viewport (reduz trabalho no load) */
-(function lazyGallery() {
-    const section = document.querySelector('.gallery-section');
-    if (!section) { setupGallerySlider(); setupGalleryAnimations(); return; }
-    var done = false;
-    function init() {
-        if (done) return;
-        done = true;
-        setupGallerySlider();
-        setupGalleryAnimations();
-    }
-    if ('IntersectionObserver' in window) {
-        var obs = new IntersectionObserver(function(entries) {
-            entries.forEach(function(e) { if (e.isIntersecting) { init(); obs.disconnect(); } });
-        }, { rootMargin: '300px 0px' });
-        obs.observe(section);
-    } else { init(); }
-})();
+if (isMobile) {
+    /* Mobile: inicializa o slider e as animações da galeria apenas quando a seção
+       se aproxima da viewport (reduz TBT no load). */
+    (function lazyGallery() {
+        const section = document.querySelector('.gallery-section');
+        if (!section) { setupGallerySlider(); setupGalleryAnimations(); return; }
+        var done = false;
+        function init() {
+            if (done) return;
+            done = true;
+            setupGallerySlider();
+            setupGalleryAnimations();
+        }
+        if ('IntersectionObserver' in window) {
+            var obs = new IntersectionObserver(function(entries) {
+                entries.forEach(function(e) { if (e.isIntersecting) { init(); obs.disconnect(); } });
+            }, { rootMargin: '300px 0px' });
+            obs.observe(section);
+        } else { init(); }
+    })();
+} else {
+    /* Desktop: inicializa tudo imediatamente (comportamento original) */
+    setupGallerySlider();
+    setupGalleryAnimations();
+}
 
 /* --- Garantia extra contra bugs de altura de tela --- */
 window.addEventListener("load", () => {
