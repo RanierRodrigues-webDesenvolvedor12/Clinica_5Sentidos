@@ -72,7 +72,7 @@ body.preloader-active {
 }
 
 .preloader-logo {
-    width: clamp(110px, 20vw, 220px);
+    width: clamp(150px, 35vw, 220px);
     height: auto;
     margin-top: clamp(1.4rem, 3vw, 2rem);
     opacity: 0;
@@ -1329,10 +1329,14 @@ body.menu-open .header-actions .header-cta {
     }
 
     .video-header {
-        position: relative;
-        top: auto;
-        left: auto;
-        margin-bottom: 2rem;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        margin-bottom: 0;
+        padding: clamp(1rem, 3vh, 1.75rem) 1rem;
+        background: linear-gradient(180deg, rgba(250, 250, 250, 0.92) 0%, rgba(250, 250, 250, 0.55) 55%, rgba(250, 250, 250, 0) 100%);
+        z-index: 3;
     }
     
     .video-wrapper {

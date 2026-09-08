@@ -1,10 +1,11 @@
 gsap.registerPlugin(ScrollTrigger, SplitText);
 
 /* ================= 0.1 Lenis Smooth Scroll ================= */
+const isMobileLenis = window.matchMedia("(max-width: 768px)").matches;
 const lenis = new Lenis({
-    duration: 1.2,
+    duration: isMobileLenis ? 0.5 : 1.2,
     easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-    touchMultiplier: 2,
+    touchMultiplier: isMobileLenis ? 1.5 : 2,
 });
 
 lenis.on('scroll', ScrollTrigger.update);
@@ -603,21 +604,19 @@ function setupVideoScaleAnimation() {
         const tl = gsap.timeline({
             scrollTrigger: {
                 trigger: videoSection,
-                start: "top top",
-                end: "+=100%",
-                scrub: true,
-                pin: true,
-                anticipatePin: 1,
+                start: "top bottom",
+                end: "top top",
+                scrub: 1,
                 invalidateOnRefresh: true
             }
         });
 
         if (videoHeader) {
-            tl.to(videoHeader, {
+            tl.fromTo(videoHeader, { y: 0, opacity: 1 }, {
+                y: -40,
                 opacity: 0,
-                y: -50,
-                duration: 0.3,
-                ease: "power1.inOut",
+                duration: 1,
+                ease: "none",
                 immediateRender: false
             }, 0);
         }
@@ -628,8 +627,8 @@ function setupVideoScaleAnimation() {
             maxWidth: v.maxWidth,
             borderRadius: v.borderRadius
         }, {
-            width: "100vw",
-            height: "100vh",
+            width: "100%",
+            height: "100%",
             maxWidth: "none",
             borderRadius: 0,
             duration: 1,
