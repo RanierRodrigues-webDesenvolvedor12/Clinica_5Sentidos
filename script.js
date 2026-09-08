@@ -16,8 +16,10 @@ gsap.ticker.add((time) => {
 gsap.ticker.lagSmoothing(0);
 
 /* ================= 0. Estado Inicial (Evita o Flash/Delay) ================= */
-/* 1. Preparamos o SplitText imediatamente ao carregar a página */
-const heroSplit = new SplitText('.hero h1', { type: 'lines, words, chars' });
+/* 1. Preparamos o SplitText imediatamente ao carregar a página.
+      No mobile usamos apenas 'words' (menos nós DOM no parse); no desktop 'chars'. */
+const mobileNow = window.matchMedia("(max-width: 768px)").matches;
+const heroSplit = new SplitText('.hero h1', { type: mobileNow ? 'words' : 'lines, words, chars' });
 
 /* 2. Escondemos os elementos ANTES do preloader começar */
 gsap.set(heroSplit.words, { opacity: 0, y: 40, mask: "lines" });
@@ -877,8 +879,25 @@ function setupLeasingTilt() {
     });
 }
 
-setupLeasingAnimations();
-setupLeasingTilt();
+/* Inicializa as animações do leasing apenas quando a seção se aproxima
+   da viewport (reduz trabalho no load, preservando o comportamento ao rolar) */
+(function lazyLeasing() {
+    const section = document.querySelector('.leasing-section');
+    if (!section) { setupLeasingAnimations(); if (!isMobile) setupLeasingTilt(); return; }
+    var done = false;
+    function init() {
+        if (done) return;
+        done = true;
+        setupLeasingAnimations();
+        if (!isMobile) setupLeasingTilt();
+    }
+    if ('IntersectionObserver' in window) {
+        var obs = new IntersectionObserver(function(entries) {
+            entries.forEach(function(e) { if (e.isIntersecting) { init(); obs.disconnect(); } });
+        }, { rootMargin: '200px 0px' });
+        obs.observe(section);
+    } else { init(); }
+})();
 
 /* ================= Galeria — Conheça o Ambiente ================= */
 function setupGallerySlider() {
@@ -1112,8 +1131,25 @@ function setupGalleryAnimations() {
     });
 }
 
-setupGallerySlider();
-setupGalleryAnimations();
+/* Inicializa o slider e as animações da galeria apenas quando a seção
+   se aproxima da viewport (reduz trabalho no load) */
+(function lazyGallery() {
+    const section = document.querySelector('.gallery-section');
+    if (!section) { setupGallerySlider(); setupGalleryAnimations(); return; }
+    var done = false;
+    function init() {
+        if (done) return;
+        done = true;
+        setupGallerySlider();
+        setupGalleryAnimations();
+    }
+    if ('IntersectionObserver' in window) {
+        var obs = new IntersectionObserver(function(entries) {
+            entries.forEach(function(e) { if (e.isIntersecting) { init(); obs.disconnect(); } });
+        }, { rootMargin: '300px 0px' });
+        obs.observe(section);
+    } else { init(); }
+})();
 
 /* --- Garantia extra contra bugs de altura de tela --- */
 window.addEventListener("load", () => {
