@@ -16,10 +16,8 @@ gsap.ticker.add((time) => {
 gsap.ticker.lagSmoothing(0);
 
 /* ================= 0. Estado Inicial (Evita o Flash/Delay) ================= */
-/* 1. Preparamos o SplitText imediatamente ao carregar a página.
-      No mobile usamos apenas 'words' (menos nós DOM no parse); no desktop 'chars'. */
-const mobileNow = window.matchMedia("(max-width: 768px)").matches;
-const heroSplit = new SplitText('.hero h1', { type: mobileNow ? 'words' : 'lines, words, chars' });
+/* 1. Preparamos o SplitText imediatamente ao carregar a página */
+const heroSplit = new SplitText('.hero h1', { type: 'lines, words, chars' });
 
 /* 2. Escondemos os elementos ANTES do preloader começar */
 gsap.set(heroSplit.words, { opacity: 0, y: 40, mask: "lines" });
@@ -879,32 +877,8 @@ function setupLeasingTilt() {
     });
 }
 
-/* Inicializa as animações do leasing apenas quando a seção se aproxima
-   da viewport (reduz trabalho no load, preservando o comportamento ao rolar) */
-if (isMobile) {
-    /* Mobile: inicializa as animações do leasing apenas quando a seção se aproxima
-       da viewport (reduz TBT no load). */
-    (function lazyLeasing() {
-        const section = document.querySelector('.leasing-section');
-        if (!section) { setupLeasingAnimations(); return; }
-        var done = false;
-        function init() {
-            if (done) return;
-            done = true;
-            setupLeasingAnimations();
-        }
-        if ('IntersectionObserver' in window) {
-            var obs = new IntersectionObserver(function(entries) {
-                entries.forEach(function(e) { if (e.isIntersecting) { init(); obs.disconnect(); } });
-            }, { rootMargin: '200px 0px' });
-            obs.observe(section);
-        } else { init(); }
-    })();
-} else {
-    /* Desktop: inicializa tudo imediatamente (comportamento original) */
-    setupLeasingAnimations();
-    setupLeasingTilt();
-}
+setupLeasingAnimations();
+setupLeasingTilt();
 
 /* ================= Galeria — Conheça o Ambiente ================= */
 function setupGallerySlider() {
@@ -1138,33 +1112,8 @@ function setupGalleryAnimations() {
     });
 }
 
-/* Inicializa o slider e as animações da galeria apenas quando a seção
-   se aproxima da viewport (reduz trabalho no load) */
-if (isMobile) {
-    /* Mobile: inicializa o slider e as animações da galeria apenas quando a seção
-       se aproxima da viewport (reduz TBT no load). */
-    (function lazyGallery() {
-        const section = document.querySelector('.gallery-section');
-        if (!section) { setupGallerySlider(); setupGalleryAnimations(); return; }
-        var done = false;
-        function init() {
-            if (done) return;
-            done = true;
-            setupGallerySlider();
-            setupGalleryAnimations();
-        }
-        if ('IntersectionObserver' in window) {
-            var obs = new IntersectionObserver(function(entries) {
-                entries.forEach(function(e) { if (e.isIntersecting) { init(); obs.disconnect(); } });
-            }, { rootMargin: '300px 0px' });
-            obs.observe(section);
-        } else { init(); }
-    })();
-} else {
-    /* Desktop: inicializa tudo imediatamente (comportamento original) */
-    setupGallerySlider();
-    setupGalleryAnimations();
-}
+setupGallerySlider();
+setupGalleryAnimations();
 
 /* --- Garantia extra contra bugs de altura de tela --- */
 window.addEventListener("load", () => {
