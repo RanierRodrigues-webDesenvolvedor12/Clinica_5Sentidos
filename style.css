@@ -734,8 +734,6 @@ body.menu-open .header-actions .header-cta {
 .decor-bottom-left { bottom: 0px; left: -30px; transform: rotate(-20deg); }
 
 /* ================= Footer ================= */
-.site-footer {
-}
 
 /* ---------- CTA Strip ---------- */
 .footer-cta {
@@ -1036,8 +1034,6 @@ body.menu-open .header-actions .header-cta {
 
 
 /* ================= TABLETS ================= */
-
-/* ================= TABLETS ================= */
 @media (max-width: 1024px) {
     .h-slide {
         margin-right: 10vw;
@@ -1071,10 +1067,6 @@ body.menu-open .header-actions .header-cta {
         gap: 10px;
     }
     .btn { width: 100%; max-width: 320px; text-align: center; }
-
-    /* Giant Text */
-    .giant-text-section { height: 35vh; }
-    .giant-text { font-size: clamp(2.5rem, 10vw, 5rem); letter-spacing: -1px; }
 
     /* ===== Estrutura - layout vertical ===== */
     .horizontal-scroll-wrapper {
@@ -1135,12 +1127,6 @@ body.menu-open .header-actions .header-cta {
 
     .decor { width: clamp(40px, 10vw, 70px); }
 
-    .footer-placeholder h2 {
-        font-size: clamp(1.2rem, 4vw, 2rem);
-        text-align: center;
-        padding: 0 1rem;
-    }
-
     /* Footer mobile */
     .footer-cta-inner {
         flex-direction: column;
@@ -1171,9 +1157,6 @@ body.menu-open .header-actions .header-cta {
 
     .hero { padding-top: 15vh; }
     .hero h1 { font-size: clamp(1.3rem, 8vw, 2rem); }
-
-    .giant-text-section { height: 30vh; }
-    .giant-text { font-size: clamp(2rem, 9vw, 3.5rem); }
 
     .horizontal-track { padding: 3rem 1rem 2rem; }
     .h-slide { gap: 1rem; padding: 1.5rem 0; }
@@ -3092,6 +3075,12 @@ body.menu-open .header-actions .header-cta {
         width: 95vw;
         border-radius: 12px;
     }
+}
+
+/* Mobile perf: pause infinite blob animations (reduce repaints) */
+@media (max-width: 768px) {
+    .blob-1, .blob-2, .gallery-blob-a, .gallery-blob-b { animation: none; }
+    .shift-icon::before { animation: none; }
 }
 
 .horizontal-line-container path,

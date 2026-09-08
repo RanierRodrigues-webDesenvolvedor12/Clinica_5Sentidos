@@ -239,32 +239,6 @@ function animateHero() {
 /* ================= 3. Todas as animações scroll-driven ================= */
 function setupScrollAnimations() {
 
-    /* --- Giant Text: marquee automático infinito --- */
-    const giantTrack = document.querySelector(".giant-text-track");
-    const giantTexts = document.querySelectorAll(".giant-text");
-    if (giantTrack && giantTexts.length === 2) {
-        const textWidth = giantTexts[0].offsetWidth;
-
-        /* Com 2 cópias idênticas, mover de 0 até -textWidth cria loop perfeito */
-        const marquee = gsap.to(giantTrack, {
-            x: -textWidth,
-            duration: textWidth / (isMobile ? 40 : 55),
-            ease: "none",
-            repeat: -1
-        });
-
-        /* Pausa quando a seção não está visível para economizar recursos */
-        ScrollTrigger.create({
-            trigger: ".giant-text-section",
-            start: "top bottom",
-            end: "bottom top",
-            onEnter: () => marquee.play(),
-            onLeave: () => marquee.pause(),
-            onEnterBack: () => marquee.play(),
-            onLeaveBack: () => marquee.pause()
-        });
-    }
-
     /* ================= Estrutura da Clínica ================= */
     if (isMobile) {
         setupMobileStructure();
@@ -1192,4 +1166,18 @@ window.addEventListener("pageshow", (e) => {
             closeModal();
         }
     });
+})();
+
+/* Autoplay video-bg when in viewport, pause when out */
+(function setUpVideoBgAutoplay() {
+  var video = document.querySelector('.video-bg');
+  if (!video) return;
+  video.pause();
+  var obs = new IntersectionObserver(function(entries) {
+    entries.forEach(function(e) {
+      if (e.isIntersecting) video.play().catch(function(){});
+      else video.pause();
+    });
+  }, { threshold: 0.15 });
+  obs.observe(video.closest('.video-scale-section') || video);
 })();
