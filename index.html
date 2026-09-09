@@ -39,7 +39,9 @@
     <link rel="preload" as="image" media="(max-width:768px)" href="Assets/sala_01-360.webp" fetchpriority="high">
     <link rel="preload" as="image" media="(max-width:768px)" href="Assets/clinica-360.webp" fetchpriority="high">
     <link rel="preload" as="image" media="(max-width:768px)" href="Assets/clinica_atendimento-360.webp" fetchpriority="high">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Playfair+Display:ital@1&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Playfair+Display:ital@1&display=swap" rel="preload" as="style">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Playfair+Display:ital@1&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+    <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Playfair+Display:ital@1&display=swap" rel="stylesheet"></noscript>
 
     <link rel="stylesheet" href="style.css">
 </head>
@@ -61,7 +63,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <header class="site-header" id="siteHeader">
         <div class="header-container">
             <a href="#inicio" class="header-brand">
-                <img src="Assets/Logo_sem_fundo.webp" alt="Logo Clínica 5 Sentidos" class="brand-logo" width="512" height="341">
+                <img src="Assets/Logo_sem_fundo.webp" alt="Logo Clínica 5 Sentidos" class="brand-logo" width="512" height="341" decoding="async">
                 <span class="brand-text">
                     <span class="brand-name">Cinco Sentidos</span>
                     <span class="brand-tagline"> Clinica de cuidado integral</span>
@@ -71,7 +73,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <nav class="site-nav" id="siteNav" aria-label="Navegação principal">
                 <div class="site-nav-head">
                     <a href="#inicio" class="site-nav-brand">
-                        <img src="Assets/Logo_sem_fundo.webp" alt="Logo Clínica 5 Sentidos" class="nav-brand-logo" width="512" height="341">
+                        <img src="Assets/Logo_sem_fundo.webp" alt="Logo Clínica 5 Sentidos" class="nav-brand-logo" width="512" height="341" decoding="async">
                         <span class="site-nav-title">
                             <span class="site-nav-name">Cinco Sentidos</span>
                             <span class="site-nav-tagline">Clinica de cuidado integral</span>
@@ -113,7 +115,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <div class="hero-gallery">
                 <picture>
                     <source media="(max-width:768px)" srcset="Assets/sala_01-360.webp">
-                    <img src="Assets/sala_01.webp" class="hero-img img-1" alt="Consultório 1" width="720" height="1280" decoding="async">
+                    <img src="Assets/sala_01.webp" class="hero-img img-1" alt="Consultório 1" width="720" height="1280" fetchpriority="high" decoding="async">
                 </picture>
                 <picture>
                     <source media="(max-width:768px)" srcset="Assets/clinica-360.webp">
@@ -163,7 +165,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                     </div>
                     <div class="slide-image-wrapper">
                         <!-- Imagem do Bloco -->
-                        <img src="Assets/sala_Tratamento.webp" alt="Maca" class="main-img" width="720" height="1280" decoding="async" style="transform: rotate(-3deg);">
+                        <img src="Assets/sala_Tratamento.webp" alt="Maca" class="main-img" width="720" height="1280" loading="lazy" decoding="async" style="transform: rotate(-3deg);">
                         <!-- Assets/Vegetais -->
                         <img src="Assets/CenouraSVG.webp" class="decor decor-bottom-right" alt="Cenoura" decoding="async">
                         <img src="Assets/morangoSVG.webp" class="decor decor-top-left" alt="Morango" decoding="async">
@@ -177,7 +179,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                         <p>O consultório pediátrico foi desenhado com detalhes que encantam as crianças. Paredes ilustradas e cores pensadas para despertar a imaginação e facilitar o trabalho durante o atendimento infantil.</p>
                     </div>
                     <div class="slide-image-wrapper">
-                        <img src="Assets/clinica_atendimento.webp" alt="Consultório lúdico" class="main-img" width="720" height="1280" decoding="async" style="transform: rotate(2deg);">
+                        <img src="Assets/clinica_atendimento.webp" alt="Consultório lúdico" class="main-img" width="720" height="1280" loading="lazy" decoding="async" style="transform: rotate(2deg);">
                         <!-- Pode repetir ou adicionar outros assets aqui -->
                         <img src="Assets/morangoSVG.webp" class="decor decor-bottom-right" alt="Morango" decoding="async">
                     </div>
@@ -190,7 +192,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                         <p>A primeira impressão importa. Nossa recepção foi estruturada para ser um ponto de calma, com um design de interiores que reflete a seriedade e o carinho da Cinco Sentidos.</p>
                     </div>
                     <div class="slide-image-wrapper">
-                        <img src="Assets/recepcao.webp" alt="Recepção" class="main-img" width="720" height="1280" decoding="async" style="transform: rotate(-2deg);">
+                        <img src="Assets/recepcao.webp" alt="Recepção" class="main-img" width="720" height="1280" loading="lazy" decoding="async" style="transform: rotate(-2deg);">
                         <img src="Assets/CenouraSVG.webp" class="decor decor-top-right" alt="Cenoura" decoding="async">
                     </div>
                 </div>
@@ -203,7 +205,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                         <p>Uma sala versátil e acolhedora, ideal para profissionais de psicologia, terapia, nutrição e fonoaudiologia. Espaço pensado para proporcionar calma, privacidade e um atendimento de excelência ao seu paciente.</p>
                     </div>
                     <div class="slide-image-wrapper">
-                        <img src="Assets/Atendimento_adulto.webp" alt="Sala 01" class="main-img" width="720" height="1280" decoding="async" style="transform: rotate(3deg);">
+                        <img src="Assets/Atendimento_adulto.webp" alt="Sala 01" class="main-img" width="720" height="1280" loading="lazy" decoding="async" style="transform: rotate(3deg);">
                         <img src="Assets/CenouraSVG.webp" class="decor decor-bottom-left" alt="Cenoura" decoding="async">
                         <img src="Assets/morangoSVG.webp" class="decor decor-top-right" alt="Morango" decoding="async">
                     </div>
@@ -600,7 +602,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
                         <!-- Slide 1 -->
                         <figure class="gallery-slide">
-                            <img class="gallery-img" src="Assets/recepcao.webp" alt="Recepção da Clínica 5 Sentidos" loading="lazy" decoding="async">
+                            <img class="gallery-img" src="Assets/recepcao.webp" alt="Recepção da Clínica 5 Sentidos" width="720" height="1280" loading="lazy" decoding="async">
                             <img class="gallery-logo" src="Assets/Logo_sem_fundo.webp" alt="Clínica 5 Sentidos" loading="lazy" decoding="async">
                             <figcaption class="gallery-caption">
                                 <span class="gallery-index">01</span>
@@ -614,7 +616,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
                         <!-- Slide 2 -->
                         <figure class="gallery-slide">
-                            <img class="gallery-img" src="Assets/sala_01.webp" alt="Sala 01 da Clínica 5 Sentidos" loading="lazy" decoding="async">
+                            <img class="gallery-img" src="Assets/sala_01.webp" alt="Sala 01 da Clínica 5 Sentidos" width="720" height="1280" loading="lazy" decoding="async">
                             <img class="gallery-logo" src="Assets/Logo_sem_fundo.webp" alt="Clínica 5 Sentidos" loading="lazy" decoding="async">
                             <figcaption class="gallery-caption">
                                 <span class="gallery-index">02</span>
@@ -628,7 +630,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
                         <!-- Slide 3 -->
                         <figure class="gallery-slide">
-                            <img class="gallery-img" src="Assets/clinica_atendimento.webp" alt="Consultório pediátrico da Clínica 5 Sentidos" loading="lazy" decoding="async">
+                            <img class="gallery-img" src="Assets/clinica_atendimento.webp" alt="Consultório pediátrico da Clínica 5 Sentidos" width="720" height="1280" loading="lazy" decoding="async">
                             <img class="gallery-logo" src="Assets/Logo_sem_fundo.webp" alt="Clínica 5 Sentidos" loading="lazy" decoding="async">
                             <figcaption class="gallery-caption">
                                 <span class="gallery-index">03</span>
@@ -642,7 +644,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
                         <!-- Slide 4 -->
                         <figure class="gallery-slide">
-                            <img class="gallery-img" src="Assets/sala_Tratamento.webp" alt="Sala de tratamento da Clínica 5 Sentidos" loading="lazy" decoding="async">
+                            <img class="gallery-img" src="Assets/sala_Tratamento.webp" alt="Sala de tratamento da Clínica 5 Sentidos" width="720" height="1280" loading="lazy" decoding="async">
                             <img class="gallery-logo" src="Assets/Logo_sem_fundo.webp" alt="Clínica 5 Sentidos" loading="lazy" decoding="async">
                             <figcaption class="gallery-caption">
                                 <span class="gallery-index">04</span>
@@ -656,7 +658,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
                         <!-- Slide 5 -->
                         <figure class="gallery-slide">
-                            <img class="gallery-img" src="Assets/sala_de_espera.webp" alt="Sala de espera da Clínica 5 Sentidos" loading="lazy" decoding="async">
+                            <img class="gallery-img" src="Assets/sala_de_espera.webp" alt="Sala de espera da Clínica 5 Sentidos" width="720" height="1280" loading="lazy" decoding="async">
                             <img class="gallery-logo" src="Assets/Logo_sem_fundo.webp" alt="Clínica 5 Sentidos" loading="lazy" decoding="async">
                             <figcaption class="gallery-caption">
                                 <span class="gallery-index">05</span>
@@ -670,7 +672,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
                         <!-- Slide 6 -->
                         <figure class="gallery-slide">
-                            <img class="gallery-img" src="Assets/Sala_de_refei%C3%A7%C3%B5es.webp" alt="Sala de refeições da Clínica 5 Sentidos" loading="lazy" decoding="async">
+                            <img class="gallery-img" src="Assets/Sala_de_refei%C3%A7%C3%B5es.webp" alt="Sala de refeições da Clínica 5 Sentidos" width="720" height="1280" loading="lazy" decoding="async">
                             <img class="gallery-logo" src="Assets/Logo_sem_fundo.webp" alt="Clínica 5 Sentidos" loading="lazy" decoding="async">
                             <figcaption class="gallery-caption">
                                 <span class="gallery-index">06</span>
@@ -684,7 +686,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
                         <!-- Slide 7 -->
                         <figure class="gallery-slide">
-                            <img class="gallery-img" src="Assets/cafeteira_xicaras.webp" alt="Área do café da Clínica 5 Sentidos" loading="lazy" decoding="async">
+                            <img class="gallery-img" src="Assets/cafeteira_xicaras.webp" alt="Área do café da Clínica 5 Sentidos" width="720" height="1280" loading="lazy" decoding="async">
                             <img class="gallery-logo" src="Assets/Logo_sem_fundo.webp" alt="Clínica 5 Sentidos" loading="lazy" decoding="async">
                             <figcaption class="gallery-caption">
                                 <span class="gallery-index">07</span>
@@ -698,7 +700,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
                         <!-- Slide 8 -->
                         <figure class="gallery-slide">
-                            <img class="gallery-img" src="Assets/WhatsApp%20Image%202026-08-28%20at%2007.28.36.webp" alt="Sala de atendimento a 2 da Clínica 5 Sentidos" loading="lazy" decoding="async">
+                            <img class="gallery-img" src="Assets/WhatsApp%20Image%202026-08-28%20at%2007.28.36.webp" alt="Sala de atendimento a 2 da Clínica 5 Sentidos" width="720" height="1280" loading="lazy" decoding="async">
                             <img class="gallery-logo" src="Assets/Logo_sem_fundo.webp" alt="Clínica 5 Sentidos" loading="lazy" decoding="async">
                             <figcaption class="gallery-caption">
                                 <span class="gallery-index">08</span>

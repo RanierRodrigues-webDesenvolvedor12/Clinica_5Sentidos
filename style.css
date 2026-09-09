@@ -92,8 +92,9 @@ body.preloader-active {
 
 .site-header.scrolled {
     background: rgba(255, 255, 255, 0.92);
-    -webkit-backdrop-filter: blur(14px);
-    backdrop-filter: blur(14px);
+    /* backdrop-filter comentado por desempenho no mobile — descomente para voltar ao efeito de vidro fosco.
+       -webkit-backdrop-filter: blur(14px);
+       backdrop-filter: blur(14px); */
     box-shadow: 0 6px 24px rgba(5, 59, 84, 0.08);
 }
 
@@ -1402,7 +1403,7 @@ body.menu-open .header-actions .header-cta {
 .leasing-blob {
     position: absolute;
     border-radius: 50%;
-    filter: blur(80px);
+    filter: blur(30px);
     pointer-events: none;
     z-index: 0;
 }
@@ -1511,7 +1512,6 @@ body.menu-open .header-actions .header-cta {
     justify-self: end;
     width: min(400px, 100%);
     transform-style: preserve-3d;
-    will-change: transform;
 }
 
 .header-card-img {
@@ -1723,7 +1723,6 @@ body.menu-open .header-actions .header-cta {
     box-shadow: 0 22px 55px rgba(10, 98, 138, 0.16);
     transition: box-shadow 0.4s ease, transform 0.4s ease;
     transform-style: preserve-3d;
-    will-change: transform;
 }
 .shift-card::after {
     content: "";
@@ -2040,7 +2039,6 @@ body.menu-open .header-actions .header-cta {
     box-shadow: 0 16px 40px rgba(10, 98, 138, 0.08);
     transition: box-shadow 0.4s ease, border-color 0.4s ease;
     transform-style: preserve-3d;
-    will-change: transform;
 }
 .benefit-card:hover {
     box-shadow: 0 26px 64px rgba(10, 98, 138, 0.18);
@@ -2092,7 +2090,6 @@ body.menu-open .header-actions .header-cta {
     overflow: hidden;
     box-shadow: 0 30px 70px rgba(10, 98, 138, 0.30);
     transform-style: preserve-3d;
-    will-change: transform;
 }
 .fit-card::before {
     content: "";
@@ -2318,7 +2315,6 @@ body.menu-open .header-actions .header-cta {
     padding: clamp(1.4rem, 3vw, 2rem);
     box-shadow: 0 18px 44px rgba(10, 98, 138, 0.10);
     transform-style: preserve-3d;
-    will-change: transform;
 }
 .extra-card:hover {
     box-shadow: 0 26px 60px rgba(10, 98, 138, 0.18);
@@ -2501,7 +2497,7 @@ body.menu-open .header-actions .header-cta {
 .gallery-blob {
     position: absolute;
     border-radius: 50%;
-    filter: blur(90px);
+    filter: blur(30px);
     pointer-events: none;
     z-index: 0;
 }
