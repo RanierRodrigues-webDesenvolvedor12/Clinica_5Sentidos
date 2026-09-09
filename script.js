@@ -590,6 +590,19 @@ function setupVideoScaleAnimation() {
 
     mm.add("(min-width: 769px)", () => {
         const v = getVideoVars();
+        const bgVideo = videoWrapper.querySelector('.video-bg');
+
+        if (bgVideo) {
+            ScrollTrigger.create({
+                trigger: videoSection,
+                start: "top bottom",
+                end: "bottom top",
+                onEnter: function() { bgVideo.play().catch(function(){}); },
+                onEnterBack: function() { bgVideo.play().catch(function(){}); },
+                onLeave: function() { bgVideo.pause(); },
+                onLeaveBack: function() { bgVideo.pause(); }
+            });
+        }
 
         const tl = gsap.timeline({
             scrollTrigger: {
@@ -635,7 +648,7 @@ function setupVideoScaleAnimation() {
         const tl = gsap.timeline({
             scrollTrigger: {
                 trigger: videoSection,
-                start: "top bottom",
+                start: "top 80%",
                 end: "top top",
                 scrub: 1,
                 invalidateOnRefresh: true
@@ -1229,19 +1242,20 @@ window.addEventListener("pageshow", (e) => {
     });
 })();
 
-/* Autoplay video-bg when in viewport, pause when out */
+/* Autoplay video-bg when in viewport, pause when out (mobile only — desktop uses pin callbacks) */
 (function setUpVideoBgAutoplay() {
   var video = document.querySelector('.video-bg');
   if (!video) return;
   video.pause();
-
-  ScrollTrigger.create({
-    trigger: video.closest('.video-scale-section') || video,
-    start: "top 120%",
-    end: "bottom -20%",
-    onEnter: function() { video.play().catch(function(){}); },
-    onEnterBack: function() { video.play().catch(function(){}); },
-    onLeave: function() { video.pause(); },
-    onLeaveBack: function() { video.pause(); }
-  });
+  if (window.matchMedia("(max-width: 768px)").matches) {
+    ScrollTrigger.create({
+      trigger: video.closest('.video-scale-section') || video,
+      start: "top 120%",
+      end: "bottom -20%",
+      onEnter: function() { video.play().catch(function(){}); },
+      onEnterBack: function() { video.play().catch(function(){}); },
+      onLeave: function() { video.pause(); },
+      onLeaveBack: function() { video.pause(); }
+    });
+  }
 })();
