@@ -16,10 +16,34 @@ gsap.ticker.add((time) => {
 gsap.ticker.lagSmoothing(0);
 
 /* ================= 0. Estado Inicial (Evita o Flash/Delay) ================= */
+/* ================= Helpers ================= */
+const isMobile = window.matchMedia("(max-width: 768px)").matches;
+const isSmallMobile = window.matchMedia("(max-width: 480px)").matches;
+
+/* Defer até o elemento aparecer na viewport (apenas mobile).
+   No desktop executa imediatamente — desktop 100% intacto. */
+function deferOnMobile(selector, fn) {
+    if (!isMobile) { fn(); return; }
+    const el = document.querySelector(selector);
+    if (!el) { fn(); return; }
+    if (!('IntersectionObserver' in window)) { fn(); return; }
+    const io = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+                io.disconnect();
+                fn();
+            }
+        });
+    }, { rootMargin: '80% 0px 80% 0px' });
+    io.observe(el);
+}
+
 /* 1. Preparamos o SplitText imediatamente ao carregar a página */
 const heroSplit = new SplitText('.hero h1', { type: 'lines, words, chars' });
 
-/* 2. Escondemos os elementos ANTES do preloader começar */
+/* 2. Escondemos os elementos ANTES do preloader começar.
+   No mobile a entrada do h1 roda sobreposta à subida do preloader
+   (animateHero inicia no onStart do lift), então o LCP continua rápido. */
 gsap.set(heroSplit.words, { opacity: 0, y: 40, mask: "lines" });
 gsap.set('.pill', { opacity: 0, y: 40 });
 gsap.set('.buttons-wrapper', { opacity: 0, y: 40 });
@@ -34,10 +58,6 @@ if (window.matchMedia("(max-width: 768px)").matches) {
     gsap.set('.h-slide .slide-text, .h-slide .slide-image-wrapper', { opacity: 0 });
     gsap.set('#v-line', { opacity: 0 });
 }
-
-/* ================= Helpers ================= */
-const isMobile = window.matchMedia("(max-width: 768px)").matches;
-const isSmallMobile = window.matchMedia("(max-width: 480px)").matches;
 
 /* ================= 0.5 Cabeçalho fixo + menu mobile ================= */
 const siteHeader = document.querySelector('.site-header');
@@ -166,29 +186,64 @@ lenis.stop();
 if (window.scrollY !== 0) window.scrollTo(0, 0);
 const tlPreloader = gsap.timeline();
 
-tlPreloader.to(".preloader-title span", {
-    y: 0, opacity: 1, stagger: 0.05, duration: 0.8, ease: "back.out(1.7)"
-})
-.to(".preloader-subtitle", {
-    clipPath: "polygon(0 0, 100% 0, 100% 100%, 0 100%)", duration: 1, ease: "power2.inOut"
-})
-.to(".preloader-logo", {
-    y: 0, scale: 1, opacity: 1, duration: 1.2, ease: "power3.out"
-})
-.to("#preloader", {
-    yPercent: -100, duration: 1, ease: "power4.inOut", delay: 0.5,
-    onComplete: () => {
-        /* Chama as animações apenas após o preloader sumir */
+/* No mobile o reveal/subida do preloader é 100% CSS (FCP sem esperar o gsap/CDN).
+   O gsap fica apenas com a entrada do hero e o cleanup, sincronizados via eventos CSS. */
+if (isMobile) {
+    let heroDone = false;
+    let cleaned = false;
+
+    const startHero = () => {
+        if (heroDone) return;
+        heroDone = true;
+        animateHero(true);
+    };
+    const cleanup = () => {
+        if (cleaned) return;
+        cleaned = true;
         document.body.classList.remove('preloader-active');
         lenis.start();
         setupScrollAnimations();
-        animateHero(); // Executa a entrada suave dos elementos
+    };
+
+    const preloaderEl = document.getElementById('preloader');
+    if (preloaderEl) {
+        preloaderEl.addEventListener('animationstart', (e) => {
+            if (e.animationName === 'plLift') startHero();
+        });
+        preloaderEl.addEventListener('animationend', (e) => {
+            if (e.animationName === 'plLift') cleanup();
+        });
     }
-});
+    /* Fallbacks de segurança caso os eventos CSS não disparem
+       (ex.: prefer-reduced-motion / JS atrasado): ~3.4s hero, ~4.6s cleanup */
+    window.setTimeout(startHero, 3400);
+    window.setTimeout(cleanup, 4600);
+} else {
+    tlPreloader.to(".preloader-title span", {
+        y: 0, opacity: 1, stagger: 0.05, duration: 0.8, ease: "back.out(1.7)"
+    })
+    .to(".preloader-subtitle", {
+        clipPath: "polygon(0 0, 100% 0, 100% 100%, 0 100%)", duration: 1, ease: "power2.inOut"
+    })
+    .to(".preloader-logo", {
+        y: 0, scale: 1, opacity: 1, duration: 1.2, ease: "power3.out"
+    })
+    .to("#preloader", {
+        yPercent: -100, duration: 1, ease: "power4.inOut", delay: 0.5,
+        onComplete: () => {
+            /* Chama as animações apenas após o preloader sumir */
+            document.body.classList.remove('preloader-active');
+            lenis.start();
+            setupScrollAnimations();
+            animateHero(); // Executa a entrada suave dos elementos
+        }
+    });
+}
 
 /* ================= 2. Hero: Animação de Entrada ================= */
-function animateHero() {
+function animateHero(compact) {
     const tl = gsap.timeline();
+    const wordStagger = compact ? 0.1 : 0.15;
 
     tl.to('.pill', {
         opacity: 1, y: 0,
@@ -196,7 +251,7 @@ function animateHero() {
     })
     .to(heroSplit.words, {
         opacity: 1, y: 0,
-        duration: 0.8, stagger: 0.15, ease: "back.out(1.7)",
+        duration: 0.8, stagger: wordStagger, ease: "back.out(1.7)",
     }, '-=0.3')
     
     // PASSO 1: As imagens sobem empilhadas (uma logo atrás da outra)
@@ -509,7 +564,9 @@ function setupHeroHover() {
     gallery.addEventListener("mouseleave", resetAll);
 }
 
-setupHeroHover();
+if (!isMobile) {
+    setupHeroHover();
+}
 
 /* ================= 5. Animação de Expansão do Vídeo ================= */
 function setupVideoScaleAnimation() {
@@ -589,10 +646,10 @@ function setupVideoScaleAnimation() {
             tl.fromTo(videoHeader, { y: 0, opacity: 1 }, {
                 y: -40,
                 opacity: 0,
-                duration: 1,
+                duration: 0.6,
                 ease: "none",
                 immediateRender: false
-            }, 0);
+            }, 0.4);
         }
 
         tl.fromTo(videoWrapper, {
@@ -877,8 +934,10 @@ function setupLeasingTilt() {
     });
 }
 
-setupLeasingAnimations();
-setupLeasingTilt();
+deferOnMobile('.leasing-section', () => {
+    setupLeasingAnimations();
+    setupLeasingTilt();
+});
 
 /* ================= Galeria — Conheça o Ambiente ================= */
 function setupGallerySlider() {
@@ -1112,8 +1171,10 @@ function setupGalleryAnimations() {
     });
 }
 
-setupGallerySlider();
-setupGalleryAnimations();
+deferOnMobile('.gallery-section', () => {
+    setupGallerySlider();
+    setupGalleryAnimations();
+});
 
 /* --- Garantia extra contra bugs de altura de tela --- */
 window.addEventListener("load", () => {
@@ -1173,11 +1234,14 @@ window.addEventListener("pageshow", (e) => {
   var video = document.querySelector('.video-bg');
   if (!video) return;
   video.pause();
-  var obs = new IntersectionObserver(function(entries) {
-    entries.forEach(function(e) {
-      if (e.isIntersecting) video.play().catch(function(){});
-      else video.pause();
-    });
-  }, { threshold: 0.15 });
-  obs.observe(video.closest('.video-scale-section') || video);
+
+  ScrollTrigger.create({
+    trigger: video.closest('.video-scale-section') || video,
+    start: "top 120%",
+    end: "bottom -20%",
+    onEnter: function() { video.play().catch(function(){}); },
+    onEnterBack: function() { video.play().catch(function(){}); },
+    onLeave: function() { video.pause(); },
+    onLeaveBack: function() { video.pause(); }
+  });
 })();

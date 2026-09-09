@@ -35,6 +35,10 @@
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- Preload mobile-only das imagens do hero (desktop mantém as originais) -->
+    <link rel="preload" as="image" media="(max-width:768px)" href="Assets/sala_01-360.webp" fetchpriority="high">
+    <link rel="preload" as="image" media="(max-width:768px)" href="Assets/clinica-360.webp" fetchpriority="high">
+    <link rel="preload" as="image" media="(max-width:768px)" href="Assets/clinica_atendimento-360.webp" fetchpriority="high">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Playfair+Display:ital@1&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="style.css">
@@ -46,8 +50,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <!-- Pré-loader -->
     <div id="preloader">
         <div class="preloader-title">
-            <span style="margin-left: 15px;">C</span> <span>I</span><span>N</span><span>C</span><span>O</span>
-            <span style="margin-left: 15px;">S</span><span>E</span><span>N</span><span>T</span><span>I</span><span>D</span><span>O</span><span>S</span>
+            <span style="margin-left: 15px; --i:0;">C</span> <span style="--i:1;">I</span><span style="--i:2;">N</span><span style="--i:3;">C</span><span style="--i:4;">O</span>
+            <span style="margin-left: 15px; --i:5;">S</span><span style="--i:6;">E</span><span style="--i:7;">N</span><span style="--i:8;">T</span><span style="--i:9;">I</span><span style="--i:10;">D</span><span style="--i:11;">O</span><span style="--i:12;">S</span>
         </div>
         <div class="preloader-subtitle">Clinica de cuidado integral</div>
         <img class="preloader-logo" src="Assets/Logo_sem_fundo.webp" alt="Logo Clínica 5 Sentidos" width="512" height="341" fetchpriority="high" decoding="async">
@@ -107,9 +111,18 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <h1>Cada detalhe foi pensado para proporcionar uma <span class="text-blue">experiência única.</span></h1>
 
             <div class="hero-gallery">
-                <img src="Assets/sala_01.webp" class="hero-img img-1" alt="Consultório 1" width="720" height="1280" decoding="async">
-                <img src="Assets/clinica.webp" class="hero-img img-2" alt="Recepção" width="600" height="1067" fetchpriority="high" decoding="async">
-                <img src="Assets/clinica_atendimento.webp" class="hero-img img-3" alt="Consultório 2" width="720" height="1280" decoding="async">
+                <picture>
+                    <source media="(max-width:768px)" srcset="Assets/sala_01-360.webp">
+                    <img src="Assets/sala_01.webp" class="hero-img img-1" alt="Consultório 1" width="720" height="1280" decoding="async">
+                </picture>
+                <picture>
+                    <source media="(max-width:768px)" srcset="Assets/clinica-360.webp">
+                    <img src="Assets/clinica.webp" class="hero-img img-2" alt="Recepção" width="600" height="1067" fetchpriority="high" decoding="async">
+                </picture>
+                <picture>
+                    <source media="(max-width:768px)" srcset="Assets/clinica_atendimento-360.webp">
+                    <img src="Assets/clinica_atendimento.webp" class="hero-img img-3" alt="Consultório 2" width="720" height="1280" decoding="async">
+                </picture>
             </div>
 
             <div class="buttons-wrapper">
