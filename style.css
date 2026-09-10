@@ -32,6 +32,16 @@ body {
 body.preloader-active {
     overflow: hidden;
 }
+body.preloader-active main {
+    visibility: hidden;
+    opacity: 0;
+}
+
+main {
+    visibility: visible;
+    opacity: 1;
+    transition: opacity 0.4s ease;
+}
 
 /* ================= Pré-loader ================= */
 #preloader {
@@ -3124,6 +3134,61 @@ body.menu-open .header-actions .header-cta {
 
 .horizontal-line-container path,
 .vertical-line-container path {
-    opacity: 1; 
+    opacity: 1;
     stroke: var(--color-svg);
+}
+
+/* ============================================================
+   MOBILE PERFORMANCE OPTIMIZATIONS
+   Apenas mobile (max-width: 768px) — desktop 100% intacto
+   ============================================================ */
+@media (max-width: 768px) {
+
+    /* Desativar backdrop-filter: blur() — extremamente custoso no mobile,
+       força composição em layers separadas + blur em tempo real */
+    .fit-item,
+    .gallery-eyebrow,
+    .gallery-caption,
+    .gallery-arrow,
+    .video-play-btn,
+    .video-modal-close,
+    .site-header.scrolled {
+        -webkit-backdrop-filter: none !important;
+        backdrop-filter: none !important;
+    }
+
+    /* Desativar filter: blur() decorativos */
+    .fit-card::before,
+    .fit-card::after {
+        filter: none;
+    }
+
+    /* Desativar transform-style 3D e perspective — evita layers composited extras */
+    .benefit-card,
+    .extra-card {
+        transform-style: flat;
+        perspective: none;
+    }
+    .benefits-grid {
+        perspective: none;
+    }
+
+    /* Content-visibility: pula renderização de seções below-the-fold
+       até estarem perto da viewport (reduz paint e style recalculation) */
+    .benefits-section {
+        content-visibility: auto;
+        contain-intrinsic-size: auto 800px;
+    }
+    .leasing-section {
+        content-visibility: auto;
+        contain-intrinsic-size: auto 1200px;
+    }
+    .gallery-section {
+        content-visibility: auto;
+        contain-intrinsic-size: auto 1000px;
+    }
+    .footer {
+        content-visibility: auto;
+        contain-intrinsic-size: auto 600px;
+    }
 }

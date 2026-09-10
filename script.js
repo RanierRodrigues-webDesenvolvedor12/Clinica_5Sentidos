@@ -195,12 +195,12 @@ if (isMobile) {
     const startHero = () => {
         if (heroDone) return;
         heroDone = true;
+        document.body.classList.remove('preloader-active');
         animateHero(true);
     };
     const cleanup = () => {
         if (cleaned) return;
         cleaned = true;
-        document.body.classList.remove('preloader-active');
         lenis.start();
         setupScrollAnimations();
     };
@@ -231,11 +231,10 @@ if (isMobile) {
     .to("#preloader", {
         yPercent: -100, duration: 1, ease: "power4.inOut", delay: 0.5,
         onComplete: () => {
-            /* Chama as animações apenas após o preloader sumir */
             document.body.classList.remove('preloader-active');
             lenis.start();
             setupScrollAnimations();
-            animateHero(); // Executa a entrada suave dos elementos
+            animateHero();
         }
     });
 }
@@ -1247,13 +1246,27 @@ window.addEventListener("pageshow", (e) => {
   var video = document.querySelector('.video-bg');
   if (!video) return;
   video.pause();
+
   if (window.matchMedia("(max-width: 768px)").matches) {
+    /* Mobile: lazy-load — não baixa o vídeo (5.2MB) até estar perto da viewport */
+    video.preload = 'none';
+    var source = video.querySelector('source');
+    var srcValue = source ? source.getAttribute('src') : null;
+    var loaded = false;
+
+    function loadVideo() {
+      if (loaded) return;
+      loaded = true;
+      if (source && srcValue) source.setAttribute('src', srcValue);
+      video.load();
+    }
+
     ScrollTrigger.create({
       trigger: video.closest('.video-scale-section') || video,
-      start: "top 120%",
+      start: "top 150%",
       end: "bottom -20%",
-      onEnter: function() { video.play().catch(function(){}); },
-      onEnterBack: function() { video.play().catch(function(){}); },
+      onEnter: function() { loadVideo(); video.play().catch(function(){}); },
+      onEnterBack: function() { loadVideo(); video.play().catch(function(){}); },
       onLeave: function() { video.pause(); },
       onLeaveBack: function() { video.pause(); }
     });
